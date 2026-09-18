@@ -49,12 +49,3 @@ This plugin loads alongside `wiser` and may assume it is present. It references 
 ## Layout
 
 This root's layout is governed by `wiser/standards/plugin-root.md`. That standard's C1 owns the `layout:` stamp: the current tree version, a bare nonnegative integer. `wiser/skills/Onboard Plugin Root/` writes it last, only once every applicable obligation other than the stamp itself scores present or N/A. A stamp written before that would advertise a conformance nothing had earned, which is why an unstamped tree reads as not current rather than as clean.
-
-## Handover
-
-Stood up 2026-09-18 by `wiser/skills/Onboard Plugin Root/`. Each line is owed to a person and names what closes it. Strike a line when its boundary closes; when the last line goes, delete this section.
-
-- descriptions of this root: owed (whoever keeps them; waits on the container root's constitution, the operator's repository roster and the operator's build ledger, each of which still describes this root as reserved and not yet stood up)
-- the GitHub repository, its remote and its visibility: owed (a human; waits on the operator, who alone decides whether this repository is created and what it is visible to)
-- the first commit and push: owed (a human; waits on the repository above)
-- a row in the operator's repository roster recording this stand-up: owed (the operator; waits on the operator alone, and not on the repository above, because that roster already records roots that have no repository yet)
