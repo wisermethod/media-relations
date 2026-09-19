@@ -27,6 +27,8 @@ A session that has loaded this constitution and the base plugin's refuses ordina
 
 What may be written here is governed by this heading and by `wiser/AGENTS.md` Writes, Irreversibles, Workspace Model, and Working under this root.
 
+`zResearch/` holds operator research input. It is not product and it does not ship. Authoring from it is an authoring write like any other under this root, and takes the operator's authorization for a named phase and a named target.
+
 ## Families
 
 | Directory | Holds |
@@ -39,12 +41,6 @@ What may be written here is governed by this heading and by `wiser/AGENTS.md` Wr
 Family placement follows `wiser/standards/primitives.md`. This plugin ships no `gateway/`; the base plugin alone ships one. Where this plugin ships `connectors/`, those connectors load through that gateway's repeated `--connectors` flag, per `wiser/gateway/SETUP.md`.
 
 Each family directory carries its own `AGENTS.md` index. An empty index is still an index.
-
-## Standing constraint
-
-This plugin loads alongside `wiser` and may assume it is present. It references `wiser` primitives rather than duplicating them. Copying a `wiser` writing, playbook, or connecting primitive into this tree to remove the dependency is a defect.
-
-`zResearch/` holds operator research input. It is not product and it does not ship. Authoring from it is an authoring write like any other under this root, and takes the operator's authorization for a named phase and a named target.
 
 ## Layout
 
