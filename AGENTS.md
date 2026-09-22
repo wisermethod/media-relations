@@ -1,6 +1,6 @@
 ---
 root: media-relations
-layout: 2
+layout: 1
 ---
 
 # Media Relations
