@@ -7,3 +7,7 @@ A WISER plugin for earned media at a company of any kind: pitching reporters, ne
 Point your harness at this repository as a plugin root, or add the repository as a marketplace and install `media-relations@wiser-method-media-relations` from its catalog.
 
 Work lands in the working folder you attach, never in this repository.
+
+## Support
+
+Email support@wisermemory.com.
