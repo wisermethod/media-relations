@@ -168,7 +168,7 @@ What `<scope>` shut out does not enter, even where public, and no assessment res
 
 Which excerpt does a line this run would add rest on? A carried line is not this test. Take the first match.
 
-- One the package or a source record holds, copied from the page. Draft the line, and hand that excerpt to the gate with it.
+- One the package or a source record holds, copied from the page. Draft the line, saying only what that excerpt says: no title, name, date, figure, or generalisation it does not carry. Hand that excerpt to the gate with it.
 - None. It does not enter. A required field this leaves empty is `Not available: no supporting excerpt was kept`.
 
 Which register does this fact take? Take the first match.
@@ -200,7 +200,7 @@ What may a database value fill? For each value, take the first match.
 
 Apply Currency to each current outlet, its role and beat, and each contact route. Name in Open gaps any currency field past the threshold that this run does not refresh. Each current outlet gets all four format lines.
 
-An assessment names what the work rewards or what it refuses.
+An assessment names what the work rewards or what it refuses, and claims only what each piece it names shows.
 
 ### What is already in the file?
 
@@ -248,9 +248,17 @@ Which verdict came back second? Take the first match.
 
 - Rely, or none hold. Go to the write.
 - Rely with weak points, and every weak point on a figure that holds is labeled in place and named in Open gaps. Go to the write.
-- A finding that holds and is neither fixed nor labeled, or return. Report the claim, what it lacks, and the step it named. Do not write. A prior file stays as it is.
+- Rely with weak points, or return, and every finding that holds can be closed without adding a claim. Close each, as the next question states. Then go to the write, with no third gate. Tell the requester each finding and how it was closed.
+- A finding that holds and concerns the whole draft, such as the wrong person or the wrong outlet, so that no line can close it. Report the claim, what it lacks, and the step it named. Do not write. A prior file stays as it is.
 
-One correction pass. Do not loop.
+How is a finding closed without adding a claim? For each line it names, take the first match.
+
+- The line's shape is wrong, and the line already shows what fixes it: a `Source:` part from the source it cites, a `Kind` or an as-of date that Lines fixes from what the line holds, or a `Label` on a figure. Fix the shape.
+- Part of the value goes past its excerpt. Narrow the value to what the excerpt says.
+- A field, a piece, or an angle is missing. Name it in Open gaps. A gap is not a claim.
+- None of these. Drop the line. A required field it leaves empty is `Not available: dropped at the gate`. Set `Status`, the warning, and `Missing` again as Opening lines states.
+
+One correction pass, then closing. Do not loop.
 
 ### Where is the file written?
 
@@ -296,5 +304,5 @@ The write is the reporter file, and the program `AGENTS.md` only where the offer
 - Prior facts remain, except a dropped personal-life line, an unsourced claim, or a work line outside the ten latest. A superseded fact is marked, not deleted. The same line was not added twice. A different value was not dropped as a duplicate. The same evidence twice left the file unchanged.
 - A drop or a replace was copied first where Archives in `standards/conventions.md` in `wiser` requires a copy. Adds and supersessions alone were not. Where the copy still holds removed personal-life material, the requester was told its path and that it holds that material. A file of this journalist's found only at the write was read and the draft rebuilt before anything was written.
 - The home was the one named directory, the person's choice, the accepted offer, or the found program's reporter directory, with nothing created beside that program. Or the skill asked and did not write.
-- `experts/Research Expert/` in `wiser` ran in a second context before any write, handed what What did the gate return? states, with browser and database reads in the eight fields. A carried non-figure gained no `Label`. One correction pass. Rely writes. Weak points on figures, labeled in Open gaps, write. A held finding that is neither fixed nor labeled, or a return, is reported and the file stays unwritten. Set-aside findings were told, with why. A matching draft was left unchanged.
+- `experts/Research Expert/` in `wiser` ran in a second context before any write, handed what What did the gate return? states, with browser and database reads in the eight fields. A carried non-figure gained no `Label`. One correction pass. Rely writes. Weak points on figures, labeled in Open gaps, write. After the second verdict, findings closed without adding a claim (shape fixed from what the line shows, value narrowed to its excerpt, a gap named, or the line dropped) write, each told to the requester. A held finding about the whole draft, such as the wrong person, is reported, and the file stays unwritten. Set-aside findings were told, with why. A matching draft was left unchanged.
 - No pitch was written, no journalist was chosen, no pitch was judged, no sign-in was entered, and nothing was sent.
