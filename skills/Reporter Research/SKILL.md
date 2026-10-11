@@ -201,7 +201,7 @@ What may a database value fill? For each value, take the first match.
 
 Apply Currency to each current outlet, its role and beat, and each contact route. Name in Open gaps any currency field past the threshold that this run does not refresh. Each current outlet gets all four format lines.
 
-Which flags does the evidence show? Set each one Flags in `reporter-file.md` allows, on the statement it names, and no other. Where none is shown, write the line Flags gives: none found where this run read a source beyond the existing file, and `Not available` where it read none. A flag stops nothing in this skill. Tell the requester each flag in force, and that the Pitch skill does not pitch this journalist while it stays in force.
+Which flags does the evidence show? Set each one Flags in `reporter-file.md` allows, on the statement it names, and no other. Where none is shown, write the line Flags gives for that case. Answer this again after the correction pass and after closing, as Flags states for a line dropped or narrowed. A flag stops nothing in this skill. Tell the requester each flag in force, and that the Pitch skill does not pitch this journalist while it stays in force.
 
 An assessment names what the work rewards or what it refuses, and claims only what each piece it names shows.
 
@@ -247,7 +247,7 @@ A finding does not hold when it names a claim the draft does not make, or asks f
 Which verdict came back first? Take the first match.
 
 - Rely, or none hold. Go to the write.
-- Rely with weak points, or return, and a finding holds. Fix each one that holds: drop the claim, add the missing label on a figure, or add the missing register, date, or source record, or one more gather on the gap it names. A weak point on a figure the file can carry is labeled in place and named in Open gaps, per The consumer in `experts/Research Expert/` in `wiser`. Then run the expert once more, in a new second context.
+- Rely with weak points, or return, and a finding holds. Fix each one that holds: drop the claim, add the missing label on a figure, or add the missing register, date, or source record, or one more gather on the gap it names. A weak point on a figure the file can carry is labeled in place and named in Open gaps, per The consumer in `experts/Research Expert/` in `wiser`. Answer Which flags does the evidence show? again. Then run the expert once more, in a new second context.
 
 Which verdict came back second? Take the first match.
 
@@ -263,7 +263,7 @@ How is a finding closed without adding a claim? For each line it names, take the
 - A field, a piece, or an angle is missing. Name it in Open gaps. A gap is not a claim.
 - None of these. Drop the line. A required field it leaves empty is `Not available: dropped at the gate`. Set `Status`, the warning, and `Missing` again as Opening lines states.
 
-Then check each flag and each `Superseded` mark against what closing left. A flag whose Role line was dropped, or narrowed so that it no longer shows the code's condition, is dropped. A `Superseded` mark whose later line was dropped is removed.
+Then answer Which flags does the evidence show? again, on the lines closing left, as Flags in `reporter-file.md` states for a line dropped or narrowed.
 
 One correction pass, then closing. Do not loop.
 

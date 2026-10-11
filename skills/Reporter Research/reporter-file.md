@@ -149,7 +149,9 @@ One fact sets one flag. Where it fits more than one of `vendor`, `left_field`, a
 
 A flag rests on a statement: an in-force Role line with `Kind: statement`, or, for `deceased`, its own excerpt copied from the page. A flag on a Role line names that line's token and outlet in its value, and takes that line's source, register, and as-of date. A sighting, a database value, a `Research inference`, or a work line alone never sets a flag, and neither does one piece the outlet labels paid or sponsored. Geography and any other fit to one program are not flags and take no line.
 
-Where this run read no source beyond the existing file, Flags holds any flag a carried Role line shows, and otherwise `Not available: no source was read this run that could show a flag`, never the line saying none was found.
+`No flag was found in the sources read.` is written only where this run read a statement of the journalist's role, in the package or a browser read, and it shows no code. A database row or a sighting is not such a statement. Otherwise the carried flags still in force stay, a flag a carried Role line shows is set, and where neither gives one, Flags holds `Not available: no source was read this run that could show a flag`.
+
+A flag is a reading of the line it rests on. Whenever that line is dropped or narrowed, the flag is read again: the code the remaining line shows is set, and one it no longer shows is dropped. A `Superseded` mark on a flag is read the same way, and removed where its later line was dropped or no longer shows what supersedes the flag.
 
 A `deceased` flag holds the code, its source, and its date. Nothing else from the notice enters any line.
 
