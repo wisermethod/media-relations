@@ -71,7 +71,7 @@ Which threshold applies?
 
 ### Where is the home, and is there a file already?
 
-Follow declarations only, at any depth: the owning root's `AGENTS.md`, the router of each declared work directory, and the `AGENTS.md` of each program or project those name. Programs and projects may nest, each with its own `AGENTS.md`, per C4 in `standards/user-root.md` in `wiser`. Record a program named for the root's media relations.
+Read declarations only, at any depth: the owning root's `AGENTS.md`, and every `AGENTS.md` under each work directory it declares: the routers, each program and project, and any part with its own `AGENTS.md`. A router may state a rule for its folders rather than list them, so find each folder that holds an `AGENTS.md` rather than relying on a list. Programs, projects, and parts nest, per C4 in `standards/user-root.md` in `wiser`. Record a program whose declaration states the root's media relations as its concern.
 
 Which directory do they name as one file per journalist, reporter, or media contact? Take the first match.
 
@@ -86,8 +86,8 @@ Which file is this journalist's? Where the home is not resolved, the only candid
 - More than one in the home, with or without a handed file, or one in the home and a different file handed. Ask which is authoritative. Do not merge. This is not no file. Do not gather until they answer.
 - The home is resolved, and one file sits outside it. Ask before gathering: update it where it is, or create the contract file in the home and archive the old one. Do neither until they answer.
 - One contract-shaped file. Read it first. Update it at its own path.
-- Home known, no contract-shaped file of theirs selected, and the contract name is another journalist's file. Ask before gathering. Do not write into it. Another shape of theirs is still evidence. A name they give is the file name. Go on, and the write step checks the path. Stop, and do not gather.
-- One file of another shape. Read it as evidence. It is not the contract file yet.
+- Home known, no file of theirs in it, and the contract name is another journalist's file. Ask before gathering. Do not write into it. A name they give is the file name. Go on, and the write step checks the path. Stop, and do not gather.
+- One file of another shape. Read it as evidence. It is the selected file: the contract file replaces it at its own path, under its existing name, after the archive the write step requires. Moving it to the contract name takes the requester's choice.
 - None of these. There is no file yet.
 
 ### What is handed to External Research?
@@ -144,11 +144,11 @@ Hand a sign-in, a second factor, or a captcha to the person, including when the 
 
 ### Does the record name one journalist?
 
-Answer from the request, any existing file, and the package, before building the draft. Take the first match.
+Answer from the request, any existing file, the package, and the browser and database reads, before building the draft. Take the first match.
 
+- More than one journalist, or not the person named. Ask which. Do not build a draft. Do not write.
 - No package, and the request and any existing file identify one person. Continue. Every field the package would have filled is `Not available`, and the reason names the stop.
 - No package, and identity is still unclear. Ask. Do not build a draft. Do not write.
-- More than one journalist, or not the person named. Ask which. Do not build a draft. Do not write.
 - That one person. Keep every outlet the evidence shows, each with its own lines. Where the request named no outlet, there is no single outlet. Continue.
 
 ### What may enter the draft?
@@ -190,7 +190,7 @@ An assessment names what the work rewards or what it refuses.
 
 ### What is already in the file?
 
-- No file, or another shape. The draft is a new contract file. The other shape stays as evidence until the write.
+- No file, or another shape. The draft is a new contract file. Another shape stays as evidence and is replaced at its own path at the write.
 - The file matches the contract. Take prior lines first, then each new fact.
 
 Does this prior line hold personal-life material? Removal overrides every retention rule. Take the first match.
@@ -202,11 +202,11 @@ Does this prior line hold personal-life material? Removal overrides every retent
 Which new fact meets the lines already there for the same field at the same outlet? Take the first match.
 
 - Same token, value, outlet, source, and as-of date. Add nothing. Two quoted people from one article, or an email and a phone from one dated page, are two lines. A different value is not a duplicate.
-- The line in force is a `Departure` or a `Retirement`. Supersede it only as Currency states.
 - A compatible addition, such as another work line or another route. Add it.
-- A later dated statement of a different value for the same field instance. Mark the earlier line superseded with that date and evidence, as Lines states.
+- Two values that cannot be ordered, the same date or a date that cannot be ordered. Add it, and keep both. Name the conflict in Open gaps. That currency field is unresolved, as Currency states.
 - Older than the line in force. Add it as history. Supersede nothing.
-- Two values that cannot be ordered, the same date or a date that cannot be ordered. Keep both. Name the conflict in Open gaps. That currency field is unresolved, as Currency states.
+- The line in force is a `Departure` or a `Retirement`. Add it. It supersedes that line only as Currency states.
+- A later dated statement of a different value for the same field instance. Add it, and mark the earlier line superseded with that date and evidence, as Lines states.
 
 Set `Last enriched`, `Created`, `Status`, the warning, and `Missing` as Opening lines states.
 
@@ -218,7 +218,7 @@ Before any write, run `experts/Research Expert/` in `wiser` in a second context 
 
 The gate still runs when the draft matches the file. A rely verdict on a match writes nothing, including where a later outcome says go to the write.
 
-A finding holds only when it names a claim the draft makes. Where every finding fails to hold, the verdict counts as rely. Tell the requester which were set aside and why.
+A finding does not hold when it names a claim the draft does not make, or asks for something outside the contract's fields. Every other finding holds, a missing field, angle, or gap included. Where every finding fails to hold, the verdict counts as rely. Tell the requester which were set aside and why.
 
 Which verdict came back first? Take the first match.
 
@@ -249,16 +249,16 @@ What did the person answer? Only where the offer was made. Take the first match.
 - Accept, and that path states a different concern, or states no kind. Ask. Do not write into it, and do not create a second program.
 - Decline. Do not write. Report that the home was not resolved.
 
-Before a write that drops a line or replaces a file, and only once the gate has sent the run here, copy the existing file per Archives in `standards/conventions.md` in `wiser`, contract-shaped or not, unless the owning root declares git history as its recovery path. Copy the same way when they chose a new file in the home. Adds or supersessions alone drop nothing and are not archived. Where no copy is required, say so. Never delete the only copy. Where the copy still holds personal-life material the new file dropped, tell the requester its path. Deleting it is their decision, never this skill's.
+Before a write that drops a line or replaces a file, and only once the gate has sent the run here, copy the existing file per Archives in `standards/conventions.md` in `wiser`, contract-shaped or not, unless the owning root declares git history as its recovery path. Copy the same way when they chose a new file in the home. Adds or supersessions alone drop nothing and are not archived. Where no copy is required, say so. Never delete the only copy. Where the copy still holds personal-life material the new file dropped, tell the requester its path and that it still holds the material removed from the file, without repeating it. Deleting it is their decision, never this skill's.
 
 Which file is at the path to be written? Check immediately before writing, in the resolved home, whichever way it was resolved. An update keeps its `File` line. The name rule applies only when creating a file. Take the first match.
 
 - The selected file is outside that home and they have not chosen. Ask: update it there, or create the contract file in the home and archive the old one. Do neither. Do not write.
 - Updating the selected file. Write it at its own path.
+- The home holds a file of this journalist's that this run did not read, at that path or elsewhere in the home. Do not write. Go back to Which file is this journalist's? with that home, select as it states, and rebuild the draft from What is already in the file?. The rebuilt draft goes through the gate from its first verdict.
 - They gave a name. Use it. No file: write. Another journalist's file: ask for a name, do not write, and do not suffix again.
 - No file at the path. Write the new file.
-- This journalist's file. It is the file being updated. Write it there.
-- Another journalist's file, and File name yields one primary outlet. The name gains it. Check that path once: no file, write; this journalist's file, update it there; another journalist's file, ask for a name and do not write.
+- Another journalist's file, and File name yields one primary outlet. The name gains it. Check that path once: no file, write; another journalist's file, ask for a name and do not write.
 - No primary outlet. Ask the requester for a name. Do not write.
 
 The write is the reporter file, and the program `AGENTS.md` only where the offer created it.
@@ -275,7 +275,7 @@ The write is the reporter file, and the program `AGENTS.md` only where the offer
 - No personal-life fact remains, and no assessment rests on one. A prior line of that kind was dropped even with a source, a register, and a date. Open gaps names the removal and does not repeat it.
 - A role statement and a sighting stay apart. `Still publishes: yes` is dated publication evidence, never a listing. A departure is superseded only as Currency states. Each currency field has its own source and as-of date. An unresolved field is not current. Each outlet has its own lines. `Staleness` records `30 days, default` or the requester's number.
 - Prior facts remain, except a dropped personal-life line or an unsourced claim. A superseded fact is marked, not deleted. The same line was not added twice. A different value was not dropped as a duplicate. The same evidence twice left the file unchanged.
-- A drop or a replace was copied first where Archives in `standards/conventions.md` in `wiser` requires a copy. Adds and supersessions alone were not. Where the copy still holds removed personal-life material, the requester was told its path.
+- A drop or a replace was copied first where Archives in `standards/conventions.md` in `wiser` requires a copy. Adds and supersessions alone were not. Where the copy still holds removed personal-life material, the requester was told its path and that it holds that material. A file of this journalist's found only at the write was read and the draft rebuilt before anything was written.
 - The home was the one named directory, the person's choice, the accepted offer, or the found program's reporter directory, with nothing created beside that program. Or the skill asked and did not write.
 - `experts/Research Expert/` in `wiser` ran in a second context before any write, with browser and database reads in the eight fields. One correction pass. Rely writes. Weak points labeled in Open gaps write. A held finding that is neither fixed nor labeled, or a return, is reported and the file stays unwritten. Set-aside findings were told, with why. A matching draft was left unchanged.
 - No pitch was written, no journalist was chosen, no pitch was judged, no sign-in was entered, and nothing was sent.

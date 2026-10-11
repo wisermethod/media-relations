@@ -64,6 +64,7 @@ A stated date includes one that resolves to one absolute date. Which as-of date 
 - A sighting, and the source states a date. Use that date. `Kind: sighting`.
 - A sighting, no source date, and the file it came in states a capture date. Use that capture date. `Kind: sighting`.
 - A sighting with neither. Use this run's as-of date. `Kind: sighting`.
+- A `Research inference`. Use the latest publication date among the dated work it names, each piece named with its own date in the value.
 - None of these. `Not available: the source states no date`. A role line with no date does not count as the role statement.
 
 A capture date or this run's as-of date dates a sighting and never makes an item dated work.
