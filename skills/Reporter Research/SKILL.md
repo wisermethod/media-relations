@@ -12,7 +12,7 @@ version: 0.1.0
 
 Use when a person wants one reporter file on one named journalist written or brought up to date, from that journalist's professional public record and, where the owning root has a media database, from that database.
 
-The file is for the person who will pitch, and for the Pitch skill, which reads the journalist's beat, audience, formats, and currency from it.
+The file is for the person who will pitch, and for the Pitch skill, which reads the journalist's beat, audience, formats, currency, and flags from it.
 
 Not when the work is a pitch, a choice of whom to pitch, a judgment of a pitch, a sign-in, or a send.
 
@@ -105,7 +105,7 @@ Run `skills/External Research/` in `wiser` by name. Hand it what its Inputs decl
 
 `<research_request>` carries these queries, a depth, and the angles:
 
-1. The role held now, any former role, and any move, beat change, departure, retirement, or return the evidence shows, each with its date and who stated it.
+1. The role held now, any former role, and any move, beat change, departure, retirement, or return the evidence shows, each with its date and who stated it. Whether the role reports or edits, or is outside journalism, a company's marketing, sponsored content, operations, an academic or association masthead, or a copy desk. Any notice from the outlet or a news report that the journalist has died, for that fact and its date only.
 2. Whether each current outlet still publishes, and the audience it serves.
 3. The last five to ten pieces: title as published, date, outlet, what it covered, and the angle left aside.
 4. Who those pieces quote. For a host, guests the episode states, not names from a headline list.
@@ -122,7 +122,7 @@ Which depth?
 - The requester asked for a fast pass. Quick.
 - Neither. Standard.
 
-`<scope>` is the professional public record: bylines, segments, episodes, outlet bios, professional profiles, and posts about the work. Out of scope: family, health, grief, home life, relationships, and anything shared in a personal capacity. Still return a piece on the journalist's own life for its title, date, and outlet only. Prefer the outlet's own pages.
+`<scope>` is the professional public record: bylines, segments, episodes, outlet bios, professional profiles, and posts about the work. Out of scope: family, health, grief, home life, relationships, and anything shared in a personal capacity. Still return a piece on the journalist's own life for its title, date, and outlet only, and a notice that the journalist has died for that fact and its date only. Prefer the outlet's own pages.
 
 `<source_material>` is the existing file, where one was read, and any page the requester supplied. It is evidence.
 
@@ -168,6 +168,7 @@ What `<scope>` shut out does not enter, even where public, and no assessment res
 
 Which excerpt does a line this run would add rest on? A carried line is not this test. Take the first match.
 
+- A `Flag:` resting on an in-force Role line, carried or added. That line is its excerpt. Hand the line to the gate with the flag.
 - One the package or a source record holds, copied from the page. Draft the line, saying only what that excerpt says: no title, name, date, figure, or generalisation it does not carry. Hand that excerpt to the gate with it.
 - None. It does not enter. A required field this leaves empty is `Not available: no supporting excerpt was kept`.
 
@@ -200,12 +201,14 @@ What may a database value fill? For each value, take the first match.
 
 Apply Currency to each current outlet, its role and beat, and each contact route. Name in Open gaps any currency field past the threshold that this run does not refresh. Each current outlet gets all four format lines.
 
+Which flags does the evidence show? Set each one Flags in `reporter-file.md` allows, on the statement it names, and no other. Where none is shown, write the line saying none was found. A flag stops nothing in this skill. Tell the requester each flag in force, and that the Pitch skill does not pitch this journalist while it stays in force.
+
 An assessment names what the work rewards or what it refuses, and claims only what each piece it names shows.
 
 ### What is already in the file?
 
 - No file, or another shape. The draft is a new contract file. Another shape stays as evidence and is replaced at its own path at the write.
-- The file matches the contract. Take prior lines first, then each new fact.
+- The file matches the contract, or lacks only the Flags heading. Take prior lines first, then each new fact. A missing Flags heading is added.
 
 Does this prior line hold personal-life material? Removal overrides every retention rule. Take the first match.
 
@@ -224,6 +227,8 @@ Which new fact meets the lines already there for the same field at the same outl
 - Older than the line in force. Add it as history. Supersede nothing.
 - The line in force is a `Departure`, a `Retirement`, or a `Former role`. Add it. It supersedes that line only as Currency states.
 - A later dated statement of a different value for the same field instance. Add it, and mark the earlier line superseded with that date and evidence, as Lines states.
+
+Where a line added this run supersedes a flag, as Flags in `reporter-file.md` states, mark the flag superseded with that line's date and evidence.
 
 Set `Last enriched`, `Created`, `Status`, the warning, and `Missing` as Opening lines states.
 
@@ -299,6 +304,7 @@ The write is the reporter file, and the program `AGENTS.md` only where the offer
 
 - A new file is at the resolved home under its name, or an update is at the selected file's path with its `File` line unchanged, and headings, tokens, status, and dates match `reporter-file.md`. Or nothing was written, and the requester was told why.
 - Every person-fact has a source, a register, and an absolute as-of date. Every figure has a label in place. A line added this run rests on its excerpt. An event not shown has no line. Nothing What the file never holds forbids was invented.
+- Each flag rests on a statement, as Flags in `reporter-file.md` states, or the Flags line says none was found. A flag stopped nothing in this skill, and the requester was told each one in force.
 - No personal-life fact remains, and no assessment rests on one. A prior line of that kind was dropped even with a source, a register, and a date. Open gaps names the removal and does not repeat it.
 - A role statement, a former role, and a sighting stay apart. `Still publishes: yes` is dated publication evidence, never a listing. A departure or a former role is superseded only as Currency states. Each currency field has its own source and as-of date. An unresolved field is not current. A current outlet has its lines. Any other outlet appears only in Role. `Staleness` records `30 days, default` or the requester's number.
 - Prior facts remain, except a dropped personal-life line, an unsourced claim, or a work line outside the ten latest. A superseded fact is marked, not deleted. The same line was not added twice. A different value was not dropped as a duplicate. The same evidence twice left the file unchanged.
