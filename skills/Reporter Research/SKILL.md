@@ -105,7 +105,7 @@ Run `skills/External Research/` in `wiser` by name. Hand it what its Inputs decl
 
 `<research_request>` carries these queries, a depth, and the angles:
 
-1. The role held now, any former role, and any move, beat change, departure, retirement, or return the evidence shows, each with its date and who stated it. Whether the role reports or edits, or is outside journalism, a company's marketing, sponsored content, operations, an academic or association masthead, or a copy desk. Any notice from the outlet or a news report that the journalist has died, for that fact and its date only.
+1. The role held now, any former role, and any move, beat change, departure, retirement, or return the evidence shows, each with its date and who stated it. Whether the role reports or edits, or is outside journalism, a company's marketing, work the outlet labels paid or sponsored, operations, an academic or association masthead, or a copy desk. Any notice from the outlet or a news report that the journalist has died, for that fact and its date only.
 2. Whether each current outlet still publishes, and the audience it serves.
 3. The last five to ten pieces: title as published, date, outlet, what it covered, and the angle left aside.
 4. Who those pieces quote. For a host, guests the episode states, not names from a headline list.

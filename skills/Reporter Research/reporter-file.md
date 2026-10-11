@@ -142,8 +142,10 @@ A flag marks a journalist the Pitch skill does not pitch while the flag is in fo
 | `left_field` | The in-force role line places the journalist in work outside journalism, such as communications for a company or an agency. |
 | `retired` | The in-force role line is a `Retirement`. |
 | `deceased` | The outlet or a news report states that the journalist has died. |
-| `vendor` | The journalist's work at the outlet is marketing for a company that sells a product or service, or the outlet labels it paid or sponsored. |
-| `non_practitioner` | The in-force role is one in which the journalist does not report or edit pieces a pitch could reach: operations, sponsored content, an academic or association masthead, or a copy desk. |
+| `vendor` | The journalist works for a company that sells a product or service, and their work at the outlet is that company's marketing. |
+| `non_practitioner` | The in-force role is one in which the journalist does not report or edit pieces a pitch could reach: operations, work the outlet labels paid or sponsored, an academic or association masthead, or a copy desk. |
+
+Where `vendor` and `non_practitioner` both fit, set `vendor` alone.
 
 A flag rests on a statement: an in-force Role line with `Kind: statement`, or, for `deceased` and for work the outlet labels paid or sponsored, its own excerpt copied from the page. A flag on a Role line names that line's token and outlet in its value, and takes that line's source, register, and as-of date. A sighting, a database value, a `Research inference`, or a work line alone never sets a flag. Geography and any other fit to one program are not flags and take no line.
 
