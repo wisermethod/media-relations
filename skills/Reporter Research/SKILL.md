@@ -94,7 +94,7 @@ Then take the first match.
 
 - More than one candidate in the home, with or without a handed file, or one candidate in the home and a different file handed. Ask which is authoritative. Do not merge. This is not no file. Do not gather until they answer.
 - The home is resolved, and one file sits outside it. Ask before gathering: update it where it is, or create the contract file in the home and archive the old one. Do neither until they answer.
-- One contract-shaped candidate. Read it first. Update it at its own path.
+- One contract-shaped candidate, including one that lacks only the Flags heading. Read it first. Update it at its own path.
 - Home known, no candidate in it, and the contract name is another journalist's file. Ask before gathering. Do not write into it. A name they give is the file name. Go on, and the write step checks the path. Stop, and do not gather.
 - One candidate of another shape. Read it as evidence. It is the selected file: the contract file replaces it at its own path, under its existing name, after the archive the write step requires. Moving it to the contract name takes the requester's choice.
 - None of these. There is no file yet.
@@ -201,7 +201,7 @@ What may a database value fill? For each value, take the first match.
 
 Apply Currency to each current outlet, its role and beat, and each contact route. Name in Open gaps any currency field past the threshold that this run does not refresh. Each current outlet gets all four format lines.
 
-Which flags does the evidence show? Set each one Flags in `reporter-file.md` allows, on the statement it names, and no other. Where none is shown, write the line saying none was found. A flag stops nothing in this skill. Tell the requester each flag in force, and that the Pitch skill does not pitch this journalist while it stays in force.
+Which flags does the evidence show? Set each one Flags in `reporter-file.md` allows, on the statement it names, and no other. Where none is shown, write the line Flags gives: none found where this run read a source beyond the existing file, and `Not available` where it read none. A flag stops nothing in this skill. Tell the requester each flag in force, and that the Pitch skill does not pitch this journalist while it stays in force.
 
 An assessment names what the work rewards or what it refuses, and claims only what each piece it names shows.
 
@@ -252,7 +252,7 @@ Which verdict came back first? Take the first match.
 Which verdict came back second? Take the first match.
 
 - Rely, or none hold. Go to the write.
-- Rely with weak points, and every weak point on a figure that holds is labeled in place and named in Open gaps. Go to the write.
+- Rely with weak points, every finding that holds is a weak point on a figure, and each is labeled in place and named in Open gaps. Go to the write.
 - Rely with weak points, or return, and every finding that holds can be closed without adding a claim. Close each, as the next question states. Then go to the write, with no third gate. Tell the requester each finding and how it was closed.
 - A finding that holds and concerns the whole draft, such as the wrong person or the wrong outlet, so that no line can close it. Report the claim, what it lacks, and the step it named. Do not write. A prior file stays as it is.
 
@@ -262,6 +262,8 @@ How is a finding closed without adding a claim? For each line it names, take the
 - Part of the value goes past its excerpt. Narrow the value to what the excerpt says.
 - A field, a piece, or an angle is missing. Name it in Open gaps. A gap is not a claim.
 - None of these. Drop the line. A required field it leaves empty is `Not available: dropped at the gate`. Set `Status`, the warning, and `Missing` again as Opening lines states.
+
+Then check each flag and each `Superseded` mark against what closing left. A flag whose Role line was dropped, or narrowed so that it no longer shows the code's condition, is dropped. A `Superseded` mark whose later line was dropped is removed.
 
 One correction pass, then closing. Do not loop.
 
@@ -304,7 +306,7 @@ The write is the reporter file, and the program `AGENTS.md` only where the offer
 
 - A new file is at the resolved home under its name, or an update is at the selected file's path with its `File` line unchanged, and headings, tokens, status, and dates match `reporter-file.md`. Or nothing was written, and the requester was told why.
 - Every person-fact has a source, a register, and an absolute as-of date. Every figure has a label in place. A line added this run rests on its excerpt. An event not shown has no line. Nothing What the file never holds forbids was invented.
-- Each flag rests on a statement, as Flags in `reporter-file.md` states, or the Flags line says none was found. A flag stopped nothing in this skill, and the requester was told each one in force.
+- Each flag rests on a statement, as Flags in `reporter-file.md` states, one fact setting one flag; or the Flags line says none was found, or, where this run read no source beyond the existing file, that none was read. A flag stopped nothing in this skill, and the requester was told each one in force. No flag outlived the line it rested on.
 - No personal-life fact remains, and no assessment rests on one. A prior line of that kind was dropped even with a source, a register, and a date. Open gaps names the removal and does not repeat it.
 - A role statement, a former role, and a sighting stay apart. `Still publishes: yes` is dated publication evidence, never a listing. A departure or a former role is superseded only as Currency states. Each currency field has its own source and as-of date. An unresolved field is not current. A current outlet has its lines. Any other outlet appears only in Role. `Staleness` records `30 days, default` or the requester's number.
 - Prior facts remain, except a dropped personal-life line, an unsourced claim, or a work line outside the ten latest. A superseded fact is marked, not deleted. The same line was not added twice. A different value was not dropped as a duplicate. The same evidence twice left the file unchanged.

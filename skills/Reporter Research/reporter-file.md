@@ -81,7 +81,7 @@ Each heading below is required, in this order. A heading holds at least one line
 | --- | --- | --- |
 | Identity | `Name:` the professional name, and a byline where it differs from the name as given. | `Public statement`, `Firsthand`, or `Secondhand`. |
 | Role | `Role statement:`, `Role sighting:`, `Former role:`, `Departure:`, `Return:`, `Retirement:`, `Move:`, or `Beat change:`. One event per line, naming the outlet. | `Public statement`, `Firsthand`, or `Secondhand`. `Kind` on every line. |
-| Flags | `Flag:` one reason code, `left_field`, `retired`, `deceased`, `vendor`, or `non_practitioner`, then what shows it. One code per line, as Flags below states. Where none is shown, one line: `No flag was found in the sources read.`, with its as-of date. | As the statement it rests on, under Flags below. `Kind: statement` on every `Flag:` line. |
+| Flags | `Flag:` one reason code, `left_field`, `retired`, `deceased`, `vendor`, or `non_practitioner`, then what shows it. One code per line, as Flags below states. Where none is shown, one line: `No flag was found in the sources read.`, with its as-of date, or the `Not available` line Flags below gives. | As the statement it rests on, under Flags below. `Kind: statement` on every `Flag:` line. |
 | Outlets | `Outlet:`, `Type:` as the source states it, `Still publishes: yes` or `Still publishes: no`, and `Outlet closed:` when one has closed. | `Public statement`, `Firsthand`, or `Secondhand`. `Still publishes` and `Outlet closed` carry `Kind`. |
 | Beat | `Beat:` what the journalist covers at that outlet. | `Public statement`, or `Research inference` from dated work, naming it. |
 | Audience | `Audience:` the audience that outlet serves. | `Public statement`, or `Research inference` from the outlet's own account, naming it. |
@@ -143,15 +143,17 @@ A flag marks a journalist the Pitch skill does not pitch while the flag is in fo
 | `retired` | The in-force role line is a `Retirement`. |
 | `deceased` | The outlet or a news report states that the journalist has died. |
 | `vendor` | The journalist works for a company that sells a product or service, and their work at the outlet is that company's marketing. |
-| `non_practitioner` | The in-force role is one in which the journalist does not report or edit pieces a pitch could reach: operations, work the outlet labels paid or sponsored, an academic or association masthead, or a copy desk. |
+| `non_practitioner` | The in-force role is one in which the journalist does not report or edit pieces a pitch could reach: operations, writing or producing what the outlet labels paid or sponsored content, an academic or association masthead, or a copy desk. |
 
-Where `vendor` and `non_practitioner` both fit, set `vendor` alone.
+One fact sets one flag. Where it fits more than one of `vendor`, `left_field`, and `non_practitioner`, set the first of them in that order.
 
-A flag rests on a statement: an in-force Role line with `Kind: statement`, or, for `deceased` and for work the outlet labels paid or sponsored, its own excerpt copied from the page. A flag on a Role line names that line's token and outlet in its value, and takes that line's source, register, and as-of date. A sighting, a database value, a `Research inference`, or a work line alone never sets a flag. Geography and any other fit to one program are not flags and take no line.
+A flag rests on a statement: an in-force Role line with `Kind: statement`, or, for `deceased`, its own excerpt copied from the page. A flag on a Role line names that line's token and outlet in its value, and takes that line's source, register, and as-of date. A sighting, a database value, a `Research inference`, or a work line alone never sets a flag, and neither does one piece the outlet labels paid or sponsored. Geography and any other fit to one program are not flags and take no line.
+
+Where this run read no source beyond the existing file, Flags holds any flag a carried Role line shows, and otherwise `Not available: no source was read this run that could show a flag`, never the line saying none was found.
 
 A `deceased` flag holds the code, its source, and its date. Nothing else from the notice enters any line.
 
-A flag stays in force until it is superseded. A flag resting on a Role line is superseded when that line is. `retired` and `left_field` are also superseded by a later `Return:`, or a later `Role statement:` of reporting or editing at a news outlet. `vendor` and `non_practitioner` are superseded by a later `Role statement:` of reporting or editing. `deceased` is never superseded. A superseded flag gains `Superseded` as Lines states.
+A flag stays in force until it is superseded. A flag resting on a Role line is superseded when that line is. `retired` and `left_field` are also superseded by a later `Return:`, or a later `Role statement:` of reporting or editing at a news outlet. `vendor` and `non_practitioner` are superseded by a later `Role statement:` of reporting or editing. A dated correction or retraction, by the source of the statement a flag rests on, supersedes that flag, `deceased` included. Nothing else supersedes `deceased`. A superseded flag gains `Superseded` as Lines states.
 
 ## What the file never holds
 
