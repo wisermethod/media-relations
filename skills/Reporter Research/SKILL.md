@@ -80,14 +80,23 @@ Which directory do they name as one file per journalist, reporter, or media cont
 - None, and the root includes `programs/`. The home is not resolved. Continue. Ask before the write.
 - None, and the root has no `programs/`. The home is not resolved. Continue. Ask before the write. Do not create `programs/`.
 
-Which file is this journalist's? Where the home is not resolved, the only candidate is a handed file inside the owning root. Take the first match.
+Which file is this journalist's? Where the home is not resolved, the only candidate is a handed file inside the owning root.
 
 - A handed path is outside the owning root. Do not read it. Ask for a file inside it. Do not gather.
-- More than one in the home, with or without a handed file, or one in the home and a different file handed. Ask which is authoritative. Do not merge. This is not no file. Do not gather until they answer.
+
+Where the home is resolved, read each file in it whose title or `Name:` matches, and a handed file inside the owning root. Does this file share an outlet with the journalist? Take the first match.
+
+- Its outlets include an outlet the request named, or one the evidence places the journalist at. A candidate.
+- The request or the evidence places the journalist at an outlet, and this file shares none of those. A namesake's. Leave it. Not a candidate, and it does not make more than one.
+- The request named no outlet, and nothing yet places the journalist. Do not call it a namesake. Treat each matching file as a candidate.
+
+Then take the first match.
+
+- More than one candidate in the home, with or without a handed file, or one candidate in the home and a different file handed. Ask which is authoritative. Do not merge. This is not no file. Do not gather until they answer.
 - The home is resolved, and one file sits outside it. Ask before gathering: update it where it is, or create the contract file in the home and archive the old one. Do neither until they answer.
-- One contract-shaped file. Read it first. Update it at its own path.
-- Home known, no file of theirs in it, and the contract name is another journalist's file. Ask before gathering. Do not write into it. A name they give is the file name. Go on, and the write step checks the path. Stop, and do not gather.
-- One file of another shape. Read it as evidence. It is the selected file: the contract file replaces it at its own path, under its existing name, after the archive the write step requires. Moving it to the contract name takes the requester's choice.
+- One contract-shaped candidate. Read it first. Update it at its own path.
+- Home known, no candidate in it, and the contract name is another journalist's file. Ask before gathering. Do not write into it. A name they give is the file name. Go on, and the write step checks the path. Stop, and do not gather.
+- One candidate of another shape. Read it as evidence. It is the selected file: the contract file replaces it at its own path, under its existing name, after the archive the write step requires. Moving it to the contract name takes the requester's choice.
 - None of these. There is no file yet.
 
 ### What is handed to External Research?
@@ -96,14 +105,14 @@ Run `skills/External Research/` in `wiser` by name. Hand it what its Inputs decl
 
 `<research_request>` carries these queries, a depth, and the angles:
 
-1. The role, and any outlet move, beat change, departure, retirement, or return, each with its date and who stated it.
-2. Whether each outlet still publishes, and the audience it serves.
+1. The role held now, any former role, and any move, beat change, departure, retirement, or return the evidence shows, each with its date and who stated it.
+2. Whether each current outlet still publishes, and the audience it serves.
 3. The last five to ten pieces: title as published, date, outlet, what it covered, and the angle left aside.
-4. Who those pieces quote.
+4. Who those pieces quote. For a host, guests the episode states, not names from a headline list.
 5. Whether the desk takes staff reporting, contributed pieces, outside quotes, or segments or episodes.
 6. Pitch preferences the journalist or the outlet stated, with the words and the date.
-7. Professional contact routes, and the page each was published on.
-8. Any follower count, circulation, traffic figure, or other measured figure a source states, copied as stated.
+7. Routes to the journalist, and pitch or tip routes, not reader letters or a general inbox, and the page each was on.
+8. Audience figures the Reach row allows, copied as stated.
 
 The angles are queries 2 to 5, and the angle a piece left aside. Core findings are the role and the beat still held, and each outlet still publishing. The question is the contract's fields. The reporter file is the deliverable.
 
@@ -113,7 +122,7 @@ Which depth?
 - The requester asked for a fast pass. Quick.
 - Neither. Standard.
 
-`<scope>` is the professional public record: bylines, segments, episodes, outlet bios, professional profiles, and posts about the work. Out of scope: family, health, grief, home life, relationships, and anything shared in a personal capacity. Prefer the outlet's own pages.
+`<scope>` is the professional public record: bylines, segments, episodes, outlet bios, professional profiles, and posts about the work. Out of scope: family, health, grief, home life, relationships, and anything shared in a personal capacity. Still return a piece on the journalist's own life for its title, date, and outlet only. Prefer the outlet's own pages.
 
 `<source_material>` is the existing file, where one was read, and any page the requester supplied. It is evidence.
 
@@ -149,13 +158,18 @@ Answer from the request, any existing file, the package, and the browser and dat
 - More than one journalist, or not the person named. Ask which. Do not build a draft. Do not write.
 - No package, and the request and any existing file identify one person. Continue. Every field the package would have filled is `Not available`, and the reason names the stop.
 - No package, and identity is still unclear. Ask. Do not build a draft. Do not write.
-- That one person. Keep every outlet the evidence shows, each with its own lines. Where the request named no outlet, there is no single outlet. Continue.
+- That one person. Where the request named no outlet, there is no single outlet. Continue.
 
 ### What may enter the draft?
 
-Build the draft in the session, to the contract. Do not write it yet.
+Build the draft in the session, to the contract. Do not write it yet. Currency decides which outlet is current and which role line is in force. A quote, reach figure, route, or work line enters only when its row allows it. An event the evidence does not show is not written, and it is not `Not available`.
 
-What `<scope>` shut out does not enter, even where public, and no assessment rests on it. There is no exception. A file that holds it embarrasses the sender if seen and burns the relationship.
+What `<scope>` shut out does not enter, even where public, and no assessment rests on it. A file that holds it embarrasses the sender if seen and burns the relationship. A piece in which the journalist writes about their own family, health, fitness, grief, home, or relationships counts as dated work for its title, date, and outlet, its subject named `a first-person column`, and nothing else. Nothing from its personal content enters any line, any `Quoted:`, any assessment, or any example.
+
+Which excerpt does a line this run would add rest on? A carried line is not this test. Take the first match.
+
+- One the package or a source record holds, copied from the page. Draft the line, and hand that excerpt to the gate with it.
+- None. It does not enter. A required field this leaves empty is `Not available: no supporting excerpt was kept`.
 
 Which register does this fact take? Take the first match.
 
@@ -181,10 +195,10 @@ What may a database value fill? For each value, take the first match.
 - `Still publishes`. A listing is a sighting, dated when read, and never the in-force `yes`. Apply Currency.
 - The public record and the database disagree. Both stay, in their own fields. Open gaps names the disagreement.
 - The public record states it. The field holds that fact. The database value stays on a `Database` line and adds no second line.
-- `Outlet`, `Type`, `Route`, or `Reach`, and only the database states it. A sighting or a labeled figure. The database is the source.
+- `Outlet` or `Type` on a current outlet, or `Route` or `Reach`, and only the database states it. A sighting or a labeled figure. The database is the source.
 - Only in the database or the account. `Database` only.
 
-Apply Currency to every outlet, role, beat, and contact route. Record each dated change. Name in Open gaps any currency field past the threshold that this run does not refresh. Each outlet gets all four format lines.
+Apply Currency to each current outlet, its role and beat, and each contact route. Name in Open gaps any currency field past the threshold that this run does not refresh. Each current outlet gets all four format lines.
 
 An assessment names what the work rewards or what it refuses.
 
@@ -196,25 +210,30 @@ An assessment names what the work rewards or what it refuses.
 Does this prior line hold personal-life material? Removal overrides every retention rule. Take the first match.
 
 - Yes, as What the file never holds describes it. Drop it even with a source, a register, and a date. Open gaps says personal-life material was removed, and does not repeat it.
-- No, and it has a source, a register, and an as-of date. Keep it.
+- No, and it has a source, a register, and an as-of date, and Currency and its field row still allow it. Keep it. It is carried, with the prior file's `Last enriched` date, for the gate.
+- No, and it is an `Outlet:`, `Type:`, `Still publishes`, `Beat`, `Audience`, or `Format` line of an outlet that is not current. Drop it. That outlet's Role lines stay as history. Where it has none, add one `Former role:` line on the dropped `Outlet:` line's source and date.
+- No, and its field row no longer allows it, such as a reader-letters route or a figure about another product of the outlet. Drop it.
 - No, and it lacks one of those. Drop the claim. Open gaps names the field and that the prior file gave no source. Do not repeat the claim.
 
 Which new fact meets the lines already there for the same field at the same outlet? Take the first match.
 
 - Same token, value, outlet, source, and as-of date. Add nothing. Two quoted people from one article, or an email and a phone from one dated page, are two lines. A different value is not a duplicate.
-- A compatible addition, such as another work line or another route. Add it.
+- The new line is a `Former role:`. Add it. It supersedes an earlier `Role statement:` of that role at that outlet, as Currency states, and nothing else.
+- A compatible addition, such as another route, or a work line among the ten latest that count. Add it. A work line outside those ten does not stay.
 - Two values that cannot be ordered, the same date or a date that cannot be ordered. Add it, and keep both. Name the conflict in Open gaps. That currency field is unresolved, as Currency states.
 - Older than the line in force. Add it as history. Supersede nothing.
-- The line in force is a `Departure` or a `Retirement`. Add it. It supersedes that line only as Currency states.
+- The line in force is a `Departure`, a `Retirement`, or a `Former role`. Add it. It supersedes that line only as Currency states.
 - A later dated statement of a different value for the same field instance. Add it, and mark the earlier line superseded with that date and evidence, as Lines states.
 
 Set `Last enriched`, `Created`, `Status`, the warning, and `Missing` as Opening lines states.
 
 ### What did the gate return?
 
-Before any write, run `experts/Research Expert/` in `wiser` in a second context that did not build the draft. Hand it what its Inputs declare. `<question>` is the contract's fields. `<consumer>` is the reporter file. Do not present the verdict as this skill's.
+Before any write, run `experts/Research Expert/` in `wiser` in a second context that did not build the draft. Hand it what its Inputs declare. `<consumer>` is the reporter file. Do not present the verdict as this skill's.
 
-`<research_output>` is the draft and the sources. The package already carries its source records. Each browser read and each database read is one too: `url`, `title`, `author`, `publication`, `date`, `source_type`, `liveness`, `provenance`. A field that cannot be determined reads `not identified`. Copy the excerpt from the page as read. Name the read way, `browser` or the database named.
+`<question>` is whether each line this run added or changed rests on its excerpt, and whether each carried line has its source, register, and as-of date. A carried line whose source this run did not re-read is not returned for that alone. The whole draft is also judged for shape against the contract's fields.
+
+`<research_output>` is the lines this run added, changed, or dropped, each with its source and its excerpt; the carried lines, each marked carried from the prior file with that file's `Last enriched` date; and the whole draft. The package already carries its source records. Each browser read and each database read is one too: `url`, `title`, `author`, `publication`, `date`, `source_type`, `liveness`, `provenance`. A field that cannot be determined reads `not identified`. Copy the excerpt from the page as read. Name the read way, `browser` or the database named. Never add a `Label` to a carried line that is not a figure.
 
 The gate still runs when the draft matches the file. A rely verdict on a match writes nothing, including where a later outcome says go to the write.
 
@@ -223,12 +242,12 @@ A finding does not hold when it names a claim the draft does not make, or asks f
 Which verdict came back first? Take the first match.
 
 - Rely, or none hold. Go to the write.
-- Rely with weak points, or return, and a finding holds. Fix each one that holds: drop the claim, add the missing label, register, date, or source record, or one more gather on the gap it names. A weak point the file can carry is labeled in place and named in Open gaps, per The consumer in `experts/Research Expert/` in `wiser`. Then run the expert once more, in a new second context.
+- Rely with weak points, or return, and a finding holds. Fix each one that holds: drop the claim, add the missing label on a figure, or add the missing register, date, or source record, or one more gather on the gap it names. A weak point on a figure the file can carry is labeled in place and named in Open gaps, per The consumer in `experts/Research Expert/` in `wiser`. Then run the expert once more, in a new second context.
 
 Which verdict came back second? Take the first match.
 
 - Rely, or none hold. Go to the write.
-- Rely with weak points, and every weak point that holds is labeled in place and named in Open gaps. Go to the write.
+- Rely with weak points, and every weak point on a figure that holds is labeled in place and named in Open gaps. Go to the write.
 - A finding that holds and is neither fixed nor labeled, or return. Report the claim, what it lacks, and the step it named. Do not write. A prior file stays as it is.
 
 One correction pass. Do not loop.
@@ -255,7 +274,7 @@ Which file is at the path to be written? Check immediately before writing, in th
 
 - The selected file is outside that home and they have not chosen. Ask: update it there, or create the contract file in the home and archive the old one. Do neither. Do not write.
 - Updating the selected file. Write it at its own path.
-- The home holds a file of this journalist's that this run did not read, at that path or elsewhere in the home. Do not write. Go back to Which file is this journalist's? with that home, select as it states, and rebuild the draft from What is already in the file?. The rebuilt draft goes through the gate from its first verdict.
+- The home holds a candidate, as Which file is this journalist's? decides, that this run did not read, at that path or elsewhere in the home. Do not write. Go back to Which file is this journalist's? with that home, select as it states, and rebuild the draft from What is already in the file?. The rebuilt draft goes through the gate from its first verdict.
 - They gave a name. Use it. No file: write. Another journalist's file: ask for a name, do not write, and do not suffix again.
 - No file at the path. Write the new file.
 - Another journalist's file, and File name yields one primary outlet. The name gains it. Check that path once: no file, write; another journalist's file, ask for a name and do not write.
@@ -265,17 +284,17 @@ The write is the reporter file, and the program `AGENTS.md` only where the offer
 
 ## Pitfalls
 
-- **The request is ambiguous**, including two people under one name or two files that disagree. Ask before proceeding. Do not merge, and do not guess.
+- **The request is ambiguous**, including two people under one name whom no outlet separates, or two candidate files that disagree. Ask before proceeding. Do not merge, and do not guess. A namesake's file is left.
 - **The run drafts a pitch, chooses a journalist, or judges a pitch.** Stop that part. The output is the file, or a report that no file was written.
 
 ## Success
 
 - A new file is at the resolved home under its name, or an update is at the selected file's path with its `File` line unchanged, and headings, tokens, status, and dates match `reporter-file.md`. Or nothing was written, and the requester was told why.
-- Every person-fact has a source, a register, and an absolute as-of date. Every figure has a label in place. Every absence is `Not available` with a reason. Nothing What the file never holds forbids was invented.
+- Every person-fact has a source, a register, and an absolute as-of date. Every figure has a label in place. A line added this run rests on its excerpt. An event not shown has no line. Nothing What the file never holds forbids was invented.
 - No personal-life fact remains, and no assessment rests on one. A prior line of that kind was dropped even with a source, a register, and a date. Open gaps names the removal and does not repeat it.
-- A role statement and a sighting stay apart. `Still publishes: yes` is dated publication evidence, never a listing. A departure is superseded only as Currency states. Each currency field has its own source and as-of date. An unresolved field is not current. Each outlet has its own lines. `Staleness` records `30 days, default` or the requester's number.
-- Prior facts remain, except a dropped personal-life line or an unsourced claim. A superseded fact is marked, not deleted. The same line was not added twice. A different value was not dropped as a duplicate. The same evidence twice left the file unchanged.
+- A role statement, a former role, and a sighting stay apart. `Still publishes: yes` is dated publication evidence, never a listing. A departure or a former role is superseded only as Currency states. Each currency field has its own source and as-of date. An unresolved field is not current. A current outlet has its lines. Any other outlet appears only in Role. `Staleness` records `30 days, default` or the requester's number.
+- Prior facts remain, except a dropped personal-life line, an unsourced claim, or a work line outside the ten latest. A superseded fact is marked, not deleted. The same line was not added twice. A different value was not dropped as a duplicate. The same evidence twice left the file unchanged.
 - A drop or a replace was copied first where Archives in `standards/conventions.md` in `wiser` requires a copy. Adds and supersessions alone were not. Where the copy still holds removed personal-life material, the requester was told its path and that it holds that material. A file of this journalist's found only at the write was read and the draft rebuilt before anything was written.
 - The home was the one named directory, the person's choice, the accepted offer, or the found program's reporter directory, with nothing created beside that program. Or the skill asked and did not write.
-- `experts/Research Expert/` in `wiser` ran in a second context before any write, with browser and database reads in the eight fields. One correction pass. Rely writes. Weak points labeled in Open gaps write. A held finding that is neither fixed nor labeled, or a return, is reported and the file stays unwritten. Set-aside findings were told, with why. A matching draft was left unchanged.
+- `experts/Research Expert/` in `wiser` ran in a second context before any write, handed what What did the gate return? states, with browser and database reads in the eight fields. A carried non-figure gained no `Label`. One correction pass. Rely writes. Weak points on figures, labeled in Open gaps, write. A held finding that is neither fixed nor labeled, or a return, is reported and the file stays unwritten. Set-aside findings were told, with why. A matching draft was left unchanged.
 - No pitch was written, no journalist was chosen, no pitch was judged, no sign-in was entered, and nothing was sent.

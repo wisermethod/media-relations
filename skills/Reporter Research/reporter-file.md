@@ -75,28 +75,28 @@ A capture date or this run's as-of date dates a sighting and never makes an item
 
 ## Fields
 
-Each heading below is required, in this order. A heading holds at least one fact line or one `Not available` line. The value starts with the token named here. Every fact names its outlet where it is about one outlet.
+Each heading below is required, in this order. A heading holds at least one line. Any line under it meets that. A listed token is not itself a line. The value starts with the token named here. Every fact names its outlet where it is about one outlet. `Departure`, `Return`, `Retirement`, `Move`, `Beat change`, and `Outlet closed` are written only where the evidence shows the event. No `Not available` line is written because an event was not found.
 
 | Heading | Token and what it holds | Register or label |
 | --- | --- | --- |
 | Identity | `Name:` the professional name, and a byline where it differs from the name as given. | `Public statement`, `Firsthand`, or `Secondhand`. |
-| Role | `Role statement:`, `Role sighting:`, `Departure:`, `Return:`, `Retirement:`, `Move:`, or `Beat change:`. One event per line, naming the outlet. | `Public statement`, `Firsthand`, or `Secondhand`. `Kind` on every line. |
+| Role | `Role statement:`, `Role sighting:`, `Former role:`, `Departure:`, `Return:`, `Retirement:`, `Move:`, or `Beat change:`. One event per line, naming the outlet. | `Public statement`, `Firsthand`, or `Secondhand`. `Kind` on every line. |
 | Outlets | `Outlet:`, `Type:` as the source states it, `Still publishes: yes` or `Still publishes: no`, and `Outlet closed:` when one has closed. | `Public statement`, `Firsthand`, or `Secondhand`. `Still publishes` and `Outlet closed` carry `Kind`. |
 | Beat | `Beat:` what the journalist covers at that outlet. | `Public statement`, or `Research inference` from dated work, naming it. |
 | Audience | `Audience:` the audience that outlet serves. | `Public statement`, or `Research inference` from the outlet's own account, naming it. |
-| Formats | `Format:` the outlet, then one of `staff reporting`, `contributed pieces`, `outside quotes`, `segments or episodes`, then `takes` or `does not take`. | `Public statement`. If nothing was stated, one `Not available` line for that format at that outlet. |
-| Recent work | `Work:` the title as the source stated it, the outlet, and what it covered. Then `Angle not taken:`. | A work line is `Public statement`. `Angle not taken` is `Research inference` naming the pieces, or `Not available`. |
-| Sources quoted | `Quoted:` who the journalist quotes. | A quotation one piece states is `Public statement`. A pattern across pieces is `Research inference` naming the pieces. |
+| Formats | `Format:` the outlet, then one of `staff reporting`, `contributed pieces`, `outside quotes`, `segments or episodes`, then `takes` or `does not take`. | `Public statement`. If nothing was stated, one `Not available` line for that format at that current outlet. |
+| Recent work | `Work:` the title as the source stated it, the outlet, and what it covered. Five to ten pieces, the latest that count. Fewer than five: each that counts. Then `Angle not taken:`. | A work line is `Public statement`. `Angle not taken` is `Research inference` naming the pieces, or `Not available`. |
+| Sources quoted | `Quoted:` who the journalist quotes. For a host of a show, podcast, or broadcast segment, a guest that episode or segment states took part, the value says guest, on that episode's excerpt. A person named only in a list of headlines is not quoted. | A quotation one piece states is `Public statement`. A pattern across pieces is `Research inference` naming the pieces. |
 | Preferences | `Preference:` a pitch preference the journalist or the outlet stated, in their words or marked as a paraphrase. | `Public statement` or `Firsthand`. |
-| Contact routes | `Route:` the professional route and where it was seen. `Route works:` only where a statement says it works. | `Public statement`, `Firsthand`, or `Secondhand`. A listing is `Kind: sighting`. `Route works` is `Kind: statement` or `Not available: seen listed, not shown to work`. |
-| Reach | `Reach:` one measured figure, the metric and the value. No combined score and no tier. | The figure's label, in place. |
+| Contact routes | `Route:` a route to the journalist, or a pitch or tip route a current outlet publishes, and where it was seen. Not reader letters or a general inbox. `Route works:` only where a statement says it works. | `Public statement`, `Firsthand`, or `Secondhand`. A listing is `Kind: sighting`. `Route works` is `Kind: statement` or `Not available: seen listed, not shown to work`. |
+| Reach | `Reach:` one measured figure for the journalist's own audience, or for the column, show, newsletter, or section they publish in, the metric and the value. At most one outlet-wide audience figure, where nothing narrower is stated. Not another product of the outlet. No combined score and no tier. | The figure's label, in place. |
 | Assessments | Four subheadings, in order: What they care about; Style; What motivates a yes; What never to do. | `Research inference`. |
-| Open gaps | What is missing, what conflicts, and a currency field past the threshold this run did not refresh. `None as of YYYY-MM-DD.` when nothing is to name. | A gap is not a claim and carries no register. |
+| Open gaps | What is missing, what conflicts, and a currency field past the threshold this run did not refresh. Where no dated role change was found, `No dated role change was found in the sources read.` `None as of YYYY-MM-DD.` when nothing is to name. | A gap is not a claim and carries no register. |
 | Database notes | `Database:` an identifier, a search identifier, a filter dump, or any other value only in that database or account. | `Secondhand`, naming the database as the relay. A figure keeps its label. |
 
 No field beyond this table is added. A `Not available` line names the heading, the token, and the outlet where the field is about one outlet.
 
-A work line is dated work only when the title, the publication date, and the outlet are all present. Missing any of the three, it is `Not available` and does not count. Record `Angle not taken` when a source states what the work left aside, or the evidence says it and names the pieces. Otherwise `Not available: the pieces do not state an angle left aside`. No angle is proposed.
+A work line is dated work only when the title, the publication date, and the outlet are all present. Missing any of the three, it is `Not available` and does not count. Record `Angle not taken` when a source states what the work left aside, or the evidence says it and names the pieces. Otherwise `Not available: the pieces do not state an angle left aside`. No angle is proposed. A piece recorded as a first-person column takes no angle line.
 
 For `Status`, a role statement is one `Role statement:` line. A `Role sighting:` does not fill it. A beat is one `Beat:` line that is a `Public statement`, or a `Research inference` drawn from dated work. Dated work is one work line that counts.
 
@@ -106,21 +106,25 @@ An assessment subheading holds a claim only when it names the dated work it was 
 
 On any other field, where a database value and the public record disagree, both stay, in their own fields, and Open gaps names the disagreement.
 
-A database value may fill `Outlet`, `Type`, `Route`, `Reach`, and `Database`, as a sighting or a labeled figure, the database named as the source. It does not fill `Still publishes`.
+A database value may fill `Outlet` and `Type` on a current outlet, and `Route`, `Reach`, and `Database`, as a sighting or a labeled figure, the database named as the source. It does not fill `Still publishes`.
 
-The currency fields are `Still publishes`, the in-force role line, the in-force `Beat`, and `Route works`. The in-force role line is the latest `Role statement`, `Return`, `Departure`, `Retirement`, or `Move` not yet superseded. A `Role sighting` is never that line.
+The currency fields are `Still publishes`, the in-force role line, the in-force `Beat`, and `Route works`. The in-force role line is the latest `Role statement`, `Former role`, `Return`, `Departure`, `Retirement`, or `Move` not yet superseded. A `Role sighting` is never that line, and an in-force `Former role` shows the role has ended.
 
 ## Currency
 
-Each currency field has its own source and as-of date. `Still publishes`, the role, and the beat are per outlet. `Route works` is per route.
+Each currency field has its own source and as-of date. `Still publishes`, the role, and the beat are per current outlet. `Route works` is per route.
+
+An outlet is current when its in-force role line is a `Role statement` or a `Return`, a work line there is dated within 365 days of the as-of date, or the request named it. An in-force `Departure`, `Retirement`, `Move` away, or `Former role` does not make it current. Only a current outlet takes `Outlet:`, `Type:`, `Still publishes`, `Beat`, `Audience`, and the four `Format` lines. Any other outlet appears only in Role: its history lines, or one `Former role:` line where it has none.
+
+A statement that the role was held before, including served as, formerly, was, or previously, is `Former role:`, never `Role statement:`, dated when made, `Kind: statement`, evidence the role had ended by that date. It supersedes an earlier `Role statement:` of that role at that outlet, and is then the in-force role line there. A `Departure:` stays for a dated end the evidence states.
 
 A `Role statement` is evidence the role was held. A `Role sighting`, including a database row and a page that still lists the journalist, is evidence the page said so, not that the role was held. Pages go stale.
 
-A database row, a directory, or any page that lists an outlet is a sighting of that listing, dated when read, and never the in-force `Still publishes: yes`. That line needs a piece the outlet published, with its publication date, or a dated statement from the outlet. Where neither arrives, `Still publishes` is `Not available` with the reason, and the listing stays as a sighting or on a `Database` line.
+On a current outlet, a database row, a directory, or any page that lists an outlet is a sighting of that listing, dated when read, and never the in-force `Still publishes: yes`. That line needs a piece the outlet published, with its publication date, or a dated statement from the outlet. Where neither arrives, `Still publishes` is `Not available` with the reason, and the listing stays as a sighting or on a `Database` line.
 
 A `Departure`, `Retirement`, `Move`, `Beat change`, `Outlet closed`, and `Return` each carry their date and source, checked against the run's as-of date. A later date does not enter as a fact already true. A date that cannot be ordered against it does not supersede another line, and Open gaps names both.
 
-Once a `Departure` or a `Retirement` is recorded, only a later `Return`, or a later `Role statement` that states they hold that role at that outlet, supersedes it. A later byline does not. A later sighting does not.
+Once a `Departure`, a `Retirement`, or a `Former role` is recorded, only a later `Return`, or a later `Role statement` that states they hold that role at that outlet, supersedes it. A later byline does not. A later sighting does not.
 
 A work line counts only for the outlet it names, not as the role or the beat elsewhere, and not against a departure.
 
