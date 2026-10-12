@@ -131,7 +131,7 @@ A work line counts only for the outlet it names, not as the role or the beat els
 
 Two statements of different values that cannot be ordered, the same date or a date that cannot be ordered, leave that currency field unresolved. A pitch reads it as not current.
 
-The staleness threshold is 30 days unless the requester sets another number. Past that age, from the field's own as-of date to the pitch date, refresh the field before a pitch relies on it. `Staleness` records the number and whether it was the default or the requester's. Status, last enriched, and work at another outlet are not currency: they do not refresh a currency field and do not show that it is current.
+The staleness threshold is 30 days unless the requester sets another number. Past that age, from the field's own as-of date to the pitch date, refresh the field before a pitch relies on it. The in-force role line and the in-force `Beat` at an outlet need no refresh while a work line by the journalist at that outlet, on that beat for the beat, is dated within the threshold. A work line never counts against a departure, as Currency states. `Staleness` records the number and whether it was the default or the requester's. Status, last enriched, and work at another outlet are not currency: they do not refresh a currency field and do not show that it is current.
 
 ## Flags
 

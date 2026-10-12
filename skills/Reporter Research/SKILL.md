@@ -159,6 +159,7 @@ Answer from the request, any existing file, the package, and the browser and dat
 - More than one journalist, or not the person named. Ask which. Do not build a draft. Do not write.
 - No package, and the request and any existing file identify one person. Continue. Every field the package would have filled is `Not available`, and the reason names the stop.
 - No package, and identity is still unclear. Ask. Do not build a draft. Do not write.
+- That one person, and the record shows they moved from an outlet that a file left aside as a namesake's holds. That file is a candidate again. Go back to Which file is this journalist's? with that evidence, and select as it states.
 - That one person. Where the request named no outlet, there is no single outlet. Continue.
 
 ### What may enter the draft?
