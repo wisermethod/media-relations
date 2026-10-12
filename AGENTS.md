@@ -7,7 +7,7 @@ layout: 1
 
 A WISER domain plugin. This file is this root's constitution. The chain starts here: load it before the first read or write under this root.
 
-A WISER plugin for earned media at a company of any kind: pitching reporters, newsjacking, and bylined writing. No skills or experts have been built yet; an expert bench for that work, with skills under each expert, is the first planned.
+A WISER plugin for earned media at a company of any kind: pitching reporters, newsjacking, and bylined writing. Two skills ship, Pitch and Reporter Research, each standing alone; no expert has been built yet.
 
 ## What this root is
 
