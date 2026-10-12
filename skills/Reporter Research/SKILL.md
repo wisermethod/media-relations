@@ -87,7 +87,8 @@ Which file is this journalist's? Where the home is not resolved, the only candid
 Where the home is resolved, read each file in it whose title or `Name:` matches, and a handed file inside the owning root. Does this file share an outlet with the journalist? Take the first match.
 
 - Its outlets include an outlet the request named, or one the evidence places the journalist at. A candidate.
-- The request or the evidence places the journalist at an outlet, and this file shares none of those. A namesake's. Leave it. Not a candidate, and it does not make more than one.
+- The request or the evidence places the journalist at an outlet, this file shares none of those, and another matching file in the home shares one. A namesake's. Leave it. Not a candidate, and it does not make more than one.
+- The request or the evidence places the journalist at an outlet, this file shares none of those, and no other matching file shares one. It may be this journalist before a move. A candidate. Does the record name one journalist? decides, after gathering, whether it is.
 - The request named no outlet, and nothing yet places the journalist. Do not call it a namesake. Treat each matching file as a candidate.
 
 Then take the first match.
