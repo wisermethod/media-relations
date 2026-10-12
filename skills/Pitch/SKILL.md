@@ -236,12 +236,15 @@ Where a choice leaves the band or the cadence of the row that will load, the bri
 
 Two voices can apply. The owning root's own bound `voice` is its voice for everything published under its name. A pitch-as person pitches journalists on its behalf, declared in the declarations read at Where is the pitch log, and what has been agreed? by a line `**Pitch as:** <name>, the voice bound by the root at <path>.`
 
-- More than one `Pitch as:` line. Ask which person this message goes out as. Stop until they say.
-- One line, and the request does not say which voice. Ask whether this message goes out as that person or in the owning root's own voice. Recommend that person for a pitch or a follow-up. Stop until they say.
-- One line, and they choose that person. The selection is that root, made by the owning root's declaration in that file.
-- One line, and they choose the owning root's own voice. No selection.
-- No line, and the request names a person to pitch as and the root that binds their voice. The selection is that root, made by the requester for this message.
-- No line, and the request names no one. The owning root's own voice. No selection. Ask nothing. The package says that a pitch can go out as a person the owning root declares in a `Pitch as:` line.
+Take the first of these that holds.
+
+- A follow-up or a reply, and the request does not say which voice. The voice the earlier package records for this thread holds, with where it was chosen. That record is not in hand and a `Pitch as:` line exists: ask which voice, as below, and stop until they say.
+- The request names a person to pitch as and the root that binds their voice. The selection is that root, made by the requester for this message, whatever the lines say.
+- The request names a person to pitch as and no root. A `Pitch as:` line names that person: the selection is that line's root, made by the owning root's declaration in that file. No line names them: ask which root binds their voice. Stop until they say.
+- The request says the owning root's own voice. No selection.
+- More than one `Pitch as:` line. Ask which person this message goes out as, or whether it goes out in the owning root's own voice. Stop until they say.
+- One line. Ask whether this message goes out as that person or in the owning root's own voice. Recommend that person for a pitch or a follow-up. Stop until they say. They choose that person: the selection is that root, made by the owning root's declaration in that file. They choose the owning root's own voice: no selection.
+- No line. The owning root's own voice. No selection. Ask nothing. The package says that a pitch can go out as a person the owning root declares in a `Pitch as:` line.
 
 A signature, a sender, or the person who will send the message is not a selection. Content Author resolves the selection; do not read the voice file.
 
@@ -307,7 +310,7 @@ A confirmed send with no other status word is sent. Match each value to the log'
 
 - They have not confirmed that this message was sent, and they have not confirmed a later status. Append nothing.
 - They confirmed a later status, the log does not already hold this message's confirmed send, and they do not confirm the send now. Ask. Append nothing.
-- They confirmed a send, or a later status, and the sender is not named. Where the message went out as a pitch-as person, that person is the sender. Otherwise ask who sent it, and append nothing until they answer.
+- They confirmed a send, or a later status, and the sender is not named. Where the message went out as a pitch-as person and nothing they said shows that someone else sent it, that person is the sender. Otherwise ask who sent it, and append nothing until they answer.
 - More than one log is declared, and they have not named which. Ask which. Append nothing.
 - They confirmed a send or a later status, the root declares a log, and the file does not exist yet. Create it with a heading and the columns date, journalist, outlet, angle, sent by, status, notes. Append one row.
 - They confirmed a send or a later status, and the log exists. Append one row, in that log's own columns. A change of status is a new row. Never edit a row.
