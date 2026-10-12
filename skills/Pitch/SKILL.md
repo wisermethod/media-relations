@@ -3,7 +3,7 @@ name: Pitch
 type: skill
 category: media-relations
 description: One pitch package to one named journalist for a story already chosen, with the fit, the angle, the email and subject lines, the follow-ups, the terms, and the desk-check result, plus the pitch-log row once a send is confirmed
-version: 0.1.0
+version: 0.2.0
 gaps:
   - earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when
   - crisis judgment on a pitch during an unfolding incident
@@ -232,6 +232,19 @@ Where a choice leaves the band or the cadence of the row that will load, the bri
 - The message is a follow-up, the plan's date for it is after the pitch date, and they did not ask to draft it now. Tell them it is not due, and present the recorded plan. Stop. Do not hand off.
 - Anything else. Continue.
 
+### Which voice does the message go out in?
+
+Two voices can apply. The owning root's own bound `voice` is its voice for everything published under its name. A pitch-as person pitches journalists on its behalf, declared in the declarations read at Where is the pitch log, and what has been agreed? by a line `**Pitch as:** <name>, the voice bound by the root at <path>.`
+
+- More than one `Pitch as:` line. Ask which person this message goes out as. Stop until they say.
+- One line, and the request does not say which voice. Ask whether this message goes out as that person or in the owning root's own voice. Recommend that person for a pitch or a follow-up. Stop until they say.
+- One line, and they choose that person. The selection is that root, made by the owning root's declaration in that file.
+- One line, and they choose the owning root's own voice. No selection.
+- No line, and the request names a person to pitch as and the root that binds their voice. The selection is that root, made by the requester for this message.
+- No line, and the request names no one. The owning root's own voice. No selection. Ask nothing. The package says that a pitch can go out as a person the owning root declares in a `Pitch as:` line.
+
+A signature, a sender, or the person who will send the message is not a selection. Content Author resolves the selection; do not read the voice file.
+
 ### Does every claim have a source?
 
 Ask before any handoff to Content Author.
@@ -260,13 +273,15 @@ The one claim, the one ask, and the length they chose are required. Two claims o
 
 `<user_request>` holds: the owning root; that the piece is a media pitch to one journalist, the row they chose, or that no row applies; the reader, named as the journalist the identity concept describes; the one claim; the angle; the one ask; the terms. Each detail held back is named there, never its value, until the agreed record holds the agreement that detail needs: acceptance of the exclusive, or agreement to the embargo with its date, time and time zone. Then include the value. The length they chose, and the reason where it leaves the row's band; a request for subject-line alternatives, with the subject-line choice and the evidence it rests on; the fit statement as the reason this journalist is the reader. For a follow-up or a reply, it names the message's purpose and the new material it adds, or the material the requester chose to resurface, so the draft does not repeat the first pitch. The ask is restated only as the loaded row asks. Where they accepted the opening default, the request holds that default. Where they chose to open on a reference, the request holds that choice and the reason instead of the never-praise line. The rest of that default stays. A description of the sender before the story is kept to the bare line saying who writes, or cut.
 
+Where Which voice does the message go out in? gave a selection, hand Content Author that voice selection: the root's path, and where it was made, the declaration's file or the requester. Where it gave none, hand none.
+
 `<source_material>` holds the requester's sources for every claim and the reporter file, and, for a follow-up or a reply, the earlier messages of the thread as the journalist received them. Remove the value of each still-held detail from everything handed to Content Author, the reporter file and the thread included. The desk checks get the originals.
 
 ### What did Content Author return?
 
 Take the delivery back. Keep it as returned. Do not show it as the package until the desk checks have been worked. Do not edit a sentence, a subject line included. A change to a message is a new request to that skill, sent only from What did the desk checks return?. Do not run `experts/Ghost Writer/` in `wiser`. The verdict in the delivery is Ghost Writer's, as Content Author reported it. Do not restate it as this skill's. Where the delivery reports no verdict, say so. Do not supply one. Where the delivery names a departure from the row, accept it as the requester's named choice. Show it in the package. Do not hide it, and do not argue it.
 
-Where Content Author returns no draft, say which of its steps did not return one. Do not write the message in its place.
+Where Content Author returns no draft, say which of its steps did not return one. Do not write the message in its place. Where it stopped on the voice selection, show its stop as it states it, and do not ask for the message again in the owning root's voice in its place.
 
 ### What did the desk checks return?
 
@@ -282,7 +297,7 @@ What came back?
 
 ### What does the package hold?
 
-Present a ready package only after a pass that does not name the crisis-judgment gap, with no Ghost Writer finding left unresolved, unless the requester, told the finding, chose to go on without it. Where the run stopped, present the stop. Send nothing. A ready package holds: the fit statement and the dated pieces it cites; the angle; the email and the subject-line alternatives as Content Author returned them; Ghost Writer's verdict as Content Author reported it; the desk checks' result and notes; the terms and the agreed record; each contested choice taken, with the default or the requester's word; the follow-up plan (how many, when, and what each would add, from their choice or the default); any contact route listed and not shown to work; and each gap above that applies, named.
+Present a ready package only after a pass that does not name the crisis-judgment gap, with no Ghost Writer finding left unresolved, unless the requester, told the finding, chose to go on without it. Where the run stopped, present the stop. Send nothing. A ready package holds: the fit statement and the dated pieces it cites; the angle; the email and the subject-line alternatives as Content Author returned them; the voice the message went out in, and where that was chosen; Ghost Writer's verdict as Content Author reported it; the desk checks' result and notes; the terms and the agreed record; each contested choice taken, with the default or the requester's word; the follow-up plan (how many, when, and what each would add, from their choice or the default); any contact route listed and not shown to work; and each gap above that applies, named.
 
 The first package carries the plan and does not carry drafted follow-ups. A follow-up is drafted when Which row does Content Author load? says it is due.
 
@@ -292,7 +307,7 @@ A confirmed send with no other status word is sent. Match each value to the log'
 
 - They have not confirmed that this message was sent, and they have not confirmed a later status. Append nothing.
 - They confirmed a later status, the log does not already hold this message's confirmed send, and they do not confirm the send now. Ask. Append nothing.
-- They confirmed a send, or a later status, and the sender is not named. Ask who sent it. Append nothing until they answer.
+- They confirmed a send, or a later status, and the sender is not named. Where the message went out as a pitch-as person, that person is the sender. Otherwise ask who sent it, and append nothing until they answer.
 - More than one log is declared, and they have not named which. Ask which. Append nothing.
 - They confirmed a send or a later status, the root declares a log, and the file does not exist yet. Create it with a heading and the columns date, journalist, outlet, angle, sent by, status, notes. Append one row.
 - They confirmed a send or a later status, and the log exists. Append one row, in that log's own columns. A change of status is a new row. Never edit a row.
