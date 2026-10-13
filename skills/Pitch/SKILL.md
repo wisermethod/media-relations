@@ -238,7 +238,7 @@ Two voices can apply. The owning root's own bound `voice` is its voice for every
 
 Take the first of these that holds.
 
-- A follow-up or a reply, and the request does not say which voice. The voice the earlier package records for this thread holds, with where it was chosen. That record is not in hand: look in the package home Where is the package written? finds. One package there for this journalist on this story: read the voice it records. None, or more than one: ask for the earlier package, or which voice the earlier message went out in and where that was chosen, and stop until they say. Do not take the voice from what is declared now.
+- A follow-up or a reply, and the request does not say which voice. The voice the earlier package records for this thread holds, with where it was chosen. That record is not in hand: read each package home Where is the package written? names, without asking, offering or writing. Packages there for this journalist on this story all record one voice and where it was chosen: that is the record. None, or they differ: ask for the earlier package, or which voice the earlier message went out in and where that was chosen, and stop until they say. Do not take the voice from what is declared now.
 - The request names a person to pitch as and the root that binds their voice. The selection is that root, made by the requester for this message, whatever the lines say.
 - The request names a person to pitch as and no root. The `Pitch as:` lines naming that person give one root: the selection is that root, made by the owning root's declaration in that file. They give more than one root, or no line names them: ask which root binds their voice. Stop until they say.
 - The request says the owning root's own voice. No selection.
@@ -308,22 +308,22 @@ The first package carries the plan and does not carry drafted follow-ups. A foll
 
 Write only a package What does the package hold? presents as ready.
 
-Read the declarations again, as at Where is the pitch log, and what has been agreed?, because a run of `skills/Reporter Research/` may have written one since. A package home is a directory a declaration says holds pitch packages to journalists. Count homes by directory. Take the first match.
+Read the declarations again, as at Where is the pitch log, and what has been agreed?, because a run of `skills/Reporter Research/` may have written one since. A package home is a directory a declaration says holds pitch packages to journalists. A pitch log is not a package. A directory that holds one file per journalist, reporter, or media contact, `sources/`, `memory/`, an archive, a program's own folder, or a program whose declaration states another concern is never a package home and never receives one, whatever a declaration says. Count homes by directory. Take the first match.
 
 - More than one package home. Ask which. Write nothing until they name one.
 - One package home. Write the package there, creating the directory where it does not exist yet: a declared home is not an invented one, per Working Files in `standards/conventions.md` in `wiser`.
-- No package home, and one program whose declaration states the root's media relations as its concern. Offer `pitches/` in that program as the home, and show the declaration it adds to that program's `AGENTS.md`: `pitches/` holds one pitch package per file, named by its pitch date, the journalist and the story. Write nothing until they answer.
-- No package home, and more than one such program. Ask which, then offer as above. Write nothing until they answer.
-- No package home and no such program. Ask which declared directory receives the package, or whether it stays in this session only. A directory that holds one file per journalist, reporter, or media contact, `sources/`, `memory/`, an archive, or a program whose declaration states another concern does not receive it. Write nothing until they answer.
+- No package home, and one program whose declaration states the root's media relations as its concern. Offer `pitches/` in that program as the home, and show the declaration it adds to that program's `AGENTS.md` as it will be written, in the form that file's other declarations take, a table row where it lists its files in a table: `pitches/` holds pitch packages, not reporter files, one per file, named `<pitch date>-<journalist slug>-<topic slug>.md`. Write nothing until they answer.
+- No package home, and more than one such program. Ask which. Their answer names the program only: then make the offer above for that program, and wait for its answer. Write nothing until they accept it.
+- No package home and no such program. Ask which declared directory receives the package, or whether it stays in this session only. Write nothing until they answer.
 
-What did the person answer? Only where the offer or the question was put.
+What did the person answer? Only where the offer, or the question which directory, was put.
 
-- They accept the offer. Add the declaration shown to that program's `AGENTS.md`, in the form its other declarations take, a table row where it lists its files in a table. Change nothing else in that file. Then write the package in `pitches/`.
+- They accept the offer. Add the declaration shown to that program's `AGENTS.md`, as shown. Change nothing else in that file. Then write the package in `pitches/`.
 - They name a declared directory that may receive it. Write the package there. Add no declaration.
-- They name a directory no declaration holds, or one that may not receive it. Say why, and ask again. Write nothing.
+- They name a directory no declaration holds, or one that never receives a package. Say why, and ask again. Write nothing.
 - They decline, or name none. Write nothing. Say the package stays in this session only.
 
-How is it named? Use the form and the name the home's declaration gives. Where it gives no name, the file or the folder is named `<pitch date>-<journalist slug>-<topic slug>`, lowercase, words joined by hyphens, the topic a few words naming the story, with `.md` for a file. Where it gives no form, the package is one file. A folder per pitch holds the package as a file named as above, and a follow-up goes into its pitch's folder as a new file. Whatever the name, where it is taken, add `-2`, then `-3`, to the file name before `.md`, or to the folder name, until it is free. Never overwrite or change a file already there.
+How is it named? Use the form and the name the home's declaration gives. Where it gives no name, the file or the folder is named `<pitch date>-<journalist slug>-<topic slug>`, lowercase, words joined by hyphens, the topic a few words naming the story, with `.md` for a file. Where it gives no form, the package is one file. A folder per pitch holds the package as a file named as above, and a follow-up goes as a new file into the folder that holds its pitch's first package. Whatever the name, where it is taken, add `-2`, then `-3`, to the file name before `.md`, or to the folder name, until it is free. Never overwrite or change a file already there.
 
 The written package holds what the ready package holds, headed by its pitch date and this line: a package, not a record of a send; the pitch log records sends. Tell the requester the path written, or that nothing was written and why.
 
