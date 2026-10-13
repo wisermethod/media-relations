@@ -3,7 +3,7 @@ name: Pitch
 type: skill
 category: media-relations
 description: One pitch package to one named journalist for a story already chosen, with the fit, the angle, the email and subject lines, the follow-ups, the terms, and the desk-check result, plus the pitch-log row once a send is confirmed
-version: 0.2.0
+version: 0.3.0
 gaps:
   - earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when
   - crisis judgment on a pitch during an unfolding incident
@@ -24,7 +24,7 @@ Classifier seam: none.
 
 ## Objective
 
-One pitch package the person can send themselves, or a stop that names why there is no draft. Once they confirm they sent a message, one new row on the owning root's pitch log. Nothing is sent. Verified against Success.
+One pitch package the person can send themselves, written where the owning root keeps pitch packages unless they keep it in the session, or a stop that names why there is no draft. Once they confirm they sent a message, one new row on the owning root's pitch log. Nothing is sent. Verified against Success.
 
 ## Inputs
 
@@ -304,6 +304,25 @@ Present a ready package only after a pass that does not name the crisis-judgment
 
 The first package carries the plan and does not carry drafted follow-ups. A follow-up is drafted when Which row does Content Author load? says it is due.
 
+### Where is the package written?
+
+Write only a ready package. A stop, and a package not presented as ready, are shown to the requester and not written.
+
+A package home is a directory that one of the declarations Where is the pitch log, and what has been agreed? read says holds pitch packages. Take the first match.
+
+- More than one package home is declared. Ask which. Write nothing until they name one.
+- One package home is declared. Write the package there, in the form and under the name that declaration gives, a file or a folder per pitch. Where it gives neither, write one new file named `<pitch date>-<journalist slug>-<topic slug>.md`: lowercase, words joined by hyphens, the topic a few words naming the story. Where that name is taken, add `-2`, then `-3`, before the extension until it is free. Never overwrite or edit a package already there.
+- No package home is declared, and a program for the root's media relations is declared: one whose declaration states the root's media relations as its concern, or declares the pitch log. Offer `pitches/` in that program as the home. Write nothing until they answer.
+- No package home and no such program. Ask which declared directory receives the package, or whether it stays in this session only. Do not create a program or a directory the root does not declare. Write nothing until they answer.
+
+What did the person answer? Only where the offer or the question was put.
+
+- They accept the offer. Add one declaration to that program's `AGENTS.md`, in the form its other declarations take, a table row where it lists its files in a table: `pitches/` holds one pitch package per file, named `<pitch date>-<journalist slug>-<topic slug>.md`, and a package is not a send, which the pitch log records. Change nothing else in that file. Then write the package as for one declared home.
+- They name a declared directory. Write the package there, named and never overwritten as above. Add no declaration.
+- They decline, or name none. Write nothing. Say the package stays in this session only.
+
+The written package holds what the ready package holds, with its pitch date and the words "not sent" at its head. A send is recorded on the pitch log only: never edit a package to record one. Each follow-up is a new package. Tell the requester the path written, or that nothing was written and why.
+
 ### Did the person confirm a send?
 
 A confirmed send with no other status word is sent. Match each value to the log's own columns. Where no column fits a value, ask. Do not add a column to an existing log. The email goes in no column. The row names who sent it. Append a row for a later status only where the log already holds this message's confirmed send, or the person confirms the send now.
@@ -323,6 +342,7 @@ A confirmed send with no other status word is sent. Match each value to the log'
 ## Success
 
 - The requester has one package, or a stop that names why there is no draft. Nothing was sent.
+- A ready package was written once, as a new file or folder in the package home the owning root declares or the requester chose, with nothing already there overwritten or edited, or was not written because they kept it in the session. No home was invented, and a stop was not written.
 - Every message and every subject line in the package is text `skills/Content Author/` in `wiser` returned, unedited. Ghost Writer's verdict is the one Content Author reported.
 - `desk-checks.md` ran in a second context on every draft and every follow-up that was presented, handed the four inputs, and a stop was worked before the package was presented as ready. At most two revision requests followed the first draft of that message. What remained after the budget went to the requester with the findings as written.
 - The fit statement cites the dated pieces it uses, or the skill stopped because the file could support no fit.
