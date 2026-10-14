@@ -56,27 +56,41 @@ Read declarations only, at any depth: the owning root's `AGENTS.md`, and every `
 
 Take the first match.
 
-- A directory is declared for one file per journalist, reporter, media contact, bio sketch, or person. Bio Sketch resolves the home among them, and finds any file already there. Resolve nothing here. Go to What is the ask?.
+- A directory is declared for one file per journalist, reporter, media contact, or bio sketch. Bio Sketch resolves the home among them, and finds any file already there. Resolve nothing here. Go to What is the ask?.
 - None, and more than one media relations program. Ask which program. None named: stop, and report that the home was not resolved. One named: take the next match for it.
-- None, and one media relations program. It declares no directory for reporter files. Ask which of its directories receives the file. One named: add to the `AGENTS.md` that declares that directory that it holds one reporter file per journalist, before Bio Sketch runs; that is the home. None named: stop, and report that the home was not resolved. Create nothing beside the program.
+- None, and one media relations program. It declares no directory for reporter files. Ask which of its directories receives the file, and answer from Which directory did they name?. Create nothing beside the program.
 - None, no media relations program, and the root includes `programs/`. Before Bio Sketch runs, offer a program for the root's media relations, per C4 in `standards/user-root.md` in `wiser`: a standing concern with no completion condition, at `programs/media-relations/`, holding `reporters/` and a pitch log. Take the answer below.
-- None, no media relations program, and the root has no `programs/`. Ask which declared directory receives the file. Never create `programs/`. One named: add to the `AGENTS.md` that declares it that it holds one reporter file per journalist, before Bio Sketch runs; that is the home. None named: stop, and report that the home was not resolved.
+- None, no media relations program, and the root has no `programs/`. Ask which declared directory receives the file, and answer from Which directory did they name?. Never create `programs/`.
 
 What did the person answer? Only where the offer was made. Take the first match.
 
 - Accept, and `programs/media-relations/AGENTS.md` is absent. Before Bio Sketch runs, write three statements: the heading `Media relations`, a standing concern with no completion condition, and that it holds `reporters/` for reporter files, one per journalist, and `pitch-log.md` for pitches. The home is `programs/media-relations/reporters/`. Do not write the log or a pitch.
-- Accept, and that path states another concern, or states no kind. Do not write into it, and do not create a second program. Ask which declared directory receives the file. One named: declare it as the branch above does; that is the home. None named: stop, and report that the home was not resolved.
+- Accept, and that path states another concern, or states no kind. Do not write into it, and do not create a second program. Ask which declared directory receives the file, and answer from Which directory did they name?.
 - Decline. Stop, and report that the home was not resolved.
+
+Which directory did they name? Take the first match.
+
+- None. Stop, and report that the home was not resolved.
+- More than one. Ask which one. Answer again from this question.
+- One that a declaration gives another use: pitch packages, sources, memory, or an archive. Say it cannot hold reporter files, and ask again. Answer again from this question.
+- One. Show the line to be added to the `AGENTS.md` that declares it, that it holds one reporter file per journalist, in the form that file's other declarations take. Add it on their yes, before Bio Sketch runs; that is the home. They decline: stop, and report that the home was not resolved.
 
 ### What is the ask?
 
-The requester asked for the file to pitch from, so the ask is theirs. Hand Bio Sketch this standing ask, stated by the requester, the same for every journalist's file: earned media coverage of the owning root's organization's news by this journalist, through pitches the organization sends. The work it needs is reporting, editing, producing, or hosting news or feature coverage at an outlet independent of the organization. Beat, geography, and fit to one story are not reasons it cannot be served; Pitch judges those for each pitch.
+The requester asked for the file to pitch from, so the ask is theirs. Hand Bio Sketch this standing ask, stated by the requester, the same for every journalist's file: earned media coverage of the owning root's organization's news by this journalist, through pitches the organization sends. The work it needs is coverage an outlet publishes: reporting, editing (a masthead editor's included), producing, hosting, reviewing, or writing a column or opinion, for an outlet independent of the organization and of any company whose marketing that work is. Communications or marketing for a company, content the outlet labels paid or sponsored, operations, an academic or association masthead, and a copy desk are outside that work. Beat, geography, and fit to one story are not reasons it cannot be served; Pitch judges those for each pitch.
+
+### Does a file to be replaced say not to pitch?
+
+Read any file the requester handed, and any file in a declared home whose file name or name line is this journalist's. Take the first match.
+
+- One states that the contact is not to be pitched: a hard flag, a `hard_exit` that is true, or a do-not-pitch note. Add to `<source_material>` one supplied record from the root: `do-not-pitch: yes`, naming that file, the field, and its date, and no reason text. Before Bio Sketch runs, tell the requester that the statement is carried this way, and that Pitch treats it as a flag in force until they say it no longer holds.
+- None does. Continue.
 
 ### What is handed to Bio Sketch?
 
 Run `skills/Bio Sketch/` in `wiser` by name. Hand it what its Inputs declare. Do not reach inside its steps or present its output as this skill's findings.
 
-Where this run declared or resolved the home, the request names that directory and the folder whose `AGENTS.md` now declares it. Otherwise it names none.
+Where this run declared the home, the request names that directory and the folder whose `AGENTS.md` now declares it. Otherwise it names none.
 
 - `<person>`: the journalist, with any outlet given as an anchor.
 - `<ask>`: the standing ask above, stated by the requester.
@@ -96,7 +110,7 @@ Which `<depth>` is handed? Take the first match.
 Relay everything Bio Sketch reported to the requester, in its own terms. Then add what only this plugin knows. Take each that applies.
 
 - A file, and `Fit: do-not-approach` with a code in force. Say that Pitch does not pitch this journalist while that code stays in force.
-- A file that replaced one holding a statement that the contact is not to be pitched, such as a hard flag, a `hard_exit` that is true, or a do-not-pitch note, now carried only as a `Supplied:` line. Name it, and say that Pitch treats it as a flag in force until the requester says it no longer holds.
+- A file written after Does a file to be replaced say not to pitch? found a statement, and the file holds no `Supplied:` line carrying it. Say so as a stop, naming the field and not its text: Pitch will not see the statement in this file.
 - No file, and this run declared a program or a directory. Say that it now exists and holds no reporter file yet.
 
 ## Pitfalls
@@ -109,4 +123,5 @@ Relay everything Bio Sketch reported to the requester, in its own terms. Then ad
 - One journalist and one owning root were settled before anything was read or written.
 - Where a home was declared, Bio Sketch resolved it. Where none was, this skill declared one the requester chose or accepted before Bio Sketch ran, or reported that the home was not resolved and Bio Sketch did not run.
 - Bio Sketch received its declared Inputs, the standing ask with the work it needs, any home this run declared, and this skill's journalist extension.
-- The requester received everything Bio Sketch reported, and this plugin's additions: Pitch's stop on a `do-not-approach` code, a do-not-pitch statement carried only as a `Supplied:` line, and a declared home holding no file yet.
+- A do-not-pitch statement in a file to be replaced reached Bio Sketch as a supplied record with no reason text, and the requester was told before Bio Sketch ran.
+- The requester received everything Bio Sketch reported, and this plugin's additions: Pitch's stop on a `do-not-approach` code, a do-not-pitch statement the new file does not carry, and a declared home holding no file yet.

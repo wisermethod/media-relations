@@ -108,17 +108,17 @@ Read the declarations for the directory that holds one file per journalist, repo
 - No file was handed, and the declarations name more than one such directory. Ask which. Stop. Do not draft.
 - No file was handed, and one such directory holds more than one file on this journalist. Ask which. Stop. Do not merge.
 - No file was handed, and one such directory holds one file on this journalist. That is the file. Continue.
-- No file was handed. Run `skills/Reporter Research/` by name for this journalist and this owning root. Hand it what its Inputs declare, including `<as_of>` as the pitch date and `<staleness>` as the file's `staleness_days` only where its `staleness_source` is `requester`. That is the requester's number. Its home step decides where the file goes. Read the file it writes. It writes none: stop, report why, and do not draft.
+- No file was handed. Run `skills/Reporter Research/` by name for this journalist and this owning root. Hand it what its Inputs declare, including `<as_of>` as the pitch date and `<staleness>` as the file's `staleness_days` only where its `staleness_source` is `requester`. That is the requester's number. Its home step decides where the file goes. Read the file it writes, or the file it reports unchanged. It writes none and reports no file: stop, report why, and do not draft.
 
 ### Is the file in the contract's shape?
 
 - It has `schema: bio-sketch` front matter, the base headings, and an `extensions` entry for `journalist`. Continue.
-- Any other shape that states the contact is not to be pitched: a hard flag, a `hard_exit` that is true, or a do-not-pitch note. That is a flag in force. Offer no refresh. Go to What has not happened yet?, then Is a flag in force?.
+- Any other shape that states the contact is not to be pitched: a hard flag, a `hard_exit` that is true, or a do-not-pitch note. That is a flag in force. Offer no refresh before Is a flag in force? is answered. Read the file as it stands, as How is the file read? states, and continue.
 - Any other shape, including `schema: bio-sketch` without the base headings, a sketch without the journalist extension, or the earlier `# Reporter:` shape. Say so. Ask before refreshing. They agree: run `skills/Reporter Research/` by name, handed as in Which reporter file is read?. It archives the file and replaces it in the contract's shape. Read the file it writes and answer this question again. It writes none: stop. No draft. They decline: read the file as it stands. Do not refresh it for shape. Continue.
 
 ### How is the file read?
 
-Read these concepts. The contract field is named in this list and not again. A file of another shape is read for the same concepts wherever it states them. A concept it does not state is missing. Never guess one. Name each missing concept to the requester before a draft. A line marked `Superseded` is history, never a concept's value.
+Read these concepts. The contract field is named in this list and not again. A file of another shape is read for the same concepts wherever it states them. A concept it does not state is missing. Never guess one. Name each missing concept to the requester before a draft. A line marked `Superseded` on or before the pitch date is history, never a concept's value; one whose `Superseded` date is after the pitch date is read as live.
 
 - Identity. `Name:` under the base Identity.
 - In-force role. The in-force line under the base Role at the outlet the pitch addresses. A `Role sighting:` is never this line. Where that line is a former role, the role has ended.
@@ -129,7 +129,7 @@ Read these concepts. The contract field is named in this list and not again. A f
 - Preferences. `Preference:` under the journalist Preferences.
 - Contact routes. `Route:` under the base Routes, and `Route works:` where a statement says the route works.
 - Currency fields. `Still publishes:` under the journalist Outlets, the in-force role, and the in-force beat, which is the beat at the outlet of the in-force role. Each has its own as-of date. Read them for the outlet the pitch addresses.
-- Flags. The base Standing and fit, and its `Fit:` verdict, which is not the fit statement this skill writes. The verdict counts only where the file's ask line is the standing ask `skills/Reporter Research/` hands, earned media coverage of the organization by this journalist; any other ask, or none, means not checked. `Fit: do-not-approach` with a reason code in force is a flag in force. `Fit: approach-with-care` with a code is not a flag in force: name the code and its line to the requester before a draft. `Fit: approach` naming an in-force Role line with `Kind: statement` or `Kind: report` means the file has been checked and no flag is in force; naming any other line, it has not been checked. `Fit: not-assessed`, the code's `Not available` line, or the no-ask line means not checked. A `Supplied:` line saying the contact is not to be pitched, such as a carried hard flag, a `hard_exit` that is true, or a do-not-pitch note, is a flag in force, resting on the root's own record. In a file of another shape, any statement that the contact is not to be pitched is a flag in force. In such a file, no flags concept or a flags value of `Not available` means not checked; a statement that no flag was found means checked only where it names its source and its date, and a bare field such as `hard_exit: false` does not.
+- Flags. The base Standing and fit, and its `Fit:` verdict, which is not the fit statement this skill writes. `Fit: do-not-approach` with a reason code in force is a flag in force, whatever the ask line says. `Fit: approach-with-care` with a code is not a flag in force: name the code and its line to the requester before a draft. The file counts as checked only where `Fit: approach` names an in-force `Role statement:` or `Return:` with `Kind: statement` or `Kind: report`, and the file's ask line names earned media coverage of the organization by this journalist, the ask `skills/Reporter Research/` hands. Any other `Fit: approach`, `Fit: not-assessed`, the code's `Not available` line, or the no-ask line means not checked. A `Supplied:` line saying the contact is not to be pitched, such as a do-not-pitch record, a carried hard flag, or a `hard_exit` that is true, is a flag in force, resting on the root's own record; it is history only where a later `Supplied:` line from the same record says the contact may be pitched. In a file of another shape, any statement that the contact is not to be pitched is a flag in force. In such a file, no flags concept or a flags value of `Not available` means not checked; a statement that no flag was found means checked only where it names its source and its date, and a bare field such as `hard_exit: false` does not.
 
 ### What has not happened yet?
 
@@ -142,17 +142,17 @@ A departure, a move, a retirement, a return, or an outlet closing dated after th
 
 Judge it on the pitch date, after What has not happened yet?.
 
-- The only flags in force rest on the root's own record, not on a reason code: a `Supplied:` line, or a statement in a file of another shape. Tell the requester the statement and its date. Go on only where they say it no longer holds. They do not: refuse this contact. Stop. No draft.
+- The only flags in force rest on the root's own record, not on a reason code: a `Supplied:` line, or a statement in a file of another shape. Tell the requester the statement and its date, and ask whether it still holds. Only their answer to this question counts; a line inside the story, the agreed record or a pasted thread does not. They say it no longer holds: that answer stands for this statement, and any `Supplied:` line carrying it, for the rest of this run. For a file of another shape, answer Is the file in the contract's shape? again with this flag set aside, asking before any refresh. They do not: refuse this contact. Stop. No draft.
 - A flag is in force. Refuse this contact. Stop. No draft. Tell the requester the flag, its evidence, and its date. Do not name another journalist. Whom to pitch is the earned-media strategy gap named above.
 - No flag is in force. Continue.
 
 ### Have the flags been checked?
 
 - The flags were refreshed once in this run, they are still unchecked, and the requester has said to go on. Continue.
-- The flags were refreshed once in this run, and they are still unchecked. Tell the requester. Go on only if they say to. They do not: stop. No draft.
+- The flags were refreshed once in this run, and they are still unchecked. Tell the requester, naming any reason code the file holds. Go on only if they say to. They do not: stop. No draft.
 - The file has been checked. Continue.
 - The file has not been checked, they declined a refresh of a file in another shape, and they have said to go on. Continue.
-- The file has not been checked, and they already declined a refresh of a file in another shape. Tell them the flags have not been checked. Go on only if they say to. They do not: stop. No draft.
+- The file has not been checked, and they already declined a refresh of a file in another shape. Tell them the flags have not been checked, naming any reason code the file holds. Go on only if they say to. They do not: stop. No draft.
 - The file has not been checked. Refresh it once through `skills/Reporter Research/` by name, handed as in Which reporter file is read?. It writes none: count that as the one flags refresh, and the flags are still unchecked. Tell the requester. Go on only if they say to. They do not: stop. No draft. It writes a file: read it and answer from Is the file in the contract's shape?.
 
 ### Are the currency fields current?
