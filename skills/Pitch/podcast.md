@@ -25,7 +25,7 @@ Ask this gather question once here, unless already answered. Offer an open invit
 
 - The file or show evidence establishes a non-journalist host. Recommend the open invitation unless a stated preference points elsewhere. Record the requester's answer; stop until answered.
 - The file or show evidence establishes a journalist host. Recommend the strongest material first unless a stated preference points elsewhere. Record the requester's answer; stop until answered.
-- Neither is established. Name the host's kind as unknown. Recommend the strongest material first as a default, without assigning a kind to the host. Record the requester's answer; stop until answered.
+- Neither is established. Name the host's kind as unknown. Recommend the strongest material first, without assigning a kind to the host. Record the requester's answer; stop until answered.
 
 Keep the evidence, recommendation and answer with the episode offer and ask.
 
@@ -33,16 +33,16 @@ Keep the evidence, recommendation and answer with the episode offer and ask.
 
 Take the first match.
 
-- It is. Gather the launch date, desired recording and release timing, and any booking window the show states. Name each missing item. Carry a requested release date to Pitch's What do the terms require?.
+- It is. Read the material for the launch date, proposed recording and release timing, and any booking window the show states. Name each missing item and ask for a missing launch date; the timetable question is asked only at the lead-time choice. Carry a requested release date to Pitch's What do the terms require?.
 - It is not. Keep the show's stated booking timing for the lead-time choice.
 - The material does not show whether it is. Ask and stop until answered, then answer this question again.
 
 ## Which lead-time choice applies?
 
-Applicable to a first pitch to a podcast. Put the matching choice to the requester at Pitch's contested-choices step. Take the first match.
+Applicable to a first pitch to a podcast. Put the matching choice to the requester at Pitch's contested-choices step. Ask one timetable question covering recording and release, unless already answered. Take the first match.
 
-- The appearance is tied to a launch. Put the booking window beside the requester's proposed timetable. Michael Smart's account of James Clear's launch tour says pitches went out four months before publication and requested a launch-week release. That is one case, not every show's window; top shows may demand to publish first. Recommend working back from the show's stated window. Without one, name it as missing and ask which timetable the requester wants. Record the answer.
-- It is not tied to a launch. Put the show's stated booking window beside the requester's proposed timetable. Recommend the sourced window where known. Without one, name it as missing and ask which timetable the requester wants. Record the answer.
+- The appearance is tied to a launch. Put the booking window beside the requester's proposed timetable. Michael Smart's account of James Clear's launch tour says pitches went out four months before publication and requested a launch-week release. That is one case, not every show's window; top shows may demand to publish first. Recommend working back from the show's stated window. Without one, name it as missing. Record the timetable answer.
+- It is not tied to a launch. Put the show's stated booking window beside the requester's proposed timetable. Recommend the sourced window where known. Without one, name it as missing. Record the timetable answer.
 
 ## What is added to the package?
 
