@@ -6,7 +6,7 @@ Prefix: journalist_
 Staleness: 30 days
 Declared for: a person whose ask is earned media coverage by a journalist, editor, producer or host.
 
-This extends `skills/Bio Sketch/sketch-format.md` in `wiser`. Its Lines and Figures apply throughout. Its Supplied records governs database values: they do not fill `Outlet:`, `Type:` or `Reach:` here. Identity, Role, Standing and fit, Record, Routes, Assessment and Supplied records remain the base's.
+This extends `skills/Bio Sketch/sketch-format.md` in `wiser`. Its Lines and Figures apply throughout. Its Supplied records governs database values: they fill no line under these headings and stay `Supplied:` lines. Identity, Role, Standing and fit, Record, Routes, Assessment and Supplied records remain the base's.
 
 ## Headings
 
@@ -14,15 +14,15 @@ This extends `skills/Bio Sketch/sketch-format.md` in `wiser`. Its Lines and Figu
 
 - Tokens: `Outlet:` an outlet the journalist works at now, current as the base's Currency judges an organization; `Type:` as the source states it; `Still publishes:` `yes` or `no`; `Outlet closed:` a dated closure the evidence shows.
 - Register: `Public statement`, `Firsthand` or `Secondhand`. `Still publishes:` and `Outlet closed:` carry `Kind`.
-- Required: yes. `Outlet closed:` is an event, not a required field.
+- Required: `Outlet:`. The other tokens are not required.
 
-`Still publishes: yes` needs a piece the outlet published, with its publication date, or a dated statement from the outlet. `Still publishes: no` needs a dated statement from the outlet. A listing, directory or database row is a sighting of that listing, never the in-force `yes`. Where neither publication evidence nor a dated statement arrives, `Still publishes` is `Not available` with the reason. An outlet that is not current takes no line here; its history stays in the base Role.
+`Still publishes: yes` needs a piece the outlet published, with its publication date, or a dated statement from the outlet. `Still publishes: no` needs a dated statement from the outlet. A listing, directory or database row is a sighting of that listing, never the in-force `yes`. Where neither publication evidence nor a dated statement arrives, `Still publishes` is `Not available` with the reason. An outlet that is not current takes no line here; its history stays in the base Role. An outlet whose in-force role line is a `Departure:`, a `Retirement:`, a `Move:` away, or a `Former role:` is not current here, whatever its record items. On an update, each carried line under these headings for an outlet that is no longer current is marked `Superseded` with the date and the Role line that shows it, as Lines states; nothing is deleted.
 
 ### Beat
 
 - Tokens: `Beat:` what the journalist covers at that outlet; `Beat change:` a dated change the evidence shows, naming the outlet.
 - Register: `Public statement`, or `Research inference` naming the dated record items it rests on. A stated `Beat change:` carries `Kind`.
-- Required: yes. `Beat change:` is an event, not a required field.
+- Required: `Beat:`. `Beat change:` is an event, not a required field.
 
 ### Audience
 
@@ -83,3 +83,6 @@ None.
 4. Pitch preferences the journalist or the outlet stated, with the words and the date.
 5. Audience figures the Reach heading allows, copied as stated.
 6. The angle each recent piece left aside.
+7. What the journalist's role does at each outlet: reports, edits, produces or hosts, or works outside journalism, on a company's marketing, on content the outlet labels paid or sponsored, in operations, on an academic or association masthead, or on a copy desk, each with its date and who stated it.
+8. Any dated change of beat at each outlet.
+9. Pitch or tip routes the journalist or a current outlet publishes, not reader letters or a general inbox, and the page each was on.

@@ -100,7 +100,7 @@ Build the agreed record from `<agreed>` and from the log's rows for this journal
 
 ### Which reporter file is read?
 
-Read the declarations for the directory that holds one file per journalist, reporter, or media contact.
+Read the declarations for the directory that holds one file per journalist, reporter, media contact, or bio sketch.
 
 - They handed a path outside the owning root. Do not read it. Ask for a file inside the owning root. Stop. Do not draft.
 - They handed a file inside the owning root, and its identity is this journalist. That is the file. Continue.
@@ -108,27 +108,28 @@ Read the declarations for the directory that holds one file per journalist, repo
 - No file was handed, and the declarations name more than one such directory. Ask which. Stop. Do not draft.
 - No file was handed, and one such directory holds more than one file on this journalist. Ask which. Stop. Do not merge.
 - No file was handed, and one such directory holds one file on this journalist. That is the file. Continue.
-- No file was handed. Run `skills/Reporter Research/` by name for this journalist and this owning root. Hand it what its Inputs declare, including `<as_of>` as the pitch date and `<staleness>` as the file's `staleness_days` only where its `staleness_source` is `requester`. That is the requester's number. Its landing rule decides where the file goes. Read the file it writes. It writes none: stop, report why, and do not draft.
+- No file was handed. Run `skills/Reporter Research/` by name for this journalist and this owning root. Hand it what its Inputs declare, including `<as_of>` as the pitch date and `<staleness>` as the file's `staleness_days` only where its `staleness_source` is `requester`. That is the requester's number. Its home step decides where the file goes. Read the file it writes. It writes none: stop, report why, and do not draft.
 
 ### Is the file in the contract's shape?
 
 - It has `schema: bio-sketch` front matter, the base headings, and an `extensions` entry for `journalist`. Continue.
+- Any other shape that states the contact is not to be pitched: a hard flag, a `hard_exit` that is true, or a do-not-pitch note. That is a flag in force. Offer no refresh. Go to What has not happened yet?, then Is a flag in force?.
 - Any other shape, including `schema: bio-sketch` without the base headings, a sketch without the journalist extension, or the earlier `# Reporter:` shape. Say so. Ask before refreshing. They agree: run `skills/Reporter Research/` by name, handed as in Which reporter file is read?. It archives the file and replaces it in the contract's shape. Read the file it writes and answer this question again. It writes none: stop. No draft. They decline: read the file as it stands. Do not refresh it for shape. Continue.
 
 ### How is the file read?
 
-Read these concepts. The contract field is named in this list and not again. A file of another shape is read for the same concepts wherever it states them. A concept it does not state is missing. Never guess one. Name each missing concept to the requester before a draft.
+Read these concepts. The contract field is named in this list and not again. A file of another shape is read for the same concepts wherever it states them. A concept it does not state is missing. Never guess one. Name each missing concept to the requester before a draft. A line marked `Superseded` is history, never a concept's value.
 
 - Identity. `Name:` under the base Identity.
-- In-force role. The in-force line under the base Role. A `Role sighting:` is never this line. Where that line is a former role, the role has ended.
+- In-force role. The in-force line under the base Role at the outlet the pitch addresses. A `Role sighting:` is never this line. Where that line is a former role, the role has ended.
 - Beat. `Beat:` under the journalist Beat.
 - Audience. `Audience:` under the journalist Audience.
 - Formats. `Format:` under the journalist Formats.
-- Recent work. `Item:` under the base Record.
+- Recent work. `Item:` under the base Record, where it is a piece an outlet published.
 - Preferences. `Preference:` under the journalist Preferences.
 - Contact routes. `Route:` under the base Routes, and `Route works:` where a statement says the route works.
 - Currency fields. `Still publishes:` under the journalist Outlets, the in-force role, and the in-force beat, which is the beat at the outlet of the in-force role. Each has its own as-of date. Read them for the outlet the pitch addresses.
-- Flags. The base Standing and fit. `Fit: do-not-approach` with a reason code in force is a flag in force. `Fit: approach-with-care` with a code is not a flag in force: name the code and its line to the requester before a draft. `Fit: approach` naming a role line read means the file has been checked and no flag is in force. `Fit: not-assessed`, or the code's `Not available` line, means not checked. In a file of another shape, any statement that the contact is not to be pitched, such as a hard flag or a do-not-pitch note, is a flag in force. In such a file, no flags concept or a flags value of `Not available` means not checked; a statement that no flag was found means checked.
+- Flags. The base Standing and fit, and its `Fit:` verdict, which is not the fit statement this skill writes. The verdict counts only where the file's ask line is the standing ask `skills/Reporter Research/` hands, earned media coverage of the organization by this journalist; any other ask, or none, means not checked. `Fit: do-not-approach` with a reason code in force is a flag in force. `Fit: approach-with-care` with a code is not a flag in force: name the code and its line to the requester before a draft. `Fit: approach` naming an in-force Role line with `Kind: statement` or `Kind: report` means the file has been checked and no flag is in force; naming any other line, it has not been checked. `Fit: not-assessed`, the code's `Not available` line, or the no-ask line means not checked. A `Supplied:` line saying the contact is not to be pitched, such as a carried hard flag, a `hard_exit` that is true, or a do-not-pitch note, is a flag in force, resting on the root's own record. In a file of another shape, any statement that the contact is not to be pitched is a flag in force. In such a file, no flags concept or a flags value of `Not available` means not checked; a statement that no flag was found means checked only where it names its source and its date, and a bare field such as `hard_exit: false` does not.
 
 ### What has not happened yet?
 
@@ -141,6 +142,7 @@ A departure, a move, a retirement, a return, or an outlet closing dated after th
 
 Judge it on the pitch date, after What has not happened yet?.
 
+- The only flags in force rest on the root's own record, not on a reason code: a `Supplied:` line, or a statement in a file of another shape. Tell the requester the statement and its date. Go on only where they say it no longer holds. They do not: refuse this contact. Stop. No draft.
 - A flag is in force. Refuse this contact. Stop. No draft. Tell the requester the flag, its evidence, and its date. Do not name another journalist. Whom to pitch is the earned-media strategy gap named above.
 - No flag is in force. Continue.
 
@@ -155,7 +157,7 @@ Judge it on the pitch date, after What has not happened yet?.
 
 ### Are the currency fields current?
 
-A currency field is current only when it is stated, it is resolved, its own as-of date is on or before the pitch date, and the days from that date to the pitch date are at most the threshold. The in-force role and the in-force beat are also current where a dated record item by the journalist at that outlet, on that beat for the beat, is dated on or before the pitch date and within the threshold: published work at the outlet shows they still hold the role there, as the desk checks read it. Resolved means the file does not leave two values for it that cannot be ordered. The threshold is the file's `staleness_days` where its `staleness_source` is `requester`, otherwise 30 days. The file's `status`, its `last_verified` date, and work at another outlet never show that a field is current.
+A currency field is current only when it is stated, it is resolved, its own as-of date is on or before the pitch date, and the days from that date to the pitch date are at most the threshold. The in-force role and the in-force beat are also current where a dated record item that is a piece by the journalist the outlet published, on that beat for the beat, is dated on or before the pitch date and within the threshold: published work at the outlet shows they still hold the role there, as the desk checks read it. Resolved means the file does not leave two values for it that cannot be ordered. The threshold is the file's `staleness_days`, otherwise 30 days. The file's `status`, its `last_verified` date, and work at another outlet never show that a field is current.
 
 - This run has already refreshed the file once because a currency field failed this test, and a field still fails the test above: older than the threshold with no work that keeps it current, dated after the pitch date, missing, or unresolved. Stop. No draft. Name the field and which of those four it is.
 - A field fails the test above: older than the threshold with no work that keeps it current, dated after the pitch date, missing, or unresolved, and they declined a refresh of a file in another shape. Stop. No draft. Name the field and which of those four it is. Do not refresh against that decline.
@@ -308,7 +310,7 @@ The first package carries the plan and does not carry drafted follow-ups. A foll
 
 Write only a package What does the package hold? presents as ready.
 
-Read the declarations again, as at Where is the pitch log, and what has been agreed?, because a run of `skills/Reporter Research/` may have written one since. A package home is a directory a declaration says holds pitch packages to journalists. A pitch log is not a package. A directory that holds one file per journalist, reporter, or media contact, `sources/`, `memory/`, an archive, a program's own folder, or a program whose declaration states another concern is never a package home and never receives one, whatever a declaration says. Count homes by directory. Take the first match.
+Read the declarations again, as at Where is the pitch log, and what has been agreed?, because a run of `skills/Reporter Research/` may have written one since. A package home is a directory a declaration says holds pitch packages to journalists. A pitch log is not a package. A directory that holds one file per journalist, reporter, media contact, or bio sketch, `sources/`, `memory/`, an archive, a program's own folder, or a program whose declaration states another concern is never a package home and never receives one, whatever a declaration says. Count homes by directory. Take the first match.
 
 - More than one package home. Ask which. Write nothing until they name one.
 - One package home. Write the package there, creating the directory where it does not exist yet: a declared home is not an invented one, per Working Files in `standards/conventions.md` in `wiser`.
