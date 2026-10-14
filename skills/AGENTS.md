@@ -9,6 +9,6 @@ Capabilities a user invokes by name for their output; `wiser/standards/primitive
 | Skill | Description | Owner |
 |-------|-------------|-------|
 | `Pitch/SKILL.md` | One pitch package to one named journalist for a story already chosen, with the fit, the angle, the email and subject lines, the follow-ups, the terms, and the desk-check result, plus the pitch-log row once a send is confirmed | Stands alone |
-| `Reporter Research/SKILL.md` | Write or update one reporter file on one named journalist from their professional public record, and from the owning root's media database where it has one | Stands alone |
+| `Reporter Research/SKILL.md` | Write or update one reporter file on one named journalist, a wiser Bio Sketch with this plugin's journalist extension, from their professional public record and the owning root's media database where it has one | Stands alone |
 
 <!-- /generated:index -->
