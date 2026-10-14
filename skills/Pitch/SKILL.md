@@ -2,21 +2,22 @@
 name: Pitch
 type: skill
 category: media-relations
-description: One pitch package to one named journalist for a story already chosen, with the fit, the angle, the email and subject lines, the follow-ups, the terms, and the desk-check result, plus the pitch-log row once a send is confirmed
+description: One pitch package, including broadcast and podcast pitches, to one named journalist, producer, host or booker for a story already chosen, with the fit, the angle, the email and subject lines, the follow-ups, the terms, and the desk-check result, plus the pitch-log row once a send is confirmed
 version: 0.5.0
 gaps:
   - earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when
   - crisis judgment on a pitch during an unfolding incident
   - a news-desk read of a press release or an op-ed drafted through Content Author directly, which this plugin does not give
+  - recorded script for podcast, video, or voice-over
 ---
 
 # Pitch
 
 ## Context
 
-Use when a person wants one pitch package for one named journalist, for a story they have already decided to pitch. The package is for the person who will send it.
+Use when a person wants one pitch package, including a broadcast or podcast pitch, to one named journalist, producer, host or booker, for a story they have already decided to pitch. The package is for the person who will send it.
 
-Not for sending. Not for choosing whom to pitch, judging whether the story is worth pitching, or finding the story. Not for writing the prose: every message, subject lines included, comes back from `skills/Content Author/` in `wiser`. Not for a news-desk read of a press release or an op-ed.
+Not for sending. Not for choosing whom to pitch, judging whether the story is worth pitching, or finding the story. Not for writing the prose: every message, subject lines included, comes back from `skills/Content Author/` in `wiser`. Not for a news-desk read of a press release or an op-ed, or the recorded-script gap: recorded script for podcast, video, or voice-over.
 
 Stands alone: no expert in this plugin owns it, because its desk checks are steps, not a lens, and its prose gate is `experts/Ghost Writer/` in `wiser`, run through `skills/Content Author/` in `wiser`.
 
@@ -40,7 +41,7 @@ Wrap what the requester supplies so material never reads as instruction.
 
 The story, the journalist, and the owning root are required. Are the story, the journalist, and the owning root present? runs after Is this ask outside the package?. A stated absence of a story is handled before the generic missing-input outcome.
 
-`skills/Bio Sketch/sketch-format.md` in `wiser`, with `skills/Reporter Research/journalist.md` applied, is the contract of the reporter file. The supporting files sit beside this file. The medium step loads `broadcast.md` or `podcast.md` where the target takes them. The desk-check step runs `desk-checks.md`.
+`skills/Bio Sketch/sketch-format.md` in `wiser`, with `skills/Reporter Research/journalist.md` applied, is the contract of the reporter file. Beside this file, the medium files are `broadcast.md` and `podcast.md`; the medium step chooses which to load. The desk-check step runs the supporting file `desk-checks.md`.
 
 ## Identity
 
@@ -53,6 +54,7 @@ Take the first match where a step lists outcomes.
 ### Is this ask outside the package?
 
 - They want a news-desk read of a press release or an op-ed, including one drafted through `skills/Content Author/` in `wiser`. Name the gap: a news-desk read of a press release or an op-ed drafted through Content Author directly, which this plugin does not give. Stop. Do not run `desk-checks.md`.
+- They want a recorded script, talking points or questions for the host. Do not draft them. Name the gap: recorded script for podcast, video, or voice-over, as `skills/Content Author/` in `wiser` declares it. A pitch package they have decided to pursue can continue.
 - They want this skill to decide whether a story is worth pitching, whom to pitch, which route to use, or whether now is the time to pitch at all. Name the gap: earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when. Stop that question. Do not answer it. A package they have already decided to pursue can continue.
 - They want a pitch package for one journalist they have named, for a story they have decided to pitch. Continue.
 
@@ -171,19 +173,37 @@ A currency field is current only when it is stated, it is resolved, its own as-o
 
 ### Which medium does the target take?
 
-Read the reporter file and the request. Take the first match.
+For a follow-up or a reply, carry the medium and facts from the earlier package and load the medium files it records. The earlier package is not in hand: ask for it and stop until supplied. Gather only what is needed to answer what the journalist asked for, using the hand-off below for missing public facts. Run none of the first-pitch gather questions or minimum stops. Then go to Can the file support a fit?. The outcomes and gathering below otherwise apply to a first pitch.
 
-- A podcast that is also filmed, or another target shown to take both broadcast and podcast pitches. Load `broadcast.md` and `podcast.md`, beside this file. The podcast file's audience-fit rule applies.
-- A television, radio, streaming-video or video interview show, a segment, or its producer or booker. Load `broadcast.md`, beside this file.
-- A podcast, its host or its booker. Load `podcast.md`, beside this file.
-- A print, digital or newsletter desk. Load neither.
-- The file and the request do not show which. Ask which medium this offer is for. Stop until they answer, then take the first match again.
+Read the reporter file and the request. Choose by the outlet and offer this pitch addresses, not by the target's other work.
 
-Read the loaded file now. Gather what it names before the Content Author request. Carry its additions through the fit, the angle, the applicable contested choices and the package. Show evidence supplements the file; it never replaces the flag or currency steps. Where both files load, gather a shared fact once and carry both files' additions. No loaded file: the package has no variant additions.
+- The file and the request conflict on the medium, or the file shows more than one medium and the request does not choose. Ask which outlet and offer this pitch addresses. Stop until answered, then answer this question again.
+- A broadcast offer to a video interview or streaming-video show, a television or radio show or segment, or its producer, booker, reporter, anchor or assignment desk. Load `broadcast.md`. For a radio show with a podcast edition, also load `podcast.md`.
+- A podcast offer to a podcast, its host or its booker. Load `podcast.md`.
+- A print, digital, newsletter, blog or other written desk. Load neither. Go to Can the file support a fit?.
+- Unclear. Ask which medium this offer is for. Stop until answered, then answer this question again.
+
+Where `podcast.md` loads and the file does not show whether the podcast is filmed, ask once and stop until answered. A filmed podcast also loads `broadcast.md`.
+
+Read the medium files' show-fact lists now. Combine missing facts about the same show into one list. Missing show facts: run one `skills/External Research/` hand-off in `wiser` by name. Hand `<research_request>` as a natural-language question about those items, naming this pitch package as the consumer; `<scope>` with the show's professional public record and the pitch date; and `<source_material>` with the relevant reporter-file lines and supplied show pages. Use the returned brief with its sources, dates, hedges and evidence labels. No missing show facts: use the file's sourced and dated facts.
+
+A researched show fact contradicts the file's role, beat or outlet, such as a host leaving, a show ending or a segment being dropped: go back through What has not happened yet?, Is a flag in force? and Are the currency fields current? with that evidence. Where the contradiction holds on the pitch date, treat the currency field as unresolved and refresh as those steps say, handing the conflicting evidence with the refresh request.
+
+Is the booking minimum in hand?
+
+- The show or segment name, its host, or the addressee's route to booking is missing. The route says whether they book guests or how this offer reaches the booker. Name each missing item. Ask for it and stop until supplied.
+- All three are in hand. Continue.
+
+Gather the remaining medium facts now, before Can the file support a fit?. Ask each medium file's gather question at its own heading; ask its contested choices only at Which contested choices apply?. Where both medium files load, gather the same fact about the same show once.
+
+What guest readiness is in hand? Read the requester's material for a past appearance, name pronunciation and availability.
+
+- All three are missing. Name each gap. Go on only if the requester says to. They do not: stop. No draft.
+- At least one is in hand. Record each supplied item with its source and name each missing item as a gap. Continue.
 
 ### Can the file support a fit?
 
-From the beat, the audience, the formats, and recent work, state why this journalist is the reader. Where a supporting file loaded, use its show evidence as well. Cite each dated piece that statement uses. Cite no piece that has no date. Where it uses no dated piece, say so.
+From the beat, the audience, the formats, and recent work, state why this journalist is the reader. Where a medium file loaded, use its show evidence as well. Cite each dated piece that statement uses. Cite no piece that has no date. Where it uses no dated piece, say so.
 
 - The file and any show evidence support that statement. Keep it. Continue.
 - They support none. Say so. Stop. No draft. Whether to pitch someone else is the earned-media strategy gap named above. Do not name another journalist.
@@ -192,12 +212,14 @@ From the beat, the audience, the formats, and recent work, state why this journa
 
 Fit the decided story to this journalist's audience and formats, as the file and any loaded show evidence show them.
 
-- The requester's sources hold the story, and every story figure and hook the angle uses. Any show fact the angle uses is supported by the file or the loaded show evidence. State the angle. Continue.
+- The requester's sources hold the story, and every story figure and hook the angle uses. State the angle. Continue.
 - A figure or a hook the sources do not hold. Ask for it, or drop it. Do not invent it. Stop until it is supplied or dropped. Do not hand it off while it remains.
 
 ### What do the terms require?
 
 Copy approval is never an ask. They want it: say this skill does not ask a desk to clear copy. Ask for the one ask the pitch does make. Do not hand copy approval to Content Author.
+
+A requested release date is a term. Handle it through the embargo question below, with its date, time and time zone, when this message asks for release agreement or the agreed record holds it. Name any unannounced launch or release date as a protected detail there. Where booking and agreement to release timing would be two asks, ask which single ask this message makes. They choose booking: keep the unagreed release-date term in the package and leave it out of this message and its embargo question. They choose release agreement: hold the booking ask for later.
 
 An exclusive or an embargo they want: ask which details it protects, if they have not said. Do not guess the details. Where a branch below holds a detail back and they wanted it in this message, tell them.
 
@@ -228,18 +250,18 @@ Sources disagree on the choices below. Present the positions and the public sour
 
 A choice already answered stays answered. On a later message, present only a choice this message newly raises.
 
-Where a supporting file loaded, put its applicable choices with these. A channel-specific recommendation takes the place of the general default for that choice, with both positions and their evidence shown. Ask once for that choice.
+Where a medium file loaded, put its applicable choices with these. A medium-specific recommendation takes the place of the general default for that choice, with both positions and their evidence shown. Where both medium files load, `podcast.md` owns lead time. Ask once for that choice.
 
 Where the row is not chosen yet, choose it in Which row does Content Author load? before a default that depends on that row is stated.
 
-- **Length.** Under 150 to 200 words (Torossian; Prezly; Muck Rack's 2026 State of Journalism, in which 69 percent of journalists prefer under 200). Two to three paragraphs and 200 to 400 words (Muck Rack's pitching guidance). About 200 words as a default, set by the journalist's workflow, with longer pitches winning where the journalist had no time to research (Michael Smart, 2026). Default: the band of the row that will load. Where that band includes a length near 200 words, recommend that, unless the file shows this journalist needs the longer case.
-- **Subject-line length.** Under 50 characters (Muck Rack's relations guidance). Under 60 characters, or 6 to 10 words (Prezly). Under 10 words (Agility; Cision). 6 to 10 words (Torossian). Up to 100 characters (PR Newswire). In 2021 Smart reported that subject lines opened 90 percent of the time or more averaged ten words or 64 characters. A 2024 write-up gives a median of ten words for pitches opened at a rate of 90 percent or higher, and half of more than 150 coverage-winning subjects at eight words or more. Whether the two describe one analysis is not established. Those figures measure opens, or a selected set, from one vendor's users. Default: the length the row that will load states. The subject states the news.
-- **Opening.** Open by praising or citing the work (Prezly; PR Newswire's pitch templates). A compliment only where it is specific enough to be credible (Michael Smart, 2015). Skip the compliment, because pitches written by a model now open that way and journalists pull back (Michael Smart, 2026). The first line is the news (Torossian). Default: never open on praise of the journalist's work. The line that says why this journalist names the specific connection between this story and the coverage the file shows, in the terms of that published work, and says of that work only what the file states: its title, its date, and what it covered. Where the loaded row fixes what a line holds, the row governs that line.
-- **Follow-ups.** How many, how far apart, and what each adds. Once, and never a second, about three business days later (Torossian). One is enough for most (Muck Rack's pitching guidance). Cision's 2025 State of the Media: 64 percent say follow up once, and more than a quarter say never. Up to two, after three to five days (Prezly). Three to seven days, adding something new (Muck Rack's relations guidance, which also describes a first follow-up at about 24 hours). At least 24 hours for timely news, and three to four days for an evergreen feature (Michael Smart). Selected placements after many touches, on stories that kept gaining substance, with no denominator (Michael Smart). Something new each time (Muck Rack's relations guidance; Agility) against a short note that only resurfaces the first message (Torossian; Prezly). Michael Smart accepts an early note of that kind and wants new material in later emails. Muck Rack lists "circling back" as a phrase to avoid; some templates are built on it. Default: one follow-up, three to five days after the send, adding a fact, an asset, a source, or a development the first message did not contain. Where nothing new exists when it comes due, ask before drafting a note that only resurfaces the first message.
-- **Day and time.** Tuesday to Thursday morning, and avoid Monday or Friday, in several pitching guides (Muck Rack's relations guidance; Prezly; Torossian). Muck Rack's 2024 survey: 44 percent prefer pitches before noon, 64 percent have no day preference, and Monday leads among those who have one. Early in the week (PR Newswire). No universal best time, with Friday, Sunday, and overnight used for important contacts (Michael Smart). Default: the journalist's daytime, before noon where the requester has no reason to choose another hour. No day is required.
-- **Attachments.** Link, do not attach (Muck Rack's pitching guidance; Torossian; Prezly; Michael Smart). PR Newswire's FAQ says to attach relevant materials. Default: no attachment on the first message. Offer one named asset. Where the file shows the journalist asked for a kit, attaching that kit follows the media pitch row.
-- **A phone call.** Email is the channel journalists prefer (Cision's 2025 State of the Media, about 87 percent; Cision's newsroom guidance, many prefer email to a call as first contact). A call for time-sensitive news, complex coordination, or a local television desk, usually after an email (Michael Smart). A mobile number in the pitch (Torossian). Default: the pitch is an email. No call in its place.
-- **The word exclusive in a subject line.** Sample subjects use it (PR Newswire; Prezly; Torossian). Promising the exclusive before the journalist has shown interest gives away control of the story; ask whether they want it first (Michael Smart). Default: leave the word out. Put this choice when the requester raises it, and distinguish a truthful description, such as proprietary research, from an exclusive offer.
+- **Length.** Under 150 to 200 words (Torossian; Prezly; Muck Rack's 2026 State of Journalism, in which 69 percent of journalists prefer under 200). Two to three paragraphs and 200 to 400 words (Muck Rack's pitching guidance). About 200 words as a default, set by the journalist's workflow, with longer pitches winning where the journalist had no time to research (Michael Smart, 2026). Recommend the band of the row that will load. Where that band includes a length near 200 words, recommend that, unless the file shows this journalist needs the longer case.
+- **Subject-line length.** Under 50 characters (Muck Rack's relations guidance). Under 60 characters, or 6 to 10 words (Prezly). Under 10 words (Agility; Cision). 6 to 10 words (Torossian). Up to 100 characters (PR Newswire). In 2021 Smart reported that subject lines opened 90 percent of the time or more averaged ten words or 64 characters. A 2024 write-up gives a median of ten words for pitches opened at a rate of 90 percent or higher, and half of more than 150 coverage-winning subjects at eight words or more. Whether the two describe one analysis is not established. Those figures measure opens, or a selected set, from one vendor's users. Recommend the length the row that will load states. The subject states the news.
+- **Opening.** Open by praising or citing the work (Prezly; PR Newswire's pitch templates). A compliment only where it is specific enough to be credible (Michael Smart, 2015). Skip the compliment, because pitches written by a model now open that way and journalists pull back (Michael Smart, 2026). The first line is the news (Torossian). Recommend opening without praise of the journalist's work. The line that says why this journalist names the specific connection between this story and the coverage the file shows, in the terms of that published work, and says of that work only what the file states: its title, its date, and what it covered. Where the loaded row fixes what a line holds, the row governs that line.
+- **Follow-ups.** How many, how far apart, and what each adds. Once, and never a second, about three business days later (Torossian). One is enough for most (Muck Rack's pitching guidance). Cision's 2025 State of the Media: 64 percent say follow up once, and more than a quarter say never. Up to two, after three to five days (Prezly). Three to seven days, adding something new (Muck Rack's relations guidance, which also describes a first follow-up at about 24 hours). At least 24 hours for timely news, and three to four days for an evergreen feature (Michael Smart). Selected placements after many touches, on stories that kept gaining substance, with no denominator (Michael Smart). Something new each time (Muck Rack's relations guidance; Agility) against a short note that only resurfaces the first message (Torossian; Prezly). Michael Smart accepts an early note of that kind and wants new material in later emails. Muck Rack lists "circling back" as a phrase to avoid; some templates are built on it. Recommend one follow-up, three to five days after the send, adding a fact, an asset, a source, or a development the first message did not contain. Where nothing new exists when it comes due, ask before drafting a note that only resurfaces the first message.
+- **Day and time.** Tuesday to Thursday morning, and avoid Monday or Friday, in several pitching guides (Muck Rack's relations guidance; Prezly; Torossian). Muck Rack's 2024 survey: 44 percent prefer pitches before noon, 64 percent have no day preference, and Monday leads among those who have one. Early in the week (PR Newswire). No universal best time, with Friday, Sunday, and overnight used for important contacts (Michael Smart). Recommend the journalist's daytime, before noon where the requester has no reason to choose another hour. No day is required.
+- **Attachments.** Link, do not attach (Muck Rack's pitching guidance; Torossian; Prezly; Michael Smart). PR Newswire's FAQ says to attach relevant materials. Recommend no attachment on the first message. Offer one named asset. Where the file shows the journalist asked for a kit, attaching that kit follows the media pitch row.
+- **A phone call.** Email is the channel journalists prefer (Cision's 2025 State of the Media, about 87 percent; Cision's newsroom guidance, many prefer email to a call as first contact). A call for time-sensitive news, complex coordination, or a local television desk, usually after an email (Michael Smart). For local assignment desks, Smart's account reports calls after email drawing requests for information and coverage, from one practitioner's experience. A mobile number in the pitch (Torossian). Recommend the pitch as an email. No call in its place.
+- **The word exclusive in a subject line.** Sample subjects use it (PR Newswire; Prezly; Torossian). Promising the exclusive before the journalist has shown interest gives away control of the story; ask whether they want it first (Michael Smart). Recommend leaving the word out. Put this choice when the requester raises it, and distinguish a truthful description, such as proprietary research, from an exclusive offer.
 
 Where a choice leaves the band or the cadence of the row that will load, the brief to Content Author states the choice and the reason. The package names that departure as the requester's choice.
 
@@ -268,7 +290,7 @@ A signature, a sender, or the person who will send the message is not a selectio
 
 Ask before any handoff to Content Author.
 
-- A claim the pitch would make has no source in the requester's material or, for a show fact, the evidence a loaded supporting file returned. Ask for the source. Stop until it is supplied or the claim is dropped. Do not hand it off before that.
+- A claim the pitch would make has no source in the requester's material or, for a show fact, the reporter file or the medium step's researched evidence. Ask for the source. Stop until it is supplied or the claim is dropped. Do not hand it off before that.
 - A claim, the one claim included, goes past what its source establishes: its only support is a person's quoted view, or a finding the source states more narrowly or excludes from what it measured. Say what the source does establish. Ask the requester to narrow the claim to that, or to supply the evidence for it. Stop until they answer. Do not hand it off before that.
 - Every claim is sourced and says no more than its source establishes, or the claim is dropped or narrowed. Continue.
 
@@ -292,13 +314,13 @@ The one claim, the one ask, and the length they chose are required. Two claims o
 
 `<user_request>` holds: the owning root; that the piece is a media pitch to one journalist, the row they chose, or that no row applies; the reader, named as the journalist the identity concept describes; the one claim; the angle; the one ask; the terms. Each detail held back is named there, never its value, until the agreed record holds the agreement that detail needs: acceptance of the exclusive, or agreement to the embargo with its date, time and time zone. Then include the value. The length they chose, and the reason where it leaves the row's band; a request for subject-line alternatives, with the subject-line choice and the evidence it rests on; the fit statement as the reason this journalist is the reader. For a follow-up or a reply, it names the message's purpose and the new material it adds, or the material the requester chose to resurface, so the draft does not repeat the first pitch. The ask is restated only as the loaded row asks. Where they accepted the opening default, the request holds that default. Where they chose to open on a reference, the request holds that choice and the reason instead of the never-praise line. The rest of that default stays. A description of the sender before the story is kept to the bare line saying who writes, or cut.
 
-Where a supporting file loaded, `<user_request>` also holds its show fit, guest and readiness facts, assets, named gaps, angle instruction and answered choices. A missing fact is a gap, never an assertion for the email. The request still has one claim and one ask and leaves the loaded Content Author row intact.
+Where a medium file loaded, `<user_request>` adds only the supported facts the one claim and one ask rest on, and one named asset the requester chooses. More than one asset is in hand and none is chosen: ask which one and stop until answered. Gaps, logistics, readiness notes and the other assets stay in the package only. For an interview-show booking, the request says that the first lines state the guest and what they will show or explain.
 
 Where Which voice does the message go out in? gave a selection, hand Content Author that voice selection: the root's path, and where it was made, the declaration's file or the requester. Where it gave none, hand none.
 
 `<source_material>` holds the requester's sources for every claim and the reporter file, and, for a follow-up or a reply, the earlier messages of the thread as the journalist received them. Remove the value of each still-held detail from everything handed to Content Author, the reporter file and the thread included. The desk checks get the originals.
 
-Where a supporting file loaded, include the sources for its additions in `<source_material>`, with their dates, hedges and evidence labels. The same held-detail rule applies to them.
+Where a medium file loaded, include only the sources for the facts and chosen asset the email uses in `<source_material>`, with their dates, hedges and evidence labels. The same held-detail rule applies to them.
 
 ### What did Content Author return?
 
@@ -322,7 +344,7 @@ What came back?
 
 Present a ready package only after a pass that does not name the crisis-judgment gap, with no Ghost Writer finding left unresolved, unless the requester, told the finding, chose to go on without it. Where the run stopped, present the stop. Send nothing. A ready package holds: the fit statement and the dated pieces it cites; the angle; the email and the subject-line alternatives as Content Author returned them; the voice the message went out in, and where that was chosen; Ghost Writer's verdict as Content Author reported it; the desk checks' result and notes; the terms and the agreed record; each contested choice taken, with the default or the requester's word; the follow-up plan (how many, when, and what each would add, from their choice or the default); any contact route listed and not shown to work; and each gap above that applies, named.
 
-Where a supporting file loaded, this same package also holds the additions its package section names: show fit, guest and readiness facts, assets, choices and gaps, with their sources. Add nothing from a file that did not load. A stop names any variant gap that prevented drafting.
+Record which medium files loaded, or that neither did. For each loaded medium file, add what its What is added to the package? names. Add nothing from a medium file that did not load. A stop names each medium gap that prevented drafting. Where researched show facts were used, the package says they were not seen by the desk checks, which judge the reporter file and the agreed record.
 
 The first package carries the plan and does not carry drafted follow-ups. A follow-up is drafted when Which row does Content Author load? says it is due.
 
@@ -372,9 +394,9 @@ Read the declarations again, as Where is the package written? does. A confirmed 
 - Every message and every subject line in the package is text `skills/Content Author/` in `wiser` returned, unedited. Ghost Writer's verdict is the one Content Author reported.
 - `desk-checks.md` ran in a second context on every draft and every follow-up that was presented, handed the four inputs, and a stop was worked before the package was presented as ready. At most two revision requests followed the first draft of that message. What remained after the budget went to the requester with the findings as written.
 - The fit statement cites the dated pieces it uses, or the skill stopped because the file and any show evidence could support no fit.
-- The medium step loaded only the applicable supporting files. Their show fit, guest and readiness facts, assets, choices and gaps reached the Content Author request and the same package with their sources, or a named gap stopped the draft. A filmed podcast used the podcast audience-fit rule. No variant wrote prose or a recorded script.
+- The package records which medium files loaded, and their additions reached it.
 - The agreed record says what was agreed, or it says that nothing has been agreed. Silence was not left to stand as that sentence.
 - Each contested choice is the requester's word or the stated default. A departure from the loaded row's band or cadence is named as their choice, including one Content Author reported.
 - A flag in force produced no draft. A currency field still not current after one refresh, or after a declined refresh, produced no draft. The field and the reason were named.
-- A crisis stop produced no draft and named the gap. Each of the three gaps was named where it applied.
+- A crisis stop produced no draft and named the gap. Each declared gap was named where it applied.
 - A confirmed send appended one new row and named who sent it. No row was written without a confirmed send. The email was not logged. A later status was a new row only where the log already held this message's confirmed send, or the person confirmed the send then.
