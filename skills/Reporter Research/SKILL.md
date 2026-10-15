@@ -3,7 +3,7 @@ name: Reporter Research
 type: skill
 category: media-relations
 description: Write or update one reporter file on one named journalist, a wiser Bio Sketch with this plugin's journalist extension, from their professional public record and the owning root's media database where it has one
-version: 0.2.0
+version: 0.2.1
 ---
 
 # Reporter Research
@@ -77,7 +77,7 @@ Which directory did they name? Take the first match.
 
 ### What is the ask?
 
-The requester asked for the file to pitch from, so the ask is theirs. Hand Bio Sketch this standing ask, stated by the requester, the same for every journalist's file: earned media coverage of the owning root's organization's news by this journalist, through pitches the organization sends. The work it needs is coverage an outlet publishes: reporting, editing the pieces the outlet publishes as a working editor of any rank, producing, hosting, reviewing, or writing a column or opinion, for an outlet independent of the organization and of any company whose marketing that work is. Communications or marketing for a company, content the outlet labels paid or sponsored, operations, an academic or association masthead, and a copy desk are outside that work. So is an advisory, honorary or contributing title on a masthead, unless the Role line naming it states one of the kinds of work above for that outlet. Beat, geography, and fit to one story are not reasons it cannot be served; Pitch judges those for each pitch.
+The requester asked for the file to pitch from, so the ask is theirs. Hand Bio Sketch this standing ask, stated by the requester, the same for every journalist's file: earned media coverage of the owning root's organization's news by this journalist, through pitches the organization sends. The work it needs is coverage an outlet publishes: reporting, editing the pieces the outlet publishes as a working editor of any rank, producing, hosting, reviewing, or writing a column or opinion, for an outlet independent of the organization and of any company whose marketing that work is. Communications or marketing for a company, content the outlet labels paid or sponsored, operations, an academic or association masthead, and a copy desk are outside that work. So is an advisory, honorary or contributing title on a masthead, unless the Role line naming it states one of the kinds of work above for that outlet. Any other title that names one of those kinds of work at that outlet, such as reporter, editor of any rank, producer or host, states that work. A paid or sponsored label on some of the pieces does not make the role one that produces such content. Beat, geography, and fit to one story are not reasons it cannot be served; Pitch judges those for each pitch.
 
 ### Does a file to be replaced say not to pitch?
 
