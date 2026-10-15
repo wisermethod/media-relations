@@ -83,6 +83,6 @@ None.
 4. Pitch preferences the journalist or the outlet stated, with the words and the date.
 5. Audience figures the Reach heading allows, copied as stated.
 6. The angle each recent piece left aside.
-7. What the journalist's role does at each outlet: reports, edits, produces or hosts, or works outside journalism, on a company's marketing, on content the outlet labels paid or sponsored, in operations, on an academic or association masthead, or on a copy desk, each with its date and who stated it; and, for each piece the gather read, any label the outlet puts on it as paid, sponsored, partner or advertising content, or its statement that sponsors have no editorial control, quoted with the piece and its date.
+7. What the journalist's role does at each outlet: reports, edits, produces or hosts, or works outside journalism, on a company's marketing, on content the outlet labels paid or sponsored, in operations, on an academic or association masthead, or on a copy desk, each with its date and who stated it.
 8. Any dated change of beat at each outlet.
 9. Pitch or tip routes the journalist or a current outlet publishes, not reader letters or a general inbox, and the page each was on.
