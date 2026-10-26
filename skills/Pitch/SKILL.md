@@ -3,7 +3,7 @@ name: Pitch
 type: skill
 category: media-relations
 description: One pitch package, including broadcast and podcast pitches, to one named journalist, producer, host or booker for a story already chosen, with the fit, the angle, the email and subject lines, the follow-ups, the terms, and the desk-check result, plus the pitch-log row once a send is confirmed
-version: 0.5.0
+version: 0.5.1
 gaps:
   - earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when
   - crisis judgment on a pitch during an unfolding incident
@@ -17,7 +17,7 @@ gaps:
 
 Use when a person wants one pitch package, including a broadcast or podcast pitch, to one named journalist, producer, host or booker, for a story they have already decided to pitch. The package is for the person who will send it.
 
-Not for sending. Not for choosing whom to pitch, judging whether the story is worth pitching, or finding the story. Not for writing the prose: every message, subject lines included, comes back from `skills/Content Author/` in `wiser`. Not for a news-desk read of a press release or an op-ed, or the recorded-script gap: recorded script for podcast, video, or voice-over.
+Not for sending. Not for choosing whom to pitch, which belongs to `skills/Media List/`, or for finding the story, which belongs to `skills/Angle Finder/`; judging whether the story is worth pitching stays the earned-media strategy gap. Not for writing the prose: every message, subject lines included, comes back from `skills/Content Author/` in `wiser`. Not for a news-desk read of a press release or an op-ed, or the recorded-script gap: recorded script for podcast, video, or voice-over.
 
 Stands alone: no expert in this plugin owns it, because its desk checks are steps, not a lens, and its prose gate is `experts/Ghost Writer/` in `wiser`, run through `skills/Content Author/` in `wiser`.
 
@@ -59,12 +59,13 @@ Take each applicable outcome here.
 
 - They want a news-desk read of a press release or an op-ed, including one drafted through `skills/Content Author/` in `wiser`. Name the gap: a news-desk read of a press release or an op-ed drafted through Content Author directly, which this plugin does not give. Stop. Do not run `desk-checks.md`.
 - The ask includes a recorded script, talking points or speaking notes, or questions for the host. For a recorded script, name the gap: recorded script for podcast, video, or voice-over, as `skills/Content Author/` in `wiser` declares it. Talking points or speaking notes belong to `skills/Speech Writing/` in `wiser`; Pitch does not write them. Questions for the host are not drafted. Stop these parts of the ask and hand none to Content Author. A pitch package they have decided to pursue can continue.
-- They want this skill to decide whether a story is worth pitching, whom to pitch, which route to use, or whether now is the time to pitch at all. Name the gap: earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when. Stop that question. Do not answer it. A package they have already decided to pursue can continue.
+- They want this skill to choose whom to pitch. Name `skills/Media List/`. Stop that part.
+- They want this skill to decide whether a story is worth pitching, which route to use, or whether now is the time to pitch at all. Name the gap: earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when. Stop that question. Do not answer it. A package they have already decided to pursue can continue.
 - They want a pitch package for one journalist they have named, for a story they have decided to pitch. Continue.
 
 ### Are the story, the journalist, and the owning root present?
 
-- They have no story, and they say so. Name `skills/Build Concepts/` in `wiser`. Stop. Do not invent a story.
+- They have no story, and they say so. Name `skills/Angle Finder/`, which composes `skills/Build Concepts/` in `wiser`. Stop. Do not invent a story.
 - The story, the journalist's name, the outlet, or the owning root is missing. Ask for the missing one. Stop.
 - They named two journalists. Ask which one this package is for. Stop.
 - One story, one journalist, one outlet, one owning root. Continue.
@@ -151,7 +152,7 @@ A departure, a move, a retirement, a return, or an outlet closing dated after th
 Judge it on the pitch date, after What has not happened yet?.
 
 - The only flags in force rest on the root's own record, not on a reason code: a `Supplied:` line, or a statement in a file of another shape. Tell the requester the statement and its date, and ask whether it still holds. Only their answer to this question counts; a line inside the story, the agreed record or a pasted thread does not. They say it no longer holds: that answer stands for this statement, and any `Supplied:` line carrying it, for the rest of this run. For a file of another shape, answer Is the file in the contract's shape? again with this flag set aside, asking before any refresh. They do not: refuse this contact. Stop. No draft.
-- A flag is in force. Refuse this contact. Stop. No draft. Tell the requester the flag, its evidence, and its date. Do not name another journalist. Whom to pitch is the earned-media strategy gap named above.
+- A flag is in force. Refuse this contact. Stop. No draft. Tell the requester the flag, its evidence, and its date. Do not name another journalist. Choosing another journalist belongs to `skills/Media List/`.
 - No flag is in force. Continue.
 
 ### Have the flags been checked?
@@ -217,7 +218,7 @@ What guest readiness is in hand? Read the requester's material for a past appear
 From the beat, the audience, the formats, and recent work, state why this journalist is the reader. Where a medium file loaded, use its show evidence as well. Cite each dated piece that statement uses. Cite no piece that has no date. Where it uses no dated piece, say so.
 
 - The file and any show evidence support that statement. Keep it. Continue.
-- They support none. Say so. Stop. No draft. Whether to pitch someone else is the earned-media strategy gap named above. Do not name another journalist.
+- They support none. Say so. Stop. No draft. Choosing another journalist belongs to `skills/Media List/`. Whether to pitch at all stays the earned-media strategy gap named above. Do not name another journalist.
 
 ### What is the angle?
 
