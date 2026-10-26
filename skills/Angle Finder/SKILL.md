@@ -162,7 +162,7 @@ Name `skills/Media List/` to choose journalists and `skills/Pitch/` for when the
 
 ### Where is the package written?
 
-Write only a package What does the package hold? presents. A run stopped before a package writes nothing. Before any write, form the date as `YYYY-MM-DD` and the topic slug as lowercase words joined by hyphens; where either cannot be made so, ask and write nothing until both are in form, then return to the home match below.
+Write only a package What does the package hold? presents. A run stopped before a package writes nothing. Before any write, form the package's as-of date as `YYYY-MM-DD` and the topic slug as lowercase words joined by hyphens; where either cannot be made so, ask and write nothing until both are in form, then return to the home match below.
 
 Read declarations only: the owning root's `AGENTS.md`, and every `AGENTS.md` under each work directory it declares. A package home is a directory a declaration says holds angle packages. Exclude reporter-file directories, pitch-package directories, `sources/`, `memory/`, archives, programs declared for another concern and anything under them before counting homes or eligible programs, whatever a declaration says. Never offer a program under an excluded directory. Refuse any write whose path is under one. A program's own folder is not a package home. Count homes by directory. Take the first match.
 
@@ -180,7 +180,7 @@ What did the person answer? Only where the offer, or the question which director
 - They name an undeclared directory or one excluded above. Say why and ask again. Write nothing.
 - They decline or name none. Write nothing. Say the package stays in the session.
 
-Name the new file `<YYYY-MM-DD>-<topic slug>.md`. If taken, add `-2`, then `-3`, before `.md` until free. Never overwrite or change an existing package. Tell the person the path written, or that nothing was written and why.
+Name the new file `<YYYY-MM-DD>-<topic slug>.md`, the date the package's as-of date. If taken, add `-2`, then `-3`, before `.md` until free. Never overwrite or change an existing package. Tell the person the path written, or that nothing was written and why.
 
 ## Pitfalls
 
