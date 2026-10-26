@@ -90,16 +90,15 @@ For each of audience, spokesperson and what they can speak to, and medium or rou
 
 ### Is the concept settled?
 
-Does the material record state the take or claim the story rests on?
+Does the material record hold anything What does a desk get? could name as a contribution, in `angle-checks.md`'s Contribution terms? A specific Build Concepts marked constructed does not count.
 
-- Yes. Continue without Build Concepts.
+- Yes. Continue without Build Concepts. The checks judge what the material carries; developing a take further is not this skill's work.
 - No. Run `skills/Build Concepts/` in `wiser` by name. Hand `<source_material>` the material record and `<user_request>` its direction and constraints, naming the owning root and the audience from the preceding step as the reader. For `not stated`, hand "no audience is stated; do not ask and do not infer one". The audience field stays `not stated`; a reader Build Concepts names never fills it. Take its package as returned. Do not reproduce its extraction method.
 
 What did Build Concepts return? Only where this initial call ran. Take the first match.
 
 - A concept package. Add it to the material record, with its core insight and sourced or constructed markings. Continue.
-- Nothing to teach or no package, and the material holds anything What does a desk get? could name as a contribution. Record its reason as a note. Continue with the material as it stands, so the checks decide.
-- Nothing to teach or no package, and the material holds no desk offer at all, a bare direction. Say so plainly and report its reason. Stop. No package.
+- Nothing to teach, or no package. Say so plainly and report its reason. Stop. No package.
 
 ### What does a desk get?
 
