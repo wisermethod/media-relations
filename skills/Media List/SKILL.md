@@ -178,7 +178,7 @@ Present the package with its as-of date, angle, requested size or none, and resu
 - Each gap above that applies, named.
 - The next step by name, for when the person decides to pitch this angle: one `skills/Pitch/` run per remaining journalist, handed the angle, that journalist and outlet, the reporter file and the owning root, under Pitch's declared Inputs. Hand no as-of date; Pitch sets its own.
 
-No picks remain: say so, with the findings and gaps. Do not choose a new angle. Nothing is drafted or sent.
+No picks remain: say so, with the findings and gaps, and name `skills/Reporter Research/` for any journalist the person wants filed for this angle. Name no journalist yourself. Do not choose a new angle. Nothing is drafted or sent.
 
 ### Where is the list written?
 
