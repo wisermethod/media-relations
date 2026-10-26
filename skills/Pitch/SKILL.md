@@ -3,7 +3,7 @@ name: Pitch
 type: skill
 category: media-relations
 description: One pitch package, including broadcast and podcast pitches, to one named journalist, producer, host or booker for a story already chosen, with the fit, the angle, the email and subject lines, the follow-ups, the terms, and the desk-check result, plus the pitch-log row once a send is confirmed
-version: 0.5.0
+version: 0.5.1
 gaps:
   - earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when
   - crisis judgment on a pitch during an unfolding incident
@@ -17,7 +17,7 @@ gaps:
 
 Use when a person wants one pitch package, including a broadcast or podcast pitch, to one named journalist, producer, host or booker, for a story they have already decided to pitch. The package is for the person who will send it.
 
-Not for sending. Not for choosing whom to pitch, judging whether the story is worth pitching, or finding the story. Not for writing the prose: every message, subject lines included, comes back from `skills/Content Author/` in `wiser`. Not for a news-desk read of a press release or an op-ed, or the recorded-script gap: recorded script for podcast, video, or voice-over.
+Not for sending. Not for choosing whom to pitch, which belongs to `skills/Media List/`, or for finding the story, which belongs to `skills/Angle Finder/`; judging whether the story is worth pitching stays the earned-media strategy gap. Not for writing the prose: every message, subject lines included, comes back from `skills/Content Author/` in `wiser`. Not for a news-desk read of a press release or an op-ed, or the recorded-script gap: recorded script for podcast, video, or voice-over.
 
 Stands alone: no expert in this plugin owns it, because its desk checks are steps, not a lens, and its prose gate is `experts/Ghost Writer/` in `wiser`, run through `skills/Content Author/` in `wiser`.
 
@@ -217,7 +217,7 @@ What guest readiness is in hand? Read the requester's material for a past appear
 From the beat, the audience, the formats, and recent work, state why this journalist is the reader. Where a medium file loaded, use its show evidence as well. Cite each dated piece that statement uses. Cite no piece that has no date. Where it uses no dated piece, say so.
 
 - The file and any show evidence support that statement. Keep it. Continue.
-- They support none. Say so. Stop. No draft. Whether to pitch someone else is the earned-media strategy gap named above. Do not name another journalist.
+- They support none. Say so. Stop. No draft. Choosing another journalist belongs to `skills/Media List/`. Whether to pitch at all stays the earned-media strategy gap named above. Do not name another journalist.
 
 ### What is the angle?
 
