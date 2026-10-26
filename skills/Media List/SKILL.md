@@ -64,7 +64,8 @@ Every answer the person gave in this run stands across returns to an earlier ste
 - They say they have no angle. Name `skills/Angle Finder/`. Stop until an angle is in hand.
 - An angle is not stated. Ask for it as they state it. Stop until it is in hand.
 - No owning root is settled. Ask for it. Stop until it is in hand.
-- The angle and owning root are present. Continue.
+- A supplied date is not one absolute date. Follow the Inputs date rule and stop until resolved.
+- The angle and owning root are present, and the date is resolved or unset. Continue.
 
 ### Does this stop for crisis?
 
@@ -81,9 +82,9 @@ Read declarations only: the owning root's `AGENTS.md`, and every `AGENTS.md` und
 
 ### Which files are candidates?
 
-Search the declared reporter-file directories for the angle's beat, audience and format concepts and their synonyms, not just headings or a schema marker. Rank matches by how many of those concepts their stated beat, role and format lines hold, then by the most recent dated piece. Read whole in that order until the chosen size's worth of supported picks is in hand, otherwise ten. Report how many matches went unread; keep them as ranked reserves, without claiming a fit.
+Read every file of a journalist the person named whole before the cap; record missing files. A named file is never an unread reserve. Search the declared reporter-file directories for the angle's beat, audience and format concepts and their synonyms, not just headings or a schema marker. Rank matches by how many of those concepts their stated beat, role and format lines hold, then by the most recent dated piece. Read unnamed matches whole in that order until the chosen size's worth of supported picks is in hand, otherwise ten. Report how many matches went unread; keep them as ranked reserves, without claiming a fit.
 
-Include the journalists the person named; record missing files. Keep duplicate files as alternatives for the batch to choose, never merged; read each whole and count the journalist once. Read each file by concept, as `list-checks.md`'s opening paragraph under The checks and Pitch's How is the file read? state, for the outlet the pick names.
+Keep duplicate files as alternatives for the batch to choose, never merged; read each whole and count the journalist once. Read each file by concept, as `list-checks.md`'s opening paragraph under The checks states, for the outlet the pick names.
 
 - The file holds dated work by this journalist at this outlet. Use only what it holds to propose a fit.
 - The file holds no such dated work, or no file exists. Record the missing dated work for the checks and batch. Read no fit from it. Fill no field.
@@ -118,7 +119,7 @@ What came back for the pick?
 
 ### What does the batch need from the person?
 
-Assemble files missing, duplicate-file choices, missing dated work, and every pick-check stop whose change is conversion or refresh through `skills/Reporter Research/`, including shape, currency, fit and reason. Add each flag finding where every flag in force rests only on the root's own record.
+Assemble files missing, duplicate-file choices, missing dated work, and every pick-check stop whose change is conversion or refresh through `skills/Reporter Research/`, including shape, currency and fit. A reason finding is file work only where the file holds no dated piece by that journalist at that outlet; otherwise take the corrected-reason outcome below. Add each flag finding where every flag in force rests only on the root's own record.
 
 - Nothing in the batch. Ask no question. Continue.
 - One or more items. Put one question for the whole batch. Name each journalist and outlet, each file or its absence, and every finding as written. Ask which duplicate file to use; offer Reporter Research by name for each file-work need, or declining that work; ask whether each root-record flag still holds. A missing file cannot be read as it stands. Record each journalist's Reporter Research yes or decline, file choice and each flag answer together.
@@ -127,24 +128,32 @@ Assemble files missing, duplicate-file choices, missing dated work, and every pi
 
 One budget per pick across this run: one refresh or conversion through `skills/Reporter Research/`, including obtaining a missing file. It is spent when the work runs. A finding counts against the budget only after a correction was attempted for it. Putting it to the person is not an attempt.
 
-Use only the duplicate file the batch chose and its results. A recorded decline blocks both refresh and conversion. For each journalist's file work, take the first match.
+For duplicate files, take the first match.
 
-- The batch recorded their yes to Reporter Research for this journalist, no decline is recorded and this pick's budget is open. Run `skills/Reporter Research/` by name for that journalist and owning root. Hand its declared Inputs: `<journalist>` with the outlet; `<owning_root>`; `<source_material>` with the whole selected existing file where present; and `<as_of>` as the list date. Hand `<staleness>` only where the file's `staleness_source` is `requester`, using its `staleness_days`. Read the file returned, including one reported unchanged. Form its reason through Who goes on the list?, then run that pick's checks once more. No file returned: report why; keep the unresolved findings as written.
+- No file choice is recorded. Drop that journalist, with both paths and the missing choice under findings. Run nothing and merge nothing.
+- A file choice is recorded. Use only that file and its results.
+
+Apply each root-record flag answer before any Reporter Research run. For each answered finding where every flag in force rests only on the root's own record, take the first match.
+
+- It still holds. Drop the pick and run nothing for it.
+- It no longer holds. Run no Reporter Research on that file in this run, since it re-supplies the statement. Keep the pick with the stop and answer recorded as written, the file as it was; do not call the stop a pass. End this pick's changes.
+
+A recorded decline blocks both refresh and conversion. For each remaining journalist's file work, except a file kept unchanged by the flag answer, take the first match.
+
+- The batch recorded their yes to Reporter Research for this journalist, no decline is recorded and this pick's budget is open. Run `skills/Reporter Research/` by name for that journalist and owning root. Hand its declared Inputs: `<journalist>` with the outlet; `<owning_root>`; `<source_material>` with the whole selected existing file where present; and `<as_of>` as the list date. Hand `<staleness>` only where the file's `staleness_source` is `requester`, using its `staleness_days`. Read the file returned, including one reported unchanged. Take the further check below. No file returned: report why; keep the unresolved findings as written.
 - They declined. Record a declined conversion in the pick where applicable. A stop needing the declined file work drops the pick, with the stop as written under findings. A missing file supports no pick.
 - No recorded yes for this journalist, or the budget is spent. Run nothing. Any file-work finding goes to the person as written; a stop blocked this way drops the pick under findings.
 
 Ask no further question. Never fill or change a reporter-file field yourself.
 
-For each finding that needs no file work, take the first match.
+For each pick still open to changes, take the first match for each finding that needs no file work.
 
-- Every flag in force rests only on the root's own record and that finding's batch answer says it still holds. Drop the pick.
-- Every flag in force rests only on the root's own record and that finding's batch answer says it no longer holds. Keep the pick with the stop and answer recorded as written; do not edit the file or call the stop a pass.
-- The change names a corrected reason and the file holds dated work for it. State only that fit.
+- The change names a corrected reason and the file holds dated work for it. Take the further check below; a declined Reporter Research does not drop it.
 - The change names a corrected reason and the file holds no dated work for it. Drop the pick.
 - The change drops the pick. Drop it.
 - Otherwise. Put the finding to the person as written.
 
-A changed reason gets one further pick run only if that pick has not had one. What remains after the further run goes to the person as written, with no further question or file work. A pick with any unresolved stop, except a root-record flag the batch answer cleared, is off the list and under findings. Checks that drop picks leave a shorter list; do not backfill from reserves.
+After a returned file, or for a corrected reason, state the fit with Who goes on the list?'s reason rules only. Run that pick's checks once more in a new second context with only What did the pick checks return?'s declared inputs. Do not re-enter the batch, the size cut or the file-work match. One further check per pick, then stop. What remains goes to the person as written, with no further question or file work. A pick with any unresolved stop is off the list and under findings, except a pick kept by the root-record flag answer above. Checks that drop picks leave a shorter list; do not backfill from reserves.
 
 ### What did the list check return?
 
@@ -156,7 +165,7 @@ What came back for the list?
 - `stop` on Size in `list-checks.md`. Keep the ten strongest by Who goes on the list?'s rank. Name in the package that a larger size is the person's to choose, with the check's words. Record the checked size and removals with the unchanged finding. Larger-size positions appear only where this check returns them.
 - Any other `stop`. Put the finding to the person as written.
 
-This skill adds no hold, wait or condition outside the checks. A result names the crisis gap: carry its scope as stated and return to Does this stop for crisis? on the record it names.
+This skill adds no hold or condition on pitching the checks did not return. The batch and home questions are this skill's decided asks. A result names the crisis gap: carry its scope as stated and return to Does this stop for crisis? on the record it names.
 
 ### What does the list hold?
 
@@ -175,7 +184,7 @@ No picks remain: say so, with the findings and gaps. Do not choose a new angle. 
 
 Write only where a pick remains. None remains: keep the package in the session and stop this step.
 
-Read the declarations again, as Where are the reporter files? does, because Reporter Research may have written one. A list home is a directory a declaration says holds media lists. Before counting homes, exclude the reporter-file directories, pitch-package directories, `sources/`, `memory/`, archives, a program's own folder and a program declared for another concern, and anything under them. Apply these exclusions to every offered or named path. Count homes by directory.
+Read the declarations again, as Where are the reporter files? does, because Reporter Research may have written one. A list home is a directory a declaration says holds media lists. Before counting homes, exclude reporter-file directories, pitch-package directories, `sources/`, `memory/`, archives and programs declared for another concern, each with anything under them. Exclude the media-relations program's own folder itself as a home, but not its children. Apply these exclusions to every offered or named path. Count homes by directory.
 
 - More than one list home. Ask which. Write nothing until they name one.
 - One list home. Write there, creating the directory where absent, per Working Files in `standards/conventions.md` in `wiser`.
@@ -204,7 +213,7 @@ Name the file `<as-of date>-<topic slug>.md`, the date as `YYYY-MM-DD`, the slug
 - Every pick and the list were checked in a second context; each pick ran alone with its own whole reporter file.
 - Every pick cites dated work by that journalist at that outlet held in its file. No reporter-file field was filled.
 - Every file-work need and root-record flag question reached the person in one batch after pick checks. Reporter Research ran only on that journalist's recorded yes; a decline blocked refresh and conversion.
-- At most one refresh or conversion and one further check ran per pick. Unresolved picks stayed off the list, except a root-record flag the person's answer cleared with the stop recorded. Remaining findings reached the person as written.
-- The default size held, or the person chose another; fewer than five was stated and never padded.
+- At most one refresh or conversion and one further check ran per pick. Unresolved picks stayed off the list, except a pick kept by a root-record flag answer with the stop and answer recorded. Remaining findings reached the person as written.
+- No chosen size kept at most ten. Fewer than five was stated and never padded.
 - The package names routed and dropped files, results and notes, ranked reserves, applicable gaps, and one Pitch run per remaining journalist for when the person decides to pitch.
 - The list was written as a new file in a resolved media-list home, or stayed in the session with the reason stated. Nothing already there changed.
