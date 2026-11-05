@@ -16,7 +16,7 @@ This extends `skills/Bio Sketch/sketch-format.md` in `wiser`. Its Lines and Figu
 - Register: `Public statement`, `Firsthand` or `Secondhand`. `Still publishes:` and `Outlet closed:` carry `Kind`.
 - Required: `Outlet:`. The other tokens are not required.
 
-`Still publishes: yes` needs a piece the outlet published, with its publication date, or a dated statement from the outlet. `Still publishes: no` needs a dated statement from the outlet. A listing, directory or database row is a sighting of that listing, never the in-force `yes`. Where neither publication evidence nor a dated statement arrives, `Still publishes` is `Not available` with the reason. An outlet that is not current takes no line here; its history stays in the base Role. An outlet whose in-force role line there is a `Departure:`, a `Retirement:`, a `Move:` to another organization, or a `Former role:`, with `Kind: statement` or `Kind: report`, is not current here, whatever its record items. On an update, that Role line is this run's evidence changing each carried `Outlet:`, `Type:`, `Still publishes:`, `Beat:`, `Audience:`, `Format:`, and `Reach:` line that names that outlet: each is marked `Superseded` with the Role line's date and the line, as Lines states, and nothing is deleted. Lines not tied to that outlet, such as a stated `Preference:`, are not marked.
+`Still publishes: yes` needs any dated piece the outlet published within the staleness window, whoever wrote it, or a dated statement from the outlet. `Still publishes: no` needs a dated statement from the outlet. A listing, directory or database row is a sighting of that listing, never the in-force `yes`. Where neither publication evidence nor a dated statement arrives, `Still publishes` is `Not available` with the reason. An outlet that is not current takes no line here; its history stays in the base Role. An outlet whose in-force role line there is a `Departure:`, a `Retirement:`, a `Move:` to another organization, or a `Former role:`, with `Kind: statement` or `Kind: report`, is not current here, whatever its record items. On an update, that Role line is this run's evidence changing each carried `Outlet:`, `Type:`, `Still publishes:`, `Beat:`, `Audience:`, `Format:`, and `Reach:` line that names that outlet: each is marked `Superseded` with the Role line's date and the line, as Lines states, and nothing is deleted. Lines not tied to that outlet, such as a stated `Preference:`, are not marked.
 
 ### Beat
 
@@ -77,7 +77,7 @@ None.
 
 ## Queries for the gather
 
-1. Whether each current outlet still publishes, and the audience it serves.
+1. Whether each current outlet still publishes, using the Outlets evidence rule above, and the audience it serves.
 2. Who the recent pieces quote; for a host, guests the episode states took part, never names from a headline list.
 3. Whether each current outlet's desk takes staff reporting, contributed pieces, outside quotes, or segments or episodes.
 4. Pitch preferences the journalist or the outlet stated, with the words and the date.
