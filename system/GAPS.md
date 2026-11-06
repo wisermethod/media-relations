@@ -10,7 +10,7 @@ Counted 2026-10-26: 10 gaps across 3 primitives. Bullet count: `grep -E '^- ' sy
 
 ### Angle Finder
 
-- earned-media strategy judgment on whether a story is worth pitching, to whom, by which route, and when
+- earned-media strategy beyond ranking stories: a decision to pursue one, an outreach route and a pitch schedule
 - crisis judgment on a pitch during an unfolding incident
 - a news-value read of a stunt, a mascot, a visual or a playful tie-in, which the angle checks have no contribution entry for
 
