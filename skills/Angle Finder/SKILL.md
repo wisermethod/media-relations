@@ -167,7 +167,7 @@ Under each story retain its threads and all its items: reporter, outlet, publica
 
 What does a reader want to know next? For each story and ungrouped breaking thread, write up to three distinct questions the coverage raises but does not answer, the strongest first, in a reader's own voice. Write the question directly. Where a sentence claims an absence, say what the coverage in hand does not say. Never claim nobody has answered, nobody is asking, no one knows, or that a question is still open across the whole field.
 
-Return the stories with names, threads, items, counts and open questions; the breaking-thread list; then the ungrouped items and coverage limitations. If no story or breaking thread is supported, return that shortage to the parent sender context; it still considers an evergreen offer. The parent adds this output unchanged to the material record.
+Return the stories with names, threads, items, counts and open questions; the breaking-thread list; then the ungrouped items and coverage limitations. The return must arrive whole: where the host lets the reader context write a file, it writes the whole return to one new file in the session's scratch area, outside the owning root, and hands back only its path, which the parent reads whole; otherwise it returns the text. A return that arrives marked truncated or cut short is incomplete: the parent opens a new reader context once with the same handoff; still incomplete, it uses the return with the gap named in the working part and never fills it. If no story or breaking thread is supported, return that shortage to the parent sender context; it still considers an evergreen offer. The parent adds this output unchanged to the material record.
 
 ### 2. The sender context
 
