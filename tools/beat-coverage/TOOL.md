@@ -74,7 +74,7 @@ Markdown grouped by file, with one bullet line per kept item in recorded order. 
 | `outside_window` | Beat-matching dated items outside the window, including other years |
 | `bytes` | Total source bytes read, before filtering |
 
-Only `pull --output` writes a deliverable. It creates no parent directories and replaces nothing. A failed or interrupted write can leave an incomplete new output; inspect it and choose a fresh path. Tests create temporary `beat-coverage-test-<random>` siblings beside this tool and remove their own directories after ordinary success or failure; interruption can leave them. No run contacts an external service.
+Only `pull --output` writes a deliverable. It creates no parent directories and replaces nothing. The caller creates its declared destination directory before passing `--output`; to keep Markdown in the session instead, omit that option. The output screen compares every existing ancestor's device and inode with this tool directory, so a different case or symbolic link cannot hide a destination inside it. A failed or interrupted write can leave an incomplete new output; inspect it and choose a fresh path. Tests create temporary `beat-coverage-test-<random>` siblings beside this tool and remove their own directories after ordinary success or failure; interruption can leave them. No run contacts an external service.
 
 ## Troubleshooting
 

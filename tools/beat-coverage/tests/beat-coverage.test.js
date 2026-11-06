@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import {
   cpSync, existsSync, linkSync, mkdirSync, mkdtempSync, readFileSync,
-  realpathSync, rmSync, symlinkSync, writeFileSync,
+  realpathSync, rmSync, statSync, symlinkSync, writeFileSync,
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -229,6 +229,26 @@ test('an output parent symlink cannot bypass protection of the tool directory', 
   const protectedPath = join(TOOL, 'must-not-be-written.md');
   refusal([...standard('pull'), '--output', join(directory, 'tool-link', 'must-not-be-written.md')], /--output resolves inside this tool/);
   assert.equal(existsSync(protectedPath), false);
+});
+
+test('a different case of the tool directory cannot bypass output protection', t => {
+  const variant = join(dirname(TOOL), 'BEAT-COVERAGE');
+  if (!existsSync(variant)) {
+    t.skip('This filesystem is case-sensitive; the case variant does not name the tool.');
+    return;
+  }
+  const actual = statSync(TOOL);
+  const spelled = statSync(variant);
+  assert.equal(spelled.dev, actual.dev);
+  assert.equal(spelled.ino, actual.ino);
+  for (const parent of ['', 'scripts', 'missing-parent']) {
+    const name = 'case-guard-must-not-be-written.md';
+    const protectedPath = join(TOOL, parent, name);
+    assert.equal(existsSync(protectedPath), false);
+    t.after(() => rmSync(protectedPath, { force: true }));
+    refusal([...standard('pull'), '--output', join(variant, parent, name)], /--output resolves inside this tool/);
+    assert.equal(existsSync(protectedPath), false);
+  }
 });
 
 test('source symlinks are screened and exclusions also use the resolved basename', t => {

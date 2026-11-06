@@ -123,6 +123,28 @@ function inside(child, parent) {
   return part === '' || (part !== '..' && !part.startsWith(`..${sep}`) && !isAbsolute(part));
 }
 
+// realpath can preserve a caller's case on case-insensitive filesystems.
+// Compare every existing ancestor by identity, including above a missing parent.
+function insideToolDirectory(target) {
+  let toolIdentity;
+  try { toolIdentity = statSync(TOOL); }
+  catch { fail('--output cannot be screened against this tool; check its directory and permissions.'); }
+  let ancestor = target;
+  for (;;) {
+    try {
+      const identity = statSync(ancestor);
+      if (identity.dev === toolIdentity.dev && identity.ino === toolIdentity.ino) return true;
+    } catch (error) {
+      if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') {
+        fail('--output ancestors cannot be screened; check their paths and permissions.');
+      }
+    }
+    const parent = dirname(ancestor);
+    if (parent === ancestor) return false;
+    ancestor = parent;
+  }
+}
+
 function inputFiles(options) {
   const directory = canonical(options.dir, '--dir');
   let entries;
@@ -266,7 +288,7 @@ export function collect(options) {
 
 function outputPath(value) {
   const path = canonical(value, '--output');
-  if (inside(path, TOOL)) fail('--output resolves inside this tool; choose a work directory outside it.');
+  if (insideToolDirectory(path)) fail('--output resolves inside this tool; choose a work directory outside it.');
   if (!path.toLowerCase().endsWith('.md')) fail('--output must end in .md.');
   if (existsSync(path)) fail('--output already exists; choose a new file so no earlier output is lost.');
   try {
