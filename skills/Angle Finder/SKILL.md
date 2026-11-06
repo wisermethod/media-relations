@@ -117,7 +117,7 @@ Does the coverage input itself name the sender or carry the sender's own publish
 - Yes. Keep the original in the material record; remove sender-identifying wrapper text and exclude the sender's own work and any item naming or otherwise identifying the sender, its people or its own products. In a research or opened-page return, omit each whole finding or source entry if any of its text, title or URL names or otherwise identifies the sender, its people or its products. Omit any separately returned sender-identifying title or URL in full too. Hand what remains, or nothing from that return. Do not alter a recorded headline to hide the name. Record exclusions for the sender context only.
 - No. Keep its text unchanged, subject to the reference handling below.
 
-Keep file references and their root-relative paths in the parent's material record. In the reader copy, replace disk references with neutral item ids and keep their mapping only in the parent. Hand the redacted text itself, never the owning-root or coverage-file path. The parent restores the mapped references alongside the unchanged reader output in the working part.
+Keep file references and their root-relative paths in the parent's material record. In the reader copy, replace disk references with neutral item ids and keep their mapping only in the parent. When assigning coverage ids, choose a letter prefix used by no material-record or claims-register reference in this run, comparing without regard to case; use that prefix for recorded and added research items throughout the run. Record the chosen prefix and its separation from those references in the working part. Hand the redacted text itself, never the owning-root or coverage-file path. The parent restores the mapped references alongside the unchanged reader output in the working part.
 
 #### What dated research is handed over?
 
@@ -135,7 +135,7 @@ What did the search return? Only where the intersection is nonempty.
 - Readable items. After the parent's unfiltered incident read, keep only items in the breaking-search window, apply the sender filter above, and add the eligible text with its marks and any returned shortage or coverage limit. Open added items used to support a requested story as below.
 - No items, a shortage or a search that could not run. Carry the returned limitation with `Not available` and its reason. Use only the recorded coverage that is in hand; claim no knowledge of this week's news that never returned.
 
-To open an added item or a known recorded coverage URL, run `skills/External Research/` in `wiser` by name. Hand `<research_request>` a question asking it to fetch that URL and return the page's headline and publication date for this story menu or single-angle package; `<scope>` the URL and settled coverage window; `<source_material>` the recorded item with its sources and marks. The parent reads the whole opened-page return for a sender incident before applying the sender filter to it.
+To open added items or known recorded coverage URLs, run `skills/External Research/` in `wiser` by name. Hand `<research_request>` a question asking it to fetch each handed URL and return each page's headline and publication date for this story menu or single-angle package; `<scope>` the URL or list of URLs and settled coverage window; `<source_material>` the corresponding recorded items with their sources and marks. The parent reads the whole return, including every opened page, for a sender incident before applying the sender filter to it. Apply the page-match rule below separately to each item.
 
 Did the return show that the item's own page was opened, with that page's returned headline and publication date matching the recorded item?
 
@@ -165,7 +165,7 @@ Also list every thread that broke this week, including ones already grouped, wit
 
 Under each story retain its threads and all its items: reporter, outlet, publication date at its recorded precision, headline as recorded, URL and reporter-file reference where supplied, and unverified or opened mark. Missing metadata stays `not stated`. Put an item in at most one story. Count only those items: item count, distinct outlet count, newest dated item and whether this week's news reopens it. Say the counts are of recorded items, flag duplicate recordings, and do not treat them as independent corroboration. A partial date supplies no precise breaking date.
 
-What does a reader want to know next? For each story and ungrouped breaking thread, write up to three distinct questions the coverage raises but does not answer, the strongest first, in a reader's own voice. Write the question directly. Where a sentence claims an absence, say what the coverage in hand does not say. Never claim nobody has answered, nobody is asking, no one knows, or that a question is still open across the whole field.
+What does a reader want to know next? For each story and ungrouped breaking thread, write up to three distinct questions the coverage raises but does not answer, the strongest first, in a reader's own voice. Where a story has more than one thread, spread the questions across its threads rather than taking all from one. Spread them across kinds too: what is actually happening and whether anyone could tell; who answers for it; and what a reader in this beat's audience would do next. At least one widens beyond the named actors to what a reader's own organization would want to know or do. Use only the handed coverage and keep every question one it raises and does not answer. Write each question directly. Where a sentence claims an absence, say what the coverage in hand does not say. Never claim nobody has answered, nobody is asking, no one knows, or that a question is still open across the whole field.
 
 Return the stories with names, threads, items, counts and open questions; the breaking-thread list; then the ungrouped items and coverage limitations. The return must arrive whole: where the host lets the reader context write a file, it writes the whole return to one new file in the session's scratch area, outside the owning root, and hands back only its path, which the parent reads whole; otherwise it returns the text. A return that arrives marked truncated or cut short is incomplete: the parent opens a new reader context once with the same handoff; still incomplete, it uses the return with the gap named in the working part and never fills it. If no story or breaking thread is supported, return that shortage to the parent sender context; it still considers an evergreen offer. The parent adds this output unchanged to the material record.
 
@@ -189,58 +189,58 @@ For each of audience, spokesperson and what they can speak to, and medium or rou
 
 #### Is the concept settled?
 
-Does the material record hold an eligible contribution in `angle-checks.md`'s Contribution terms, applying Build the angle record's eligibility rule? In one-story mode test the requested story's question. For a menu test whether at least one story or breaking thread carried to ranking has such a contribution. With no coverage, test the story-less evergreen candidate's question and offer.
+Does the material record hold an eligible contribution in `angle-checks.md`'s Contribution terms, applying Build the angle record's eligibility rule and the clean-pairing test in What does the sender add? In one-story mode test all the requested story's questions, across its threads. For a menu test whether at least one whole story or ungrouped breaking thread carried to ranking has such a contribution. With no coverage, test the story-less evergreen candidate's question and offer.
 
 - Yes. Continue without Build Concepts. Developing an already usable take further is not this call's work.
 - No. Run `skills/Build Concepts/` in `wiser` by name. Hand `<source_material>` the material record and `<user_request>` its direction and constraints, naming the owning root and the audience above as the reader. For `not stated`, name the intended reader as "unstated". The audience field stays `not stated`; a reader Build Concepts names never fills it. Take its package as returned. Do not reproduce its extraction method.
 
 What did that call return? Only where it ran.
 
-- A concept package in one-story mode with no eligible offer answering the requested question. Name that mismatch and take Rank and drop's none-kept path, returning the reader findings, drops and reasons as a named stop with no angle package.
-- A concept package otherwise. Add it with its core insight, sources and sourced or constructed markings. With no coverage, form a story-less evergreen candidate from its eligible offer and question; in one-story mode keep only an offer answering the requested question. Continue.
+- A concept package in one-story mode with no eligible offer answering any of the requested story's questions cleanly, or its material-held service question where no coverage exists. Name that mismatch and take Rank and drop's none-kept path, returning the reader findings, drops and reasons as a named stop with no angle package.
+- A concept package otherwise. Add it with its core insight, sources and sourced or constructed markings. With no coverage, form a story-less evergreen candidate from its eligible offer and question; in one-story mode keep only an offer answering one of the requested story's questions cleanly, or its material-held service question where no coverage exists. Continue.
 - Nothing to teach, no package, or a call stopped for a missing reader. Say so plainly and report its reason. Take Rank and drop's none-kept path, returning the reader findings, drops and reasons with no angle package.
 
 #### What does the sender add?
 
-For each story, ungrouped breaking thread and story-less evergreen candidate carried to ranking, find what the sender brings to one question: a view, fact, data, person, example or access. Cite each by material-record id or claims-register row. Use the reader context's question for a breaking thread too; do not invent one to fit the sender.
+Before ranking, test every question of every story carried to ranking, across all its threads, and every ungrouped breaking thread's questions, against every argument and fact the material holds. Also test any person, data, example or access offered, and any story-less evergreen candidate's material-held question. Pair each argument or fact with the question it answers cleanly: it resolves the question as asked, and the sender is not the party whose claim or product the question doubts. Use only the reader context's questions where coverage exists; do not invent or reshape one to fit the sender. Choose the strongest clean pairing for each candidate. Record the tested pairings and their reasons in the working part, citing material-record ids or claims-register rows there, including each rejected pairing that casts the sender as the doubted party. Do not use that pairing; where the same argument answers another story's question cleanly, put it there. Apply this clean-pairing test to new contributions and reworks too.
 
 Where does an argument come from?
 
-- The material shows the spokesperson holding it, and it bears on the question. Apply it: write it in one sentence as their argument, then the question it answers. Applying that argument to this story is the pitch angle, never a fact about the story or a quotation they did not say.
-- The person's account holds it, but the spokesperson is not shown holding it. Say it is a position to put to the spokesperson, not yet theirs.
+- The material shows the spokesperson holding it, and it answers the question cleanly. Apply it: write it in one sentence as their argument, then the question it answers. Applying that argument to this story is the pitch angle, never a fact about the story or a quotation they did not say.
+- The person's account holds it and it answers the question cleanly, but the spokesperson is not shown holding it. Say it is a position to put to the spokesperson, not yet theirs.
 - Neither. Do not attribute it to them. Write `nothing in the material` or `touches the topic only` where nothing answers the story's questions, even as an argument.
 
-The same material may serve several stories; reuse is never a reason to drop one. The sender's own published material is proof for this step, never coverage. If a missed sender item is discovered here, leave the reader output unchanged and record the exclusion in a separate sender-side note in the same material record; exclude the item from the kept story's coverage and adjust its following count before ranking. Otherwise carry the coverage as returned.
+Each entry is a whole story the reader returned, with that story's following and name, even when the chosen question comes from just one of its threads. A grouped thread, including one on the breaking-thread list, never becomes a separate entry. Only an ungrouped breaking thread or a story-less evergreen may stand without a parent story. The same material may serve several stories; reuse is never a reason to drop one. The sender's own published material is proof for this step, never coverage. If a missed sender item is discovered here, leave the reader output unchanged and record the exclusion in a separate sender-side note in the same material record; exclude the item from the kept story's coverage and adjust its following count before ranking. Otherwise carry the coverage as returned.
 
 For every spokesperson line, what tension makes it worth quoting?
 
 - A reader could dispute its answer, mechanism or consequence. Carry the line and the question it answers.
-- Nobody would disagree with it. Flag that beside the line. Reframe around the buyer's question the news raises. Propose an answer the material supports that someone could argue with; where none is held, record the answer needed as a question for the sender, never as their position.
+- Nobody would disagree with it. Flag that in one short sentence beside the line. Reframe around the buyer's question the news raises, in one short sentence there too. Propose an answer the material supports that someone could argue with; where none is held, record the answer needed as a question for the sender, never as their position.
 - No spokesperson line is offered. Record that; judge the fact, person, data, example or access offered on its own.
 
 Which name-check outcome applies to each candidate?
 
 - A story-less evergreen. Carry it to Rank and drop with `No coverage found in the window` and no name-check failure; continue the sender-claim check below.
 - The story's name holds against its actual coverage. Keep it.
-- The name does not hold, but the coverage supports a narrower or different story. Flag the overreach and propose that name and frame, keeping the original reader output unchanged in the record. Where vendors each define a category as what they sell, test the frame of what the thing is and how a buyer would judge a good one, rather than claiming everyone is in it.
+- The name does not hold, but the coverage supports a narrower or different name and frame for the whole story. Record the overreach, the original name and the proposed name and frame in the working part, keeping the original reader output unchanged. Use the proposed name in field 7 for checking and as the entry's heading; the menu shows the name-check result only through that heading, never the name-check working. Do not turn one thread into the entry. Where vendors each define a category as what they sell, test the frame of what the thing is and how a buyer would judge a good one, rather than claiming everyone is in it.
 - No supported story can be named. Carry that failure to Rank and drop; invent no coverage to rescue it.
 
 Does a sender claim undercut this story's own argument?
 
-- Yes. Flag the exact claim beside the argument, with its source or row and approval status; explain the clash. Do not silently use it as proof.
+- Yes. Beside the argument, flag the claim and explain the clash in one short sentence in plain words, keeping its approval status in the text. Put its source or row in that field's sources list. Do not silently use it as proof.
 - No. Carry the proof as held.
 
 For a competitor's deal, speak to the buyer's question in a frame that outlasts the deal. Do not turn the sender into a commentator on the other companies' products or customers.
 
 #### Rank and drop
 
-Rank all supported stories, breaking-thread candidates and story-less evergreen candidates by three things together: following, using the reader context's counts; the fit and distinctiveness of the sender's answer to a question, by fact, data, example or argument; and timing, using newest items, this week's threads and any dated event ahead. Record the evidence and a short judgment for each factor, and explain the order where factors pull differently. A breaking thread is weighed even when its item count is small. An evergreen without coverage records no following or news timing; that shortage alone does not drop a usable offer.
+Rank all supported whole stories, ungrouped breaking-thread candidates and story-less evergreen candidates by three things together: following, using the reader context's counts; the fit and distinctiveness of the sender's clean answer to a question from any of the story's threads, by fact, data, example or argument; and timing, using newest items, this week's threads and any dated event ahead. Record the evidence and a short judgment for each factor, and explain the order where factors pull differently. An ungrouped breaking thread is weighed even when its item count is small; a grouped one strengthens its whole story's timing. An evergreen without coverage records no following or news timing; that shortage alone does not drop a usable offer.
 
 What stays?
 
-- No supported story or material-held evergreen offer, or nothing distinctive the sender holds, argument included, answers any of its questions. Drop it with the reason, however big it is. Sharing the sender's product category is not distinctive.
-- An answer fits, with a claim not yet approved. Keep it; put the claim on the approvals list, not among the drops.
-- Otherwise an answer fits. Keep it.
+- No supported story or material-held evergreen offer, or nothing distinctive the sender holds, argument included, answers any of its questions cleanly. Drop it with the reason, however big it is. A story whose only pairing casts the sender as the doubted party has no fit. Sharing the sender's product category is not distinctive.
+- An answer fits cleanly, with a claim not yet approved. Keep it; put the claim on the approvals list, not among the drops.
+- Otherwise an answer fits cleanly. Keep it.
 
 None kept: return the reader findings, drops and reasons as a named stop, with no angle package. One-story mode returns that story's package or its named stop, never a substitute story chosen silently.
 
@@ -263,36 +263,48 @@ For each kept story, take each form the material holds, as `angle-checks.md`'s T
 
 What did the hook lookup return? Only where it ran.
 
-- A source or date for the named hook that fills an unstated field without conflicting with the material. Add it to the record and field, with its source, hedge and labels.
+- A source or date for the named hook that fills an unstated field without conflicting with the material. Add it to the material record and that field's sources list, keeping its hedge and labels in the text too.
 - A conflicting source or date, or a different hook. Keep the material's hook and values; record the conflict beside them. An unresolved field remains `not stated`.
 - Nothing returned, or research could not run. Keep the field `not stated` and carry `Not available` with the reason.
+
+#### Open what the menu will show
+
+After Rank and drop and before the honesty checks, select the three to seven items each kept entry will show from its whole story's coverage, or its ungrouped breaking thread's coverage; fewer held, keep fewer and say so. For each entry with recorded URLs, the parent makes one External Research URL handoff as defined above, handing that entry's full list of recorded URLs for the selected items in one call. Open those items, except any this run already opened with a page match, which keep their marks, and apply the existing page-match rule to each return: `opened YYYY-MM-DD` only on a matching headline and publication date from the item's own page; otherwise `unverified`. An item with no recorded URL stays `unverified` and goes on the task list by outlet and headline. A story-less evergreen has no coverage to open.
+
+Read the whole return and every opened page for a sender incident before filtering or using any of it. Then apply the existing sender filter. Keep originals, exclusions and mark changes beside the unchanged reader output in the working part; update the selected items and following evidence without filling a vacancy with an unopened replacement. Reapply the name and clean-pairing tests in place to the remaining coverage. If the exclusions leave no supported story or clean pairing, apply Rank and drop's drop outcome in place. Failed openings remain unverified and go on the task list; they alone do not drop a story. Carry these final marks into each item's field text and sources before the honesty checks and both check files.
 
 #### Run the honesty checks last
 
 Assemble a provisional menu and working part in the output shape below, or the single-angle equivalent. On the whole, take each applicable outcome, fix the failure, and record what was fixed.
 
-- Coverage differs from the reader record after its explicit sender-side exclusions, an unverified item is stated as fact, or a count does not say what it counts. Restore that eligible coverage without reinstating excluded sender material, attribute the unread item as unread, or specify the adjusted count.
-- A spokesperson's material does not support the offered line's application to this question. The material shows them holding an argument that bears on this question: rewrite the line as that argument with its true attribution. It does not: return that story to Rank and drop.
+- Coverage differs from the reader record after its explicit sender-side exclusions and recorded opening updates, an unverified item is stated as fact, or a working count does not say what it counts. Restore that eligible coverage without reinstating excluded sender material, attribute the unread item as unread in the text, or specify the adjusted count and its method in the working part only.
+- A spokesperson's material does not support the offered line's application to this question. The material shows them holding an argument that answers this question cleanly: rewrite the line as that argument with its true attribution. It does not: return that story to Rank and drop.
 - This week's news carries many voices on the same point. Say so.
-- A sender claim is not approved under the material's approval rule. Write it as proposed, `after approval`, and name the approval; never drop the story for that absence.
+- A sender claim is not approved under the material's approval rule. Write it as proposed, `after approval`, naming who approves in plain words; never drop the story for that absence.
 - A coverage claim says nobody, no one or still open. Say what the coverage in hand does not say, in `story-checks.md`'s own change words; do not keep a claim that nobody has answered, even bounded to this coverage. An every claim without a basis: narrow it to the outlets actually held.
-- The same question-and-answer wording appears in several stories. Give each its own question and application; reword, never drop for reuse of material.
+- The same question-and-answer wording appears in several stories. Keep each story's chosen reader question and write its own application of the answer; never invent a question or drop a story for reuse of material.
 - None of these. Keep the provisional output.
 
 ### 3. The checks, per kept story
 
 #### Build the angle record
 
-Build one record per kept story, breaking thread or story-less evergreen from the provisional menu text that will be shown, after the honesty fixes. Copy that text into these eight fields, with its source references, sourcing registers, hedges and approval wording. The menu's entry heading is the story's name in the reader's own words from field 7 as checked, never field 1; a story-less evergreen uses the plain offer description from checked field 1, marked `Story-less evergreen`. What readers are following is field 7; The open question is field 8; What we add is field 1 followed by field 2, then fields 4, 5 and 6 with their labels; Why here is field 3. Coverage in field 7 is the exact list of item records selected for the menu, with their marks. The full coverage stays in the working part. Every empty field is `not stated`. Run the checks on this record and present exactly these fields' text in those menu lines, subject only to the rerun outcome's final local removals or narrowings.
+Build one record per kept whole story, ungrouped breaking thread or story-less evergreen from the provisional menu text after the honesty fixes. Each of its eight fields has **Text**, in plain words a pitcher could use, and its own **Sources** list. Copy the text that will be shown, without source references embedded in it. In that field's sources list keep the material-record ids, claims-register rows, coverage ids, record keys, sourcing registers and provenance notes that resolve each statement; retain the supplied sources, URLs, hedges and evidence labels there too. Coverage and reader provenance belong in fields 7 and 8's sources lists, except the individual why-now items cited in field 3; fields 1 to 6's sources otherwise come from sender material and contribution sources, never reader findings. An empty text is `not stated`; a field with no recorded sources says so in its sources list, never inventing one. The working part carries text and sources together for every field.
 
-- headline angle
-- contribution it offers a desk, in `angle-checks.md`'s Contribution terms, with material and source for each
-- why-now as stated, with its source
-- audience
-- any spokesperson offered and what they can speak to
-- any medium or route the person named
-- story readers are following, named in the reader's own words, with its coverage as recorded and each item's opened or unverified mark
-- open question it answers
+The text itself keeps every shown item's opened or unverified mark, all applicable hedges and evidence labels, `after approval` with who approves in words, and a position not yet the spokesperson's explicitly said to be so. Each tension flag, proposed line reframe and claim that undercuts an argument stays in one short sentence beside the line it concerns. The text never contains material-record ids, claims-register rows, coverage ids, record keys, thread or story numbers from the reader output, "per the reader context", count-method notes or the name check's working. The name check's result appears only as the entry's name; where a proposed narrower name replaces a failed one, field 7 uses that proposed name and its sources list records both names; the name-check reason stays in the working part outside the check handoff.
+
+The menu's heading is the entry's rank number and the checked name in field 7, never field 1; a story-less evergreen uses the plain offer description from checked field 1, marked `Story-less evergreen`. Map the eight fields as follows, keeping text within these bounds before checking:
+
+1. **Headline angle:** one sentence saying what the sender adds, first in **What we add**.
+2. **Contribution:** the argument or fact in at most two sentences, then its proof in at most two sentences, in `angle-checks.md`'s Contribution terms. Each flag or reframe is one short sentence beside its line, in addition to those limits. This follows field 1 in **What we add**.
+3. **Why-now:** **Why here**, at most two sentences naming the hook with its date and opened or unverified mark, or the evergreen form or `None found` as held. A hook with no recorded matching page opening stays unverified; a missing date stays `not stated`. Keep its source in this field's sources list.
+4. **Audience:** the stated audience, labelled **Audience**.
+5. **Spokesperson and scope:** any spokesperson offered and what they can speak to, with that label.
+6. **Medium or route:** any medium or route the person named, with that label.
+7. **Story readers are following:** the story's name, which heads the entry and is not repeated beneath it, then **What readers are following**, one line saying what is happening, then the exact three to seven selected item records, each with reporter, outlet, date, recorded headline and opened or unverified mark. Fewer held: show fewer and say so, never pad. An unread item's claim is attributed as unread. The whole story's name heads the entry even if field 8 comes from only one thread. An ungrouped breaking thread is marked `Breaking thread`, with its date and window; an unstated window stays `not stated`. A story-less evergreen says `No coverage found in the window`. All remaining coverage stays in the working part.
+8. **Open question:** **The open question**, one question in the reader's voice that the sender answers cleanly.
+
+Run the checks on each field's text and sources together. Present exactly the checked fields' text, without their sources lists, subject only to the rerun outcome's final local removals or narrowings. Where field 4, 5 or 6 has identical checked text in every presented entry, show that field's exact checked text once in the menu header with its label, omitting it from the entries. Test each of those fields separately; keep its text and sources in every entry's working record even when the menu shows the text once.
 
 The headline angle states what the sender adds to the story's question: the spokesperson's recorded line applied as their argument, or the sender's fact. It never restates the news as the offer; the news belongs in field 7, which angle checks do not receive. For a story-less evergreen, field 1 is a plain description of its offer and field 7 is `No coverage found in the window`; state its material-held service question in field 8.
 
@@ -302,7 +314,7 @@ Keep the as-of date with the record. A stunt-shaped offer stays named as such, w
 
 For each story, run `angle-checks.md` unchanged in a second context that did not build it, then `story-checks.md` in another second context, per Behavioral Core in `wiser`. On a host with one context, a new chat given only the allowed handoff is each check's second context. If no such context or chat can be opened for a check, leave that check uncompleted, name the missing context and omit that story from the presented menu; never run it in the context that built the record. Each available context receives only its own check file and three wrapped inputs, never the other file, its verdict or the reasoning that built the package:
 
-- `<angle>`: the first six fields for angle checks; all eight for story checks.
+- `<angle>`: the first six fields for angle checks; all eight for story checks, each handed as its text together with its own sources list. The sources are part of that field's input, not a fourth wrapped input. For angle checks, include only sources belonging to fields 1 to 6; do not attach field 7 or 8's sources or reader findings.
 - `<material>` for angle checks: the sender's material record with its sources, concept returns and research supporting the sender's contribution. Remove all coverage and reader findings, including coverage from the parent's research, then add back only the individual coverage items the why-now cites, with their marks and sources. Do not hand the reader's story field, other coverage or the whole reader output to angle checks. Retain the sender's claims register and terms or their stated absence with the sender material.
 - `<material>` for story checks: the whole material record with its sources, all coverage and the reader output, claims register and terms or their stated absence.
 - `<as_of>`: the check date's `YYYY-MM-DD` string.
@@ -324,14 +336,14 @@ For each initial finding, take the first match. Keep its evidence and every choi
 
 - **Missing input.** Get the missing record from what is in hand, never an invented value. Not in hand: leave that check uncompleted, name the missing input and omit that story from the presented menu.
 - **Contribution, and the offer is a stunt, a mascot, a visual or a playful tie-in.** Put the finding to the person as written. Offer the choice to take the angle on as it is or supply a new contribution. They take it on: record that with the finding. They supply a new contribution: include it as one change in the combined package. They decline: withhold that angle and say why; other stories continue.
-- **Other contribution.** Go to the material for what is new to a desk first. A contribution there: use it. None, and the finding says the main offer was already done or reported: ask the person, never Build Concepts. None for any other contribution stop: run `skills/Build Concepts/` in `wiser` once for this rework, with the inputs from Is the concept settled?, but match the return here, never its initial-call stop. A usable eligible contribution answering this candidate's question, the requested question in one-story mode, returned: use it. Nothing to teach, an empty, unrelated or unusable return: put the finding to the person as written and leave that angle. A contribution the person supplies joins the combined changes; otherwise the finding and angle stay.
+- **Other contribution.** Go to the material for what is new to a desk first. A contribution there: use it. None, and the finding says the main offer was already done or reported: ask the person, never Build Concepts. None for any other contribution stop: run `skills/Build Concepts/` in `wiser` once for this rework, with the inputs from Is the concept settled?, but match the return here, never its initial-call stop. A usable eligible contribution answering this candidate's question cleanly, one of the requested story's questions or its no-coverage service question in one-story mode, returned: use it. Nothing to teach, an empty, unrelated or unusable return: put the finding to the person as written and leave that angle. A contribution the person supplies joins the combined changes; otherwise the finding and angle stay.
 - **Authority.** The material shows another person whose role, field or work is on the topic: offer that person. It shows none: ask the person. They supply one: offer that person. They have none: drop the spokesperson and keep the angle, saying so.
 - **Crowded moment.** Put the finding to the person as written.
 - **Sourced.** The material holds the source: supply it. Otherwise the finding is a hook's source or date: run `skills/External Research/` in `wiser`, handed as What does the why-now hold? says. Any other fact: ask the person; they supply it, use it; they cannot, drop it.
 - **Attribution.** Take the finding's own change: supply a held coverage item or drop it; mark an unopened item as unread or open it through the External Research URL handoff above and record the page match; say what the coverage in hand does not say; or write an unheld argument as a position to put to the spokesperson or drop it. Narrow an every claim without a basis to the outlets actually held. Only the person can supply a missing statement of their position; do not invent it.
-- **Claims approval.** Write the claim as proposed, `after approval`, naming the needed approval, or drop it as the finding says. This corrects wording; it adds no approval hold.
+- **Claims approval.** Write the claim as proposed, `after approval`, naming who approves in plain words, or drop it as the finding says. This corrects wording; it adds no approval hold.
 
-For a story still eligible after an initial stop and its finding match, make the combined changes in the provisional menu and rebuild the record from that exact text. Add every supplied fact, source or contribution to the material record before rerunning, labelled as the person's account. Rerun the files in the same order and separate contexts with their own inputs, then match their returns above. If a missing input prevents a rerun, leave that check uncompleted, name the input and omit the story.
+For a story still eligible after an initial stop and its finding match, make the combined changes in the provisional menu and rebuild the record from that exact text, with each field's sources list kept beside it. Add every supplied fact, source or contribution to the material record before rerunning, labelled as the person's account. Rerun the files in the same order and separate contexts with their own inputs, then match their returns above. If a missing input prevents a rerun, leave that check uncompleted, name the input and omit the story.
 
 This skill adds no hold, wait or condition outside the checks; notes and contested choices stand as the checks word them. Results retained after the final run keep their original verdict, with any final local removals or narrowings recorded beside them. Every other substantive presentation edit belongs in the combined rework.
 
@@ -339,41 +351,100 @@ This skill adds no hold, wait or condition outside the checks; notes and contest
 
 #### What does the package hold?
 
-Default: a ranked menu short enough to read in five minutes, about three pages, then its working part. The bound is the menu; the working part stays whole. Header: as-of date, beat, window and what was read in one sentence. Each kept story, breaking thread or story-less evergreen is its own entry in rank order. Head each story or breaking thread by its story's name in the reader's own words from checked field 7, never by the headline angle. A story-less evergreen is headed by its plain offer description from checked field 1, marked `Story-less evergreen`. Use these four parts and present the eight fields' exact text as mapped above:
+Default: a ranked menu short enough to read in five minutes, about three pages, then its working part. The bound is the menu; the working part stays whole. Header: as-of date, beat, window and what was read in one sentence, followed by the exact checked text of any common Audience, Spokesperson and scope, or Medium or route field as defined above. Each kept whole story, ungrouped breaking thread or story-less evergreen is its own entry in rank order, never one thread of a returned story. Head it by its rank number and the checked field 7 name, using the proposed name where the reader's original name failed; never by the headline angle. A story-less evergreen is headed by its plain offer description from checked field 1, marked `Story-less evergreen`.
 
-- **What readers are following:** field 7, a line and the three to seven items carrying it, each with reporter, outlet, date, recorded headline and opened or unverified mark. Fewer held: show fewer and say so, never pad. An unread item's claim is attributed as unread. A kept breaking thread is marked `Breaking thread`, with its date and window in this field; an unstated window stays `not stated`. A story-less evergreen carries `No coverage found in the window`.
-- **The open question:** field 8, the one the sender answers, in the reader's voice.
-- **What we add:** field 1, the checked headline angle, then field 2, the argument or fact in one or two sentences, then its proof with references and, where required, `after approval`. Keep tension flags, proposed reframes and claims that undercut the argument beside the line they concern in this checked text. Follow it with the checked fields labelled **Audience**, **Spokesperson and scope**, and **Medium or route** (fields 4, 5 and 6).
-- **Why here:** field 3, the why-now with its source and timing or window. The rank is the entry's position; its supporting judgment and evidence stay in the working part.
+Use the four parts below. Present only each field's checked text, with its honesty marks and beside-the-line flags, without its sources list or working notes. Keep the lengths and exact field mapping from Build the angle record; do not rewrite after checking except for the rerun outcome's permitted final local removals or narrowings.
 
-Then **Dropped**, one line each for stories big enough a reader would ask why they are missing, and **Before any of this is pitched:** items still to open, claims to approve where required, and questions for the sender. This heading is a task list, never a new hold on pitching.
+- **What readers are following:** field 7, one line saying what is happening, then three to seven items, each with reporter, outlet, date, recorded headline and opened or unverified mark. Fewer held: show fewer and say so, never pad. Carry the breaking-thread or story-less evergreen marking where applicable.
+- **The open question:** field 8, one question the sender answers cleanly, in the reader's voice.
+- **What we add:** field 1's headline angle in one sentence, then field 2's argument or fact in at most two sentences and proof in at most two sentences. Keep `after approval` with who approves in words and any position not yet the spokesperson's said to be so. Keep each tension flag, proposed line reframe and undercutting claim in one short sentence beside its line. Follow with checked fields 4, 5 and 6, labelled **Audience**, **Spokesperson and scope**, and **Medium or route**, except those already shown once in the header.
+- **Why here:** field 3, at most two sentences with the hook's date and opened or unverified mark, or the held evergreen form or `None found`. The rank is the entry's position; its supporting judgment and evidence stay in the working part.
 
-The **Working part**, after the menu in the same package, carries the full reader output; every story's ranking factors and evidence; every drop and reason, including withheld tragedy hooks; each credibility bridge in full; honesty-check results and fixes; and each kept story's eight-field angle record, why-now forms, both check files' results, findings and notes as returned, rework and choices with evidence. Keep the eligible material record and source references with it so a later reader can resolve M and C references and neutral coverage ids, following the eligibility rule above. The written working part omits constructed specifics, including any embedded in concept returns or material-record excerpts; those stay only in the session record, never in the angle file. Carry Build Concepts' core insight where returned. Name each unknown with what would settle it and each applicable gap. An angle taken on with an open finding keeps its stop, never a pass. An uncompleted check or crisis gap leaves that story out of the presented menu and names why in the working part; no checked stories remain: return a named stop, not a package.
+Then **Dropped**, one line per dropped story by its reader name, with the reason in plain words, including stories big enough a reader would ask why they are missing. For a dropped ungrouped thread use its reader name; for a story-less evergreen use its plain offer description. No ids or working notes enter these lines. Then **Before any of this is pitched:** items still to open, claims to approve where required, and questions for the sender. Name each item to open by outlet and headline, including each shown item with no recorded URL. This task list may name a claim in plain words with its claims-register row beside it, so the person can approve the right claim; name who approves. This heading is a task list, never a new hold on pitching.
 
-One story requested: title the package with the same checked field 7 story name in the reader's own words, or the marked checked field 1 offer description for a story-less evergreen. Present the eight-field angle record above, with field 1 under **What we add**, its as-of date, the same results, why-now forms, notes, unknowns, gaps and choices; then the same working part. No ranking against stories not considered is claimed.
+The **Working part**, after the menu in the same package, carries the full reader output; every story's ranking factors and evidence, counts and their method notes; every tested clean or rejected pairing and its reason, including those that cast the sender as the doubted party; every drop and reason, including withheld tragedy hooks; each credibility bridge in full; each name check, with both original and proposed names where it failed; the selected coverage and opening results, exclusions and mark changes; honesty-check results and fixes; and each kept entry's eight-field angle record with each field's text and its own sources list together, why-now forms, both check files' results, findings and notes as returned, rework and choices with evidence. Keep the eligible material record and source references with it so a later reader can resolve every material, claims-register and neutral coverage reference and record key, following the eligibility rule above. Record the coverage prefix and why it cannot collide with the material or claims references in this run. The written working part omits constructed specifics, including any embedded in concept returns or material-record excerpts; those stay only in the session record, never in the angle file. Carry Build Concepts' core insight where returned. Name each unknown with what would settle it and each applicable gap. An angle taken on with an open finding keeps its stop, never a pass. An uncompleted check or crisis gap leaves that story out of the presented menu and names why in the working part; no checked stories remain: return a named stop, not a package.
+
+One story requested: title the package with the same checked field 7 name, using the proposed name where the reader's original name failed, or the marked checked field 1 offer description for a story-less evergreen. Present the same four parts using only checked field text, with its as-of date, then the same working part with the eight fields' text and sources, results, why-now forms, notes, unknowns, gaps and choices. No ranking against stories not considered is claimed.
 
 Name `skills/Media List/` for a story chosen from the menu, handed `<angle>` with headline, audience, contribution and any medium, and `<owning_root>`. Name `skills/Pitch/` for when the person decides to pitch, with the checked story and its sources ready for `<story>`; Pitch needs a journalist chosen separately. Name `skills/Campaign Plan/` for a campaign document from this menu. Nothing is drafted or sent. A run stopped before a package names the stop instead.
 
 #### What one menu entry looks like (made-up, format only)
 
+The common fields below appear in this made-up menu's header; each entry's working record still carries them.
+
+> As of 2026-04-10; home batteries; window 2026-03-12 to 2026-04-10; recorded coverage and dated research read.
+>
+> **Audience:** Prospective home-battery buyers.
+>
+> **Spokesperson and scope:** The research director, on tariff assumptions in savings claims.
+>
+> **Medium or route:** not stated
+>
 > ### 2. Buyers are questioning promised home-battery savings
 >
-> **What readers are following:** Buyers are questioning promised home-battery savings; the first item has not been opened. Three recorded items:
-> - A. Reporter, *Energy Weekly*, 2026-03-02, "My battery saved me $11 a year", unverified
-> - B. Reporter, *The Ledger*, 2026-03-19, "Regulator opens inquiry into solar-battery savings claims", opened 2026-04-10
+> **What readers are following:** Owners report savings far below their quotes, and a regulator is examining how savings are claimed.
+>
+> - A. Reporter, *Energy Weekly*, 2026-04-03, "My battery saved me $11 a year", unverified
+> - B. Reporter, *The Ledger*, 2026-04-07, "Regulator opens inquiry into solar-battery savings claims", opened 2026-04-10
 > - C. Reporter, *Grid Notes*, 2026-04-08, "Installers say savings depend on tariffs buyers never see", opened 2026-04-10
 >
-> **The open question:** How could I check a savings figure before signing?
+> **The open question:** What tariff assumptions should I ask an installer to write into a savings quote?
 >
-> **What we add:** A buyer should get the assumed tariff in writing before trusting battery savings. The CEO's argument that a savings claim is only as good as the tariff it assumes, and a buyer should get that tariff in writing (M3; Public statement, recorded interview). Proposed after research-lead approval: our 2025 study of 1,200 installs found savings within 10% of the quote where the tariff was stated, and 40% below it where it wasn't (M5; C2).
+> **What we add:** Ask for the assumed tariff in writing before trusting a battery-savings quote. The research director argues that a savings claim is only as good as the tariff it assumes. Proposed after approval by the research lead: our 2025 study of 1,200 installs found savings within 10% of the quote where the tariff was stated, and 40% below it where it was not.
 >
-> **Audience:** prospective home-battery buyers (M1).
->
-> **Spokesperson and scope:** the CEO, on tariff assumptions in savings claims (M3; Public statement, recorded interview).
->
-> **Medium or route:** not stated.
->
-> **Why here:** borrowed hook, the regulator's inquiry into savings claims, reported 2026-03-19 (coverage record B, opened 2026-04-10).
+> **Why here:** The regulator's inquiry into savings claims, reported 2026-04-07, opened 2026-04-10.
+
+**Working part's copy: the same entry's angle record (made-up).** As of 2026-04-10.
+
+1. **Headline angle**
+   - **Text:** Ask for the assumed tariff in writing before trusting a battery-savings quote.
+   - **Sources:**
+     - M3, recorded interview with the research director, 2026-03-25; Public statement.
+     - Provenance: application of their tariff argument to the buyer question, not a quotation.
+
+2. **Contribution**
+   - **Text:** The research director argues that a savings claim is only as good as the tariff it assumes. Proposed after approval by the research lead: our 2025 study of 1,200 installs found savings within 10% of the quote where the tariff was stated, and 40% below it where it was not.
+   - **Sources:**
+     - M3, the recorded interview and Public statement register above, for the argument.
+     - M5, the cooperative's 2025 tariff study, and claims-register row C2, pending research-lead approval, for the proposed figures.
+     - M1 identifies the sender as an independent energy-research cooperative, not an installer whose quote is being questioned.
+
+3. **Why-now**
+   - **Text:** The regulator's inquiry into savings claims, reported 2026-04-07, opened 2026-04-10.
+   - **Sources:**
+     - K2, B. Reporter, The Ledger, 2026-04-07, "Regulator opens inquiry into solar-battery savings claims"; https://ledger.example/inquiry. Its own page returned the matching headline and publication date, opened 2026-04-10. Borrowed hook.
+
+4. **Audience**
+   - **Text:** Prospective home-battery buyers.
+   - **Sources:**
+     - M1, the supplied request, audience field.
+
+5. **Spokesperson and scope**
+   - **Text:** The research director, on tariff assumptions in savings claims.
+   - **Sources:**
+     - M3, recorded interview, 2026-03-25; Public statement. The interview records the director's role and work on tariff assumptions.
+
+6. **Medium or route**
+   - **Text:** not stated
+   - **Sources:**
+     - None recorded; M1 names no medium or route.
+
+7. **Story readers are following**
+   - **Text:** Buyers are questioning promised home-battery savings. Owners report savings far below their quotes, and a regulator is examining how savings are claimed.
+     - A. Reporter, *Energy Weekly*, 2026-04-03, "My battery saved me $11 a year", unverified
+     - B. Reporter, *The Ledger*, 2026-04-07, "Regulator opens inquiry into solar-battery savings claims", opened 2026-04-10
+     - C. Reporter, *Grid Notes*, 2026-04-08, "Installers say savings depend on tariffs buyers never see", opened 2026-04-10
+   - **Sources:**
+     - K1, A. Reporter, Energy Weekly, 2026-04-03, "My battery saved me $11 a year"; recorded headline and publication_date, no URL recorded, unverified.
+     - K2, B. Reporter, The Ledger, 2026-04-07, "Regulator opens inquiry into solar-battery savings claims"; https://ledger.example/inquiry, headline and publication_date matched on the opened page, opened_date 2026-04-10.
+     - K3, C. Reporter, Grid Notes, 2026-04-08, "Installers say savings depend on tariffs buyers never see"; https://grid.example/tariffs, headline and publication_date matched on the opened page, opened_date 2026-04-10.
+     - Provenance: the blind reader returned this whole story name; the name check held it.
+     - ID assignment: coverage prefix K is unused by material references M and claims-register references C in this made-up run.
+
+8. **Open question**
+   - **Text:** What tariff assumptions should I ask an installer to write into a savings quote?
+   - **Sources:**
+     - The blind reader's question on K1, K2 and K3, across the savings and tariff-disclosure threads; its text is unchanged.
 
 ### Where is the package written?
 
@@ -410,10 +481,13 @@ The menu or single story and its working part are written in that one angle-pack
 ## Success
 
 - A ranked menu with its working part, one story angle with its working part, or a named stop was returned. Nothing was drafted or sent.
-- The parent collected coverage, ran dated External Research over the intersection with the settled window or named its limit, filtered out sender items and identifying text, and handed redacted text only. The reader context never received sender identity, material or disk paths and opened no source. It read all handed coverage with its marks, grouped broad stories, wrote reader-voiced questions and carried the dated threads and windows to ranking. A new chat given only the allowed handoff counted as the second context; only when no such reader context or chat could be opened did that absence stop the run with no package.
-- Ranking weighed following, the sender's distinct answer and timing. No story was dropped for reused material or an unapproved claim. Recorded words in any setting were eligible; an applied argument remained an argument with its true attribution.
-- Every spokesperson line was tested for tension, every story name against its coverage; weak lines and unsupported names carried their reframes, and claims undercutting an argument were flagged beside it.
-- Every presented entry used the eight fields checked, with only the rerun outcome's permitted local removals or narrowings afterward. Each entry's heading and the single-angle package's title used the story's name in the reader's own words from checked field 7, never the headline angle; a story-less evergreen used its plain offer description from checked field 1, marked `Story-less evergreen`. **What we add** showed the checked headline angle (field 1) followed by the contribution (field 2); the story field held the news. Angle checks received sender material plus only why-now coverage; story checks received the whole record. Both ran unchanged in separate second contexts or new chats, each with only its own file and three inputs; a missing check context left the check uncompleted and the story out. The opening word separated pass, stop and no result; the body was then tested for the crisis gap. Findings, notes and original verdicts survived; changes followed the shared budget and any final cuts were recorded. The parent read every pull, research return and opened page before filtering for sender incidents, which produced no package. It withheld a story whose own name or coverage was a tragedy, or whose check result named the crisis gap, and continued in place without re-entering assembly.
+- The parent collected coverage, ran dated External Research over the intersection with the settled window or named its limit, filtered out sender items and identifying text, and handed redacted text only. Coverage ids used a letter prefix unused by any material-record or claims-register reference in the run, with that choice recorded. The reader context never received sender identity, material or disk paths and opened no source. A new chat given only the allowed handoff counted as the second context; only when no such reader context or chat could be opened did that absence stop the run with no package.
+- The reader read all handed coverage with its marks, grouped whole stories and carried dated threads and windows to ranking. Its up-to-three reader-voiced questions per story spread across threads where there was more than one and across what is happening and whether anyone could tell, who answers for it, and what a reader would do next. At least one widened to what a reader's own organization would ask; all stayed questions the coverage raised and did not answer.
+- Before ranking, every candidate story's questions across all threads were tested against every material-held argument and fact. Each kept pairing answered the question as asked and did not cast the sender as the party whose claim or product was doubted. Rejected pairings were recorded; an argument that answered another story cleanly went there, with reuse allowed. A story with only doubted-party pairings had no fit and was dropped. Ranking weighed following, the sender's distinct clean answer and timing; no story was dropped for reused material or an unapproved claim. Recorded words in any setting were eligible; an applied argument remained an argument with its true attribution.
+- Every entry was a whole returned story, an ungrouped breaking thread or a story-less evergreen, never one thread of a returned story. A question from any thread could supply a whole story's clean fit; the story kept its whole following and checked name. Every spokesperson line was tested for tension, every story name against its coverage. Tension flags, line reframes and undercutting claims stayed in short sentences beside their lines; a failed name check appeared in the menu only as the proposed checked name, with both names and the working kept in the working part.
+- After Rank and drop and before honesty checks, the parent opened every shown item with a recorded URL through one URL-list handoff per entry. Every item kept its page-match-based opened or unverified mark in the text. Missing URLs and unsuccessful openings stayed unverified and were named by outlet and headline on the task list. The parent read every pull, research return and opened page before filtering for sender incidents, which produced no package. It withheld a story whose own name or coverage was a tragedy, or whose check result named the crisis gap, and continued in place without re-entering assembly.
+- Every presented field was exactly its checked text without its sources list, subject only to the rerun outcome's permitted final local removals or narrowings. Its working record kept that same text with its own sources list, resolving every statement. Text kept honesty marks, hedges, approval wording naming who approves, and positions not yet the spokesperson's said to be so; ids, record keys, reader story or thread numbers, provenance notes, count-method notes and name-check working stayed out of the entry. Identical Audience, Spokesperson and scope, or Medium or route text appeared once in the menu header. Following was one line plus three to seven items, or fewer held with the shortage named; the open question was one question; What we add led with its one-sentence headline, then at most two sentences of argument or fact and two of proof, with each flag one short sentence; Why here was at most two sentences with the dated hook and mark, or the held evergreen form or `None found`. Dropped was one plain line per story by its reader name; the task list could carry a claim's register row beside its plain wording.
+- Each entry's heading and the single-angle package's title used the checked field 7 name, with a proposed name replacing one that failed, never the headline angle; a story-less evergreen used its plain offer description from checked field 1, marked `Story-less evergreen`. What we add showed field 1 followed by field 2; the story field held the news. Both check files received field text and its own sources together, the first six fields for angle checks and all eight for story checks. Angle checks received sender material plus only why-now coverage; story checks received the whole record. Both ran unchanged in separate second contexts or new chats, each with only its own file and three inputs; a missing check context left the check uncompleted and the story out. The opening word separated pass, stop and no result; the body was then tested for the crisis gap. Findings, notes and original verdicts survived; changes followed the shared budget and any final cuts were recorded.
 - The evergreen form was named wherever held, including a story-less angle marked `No coverage found in the window`; an unstated desk remained `not stated`. No hook, date, authority, approval status or coverage was invented. No absence of a hook or coverage alone stopped an angle; nothing kept after rank and drop returned the reader findings and a named stop.
-- Build Concepts and External Research were composed by name, their returns and labels carried, their methods not reproduced. One-story mode kept a concept offer only when it answered the requested question. No constructed specific became an angle field, a claim handed on or part of the written working part.
+- Build Concepts and External Research were composed by name, their returns and labels carried, their methods not reproduced. One-story mode kept a concept offer only when it answered the requested question cleanly. No constructed specific became an angle field, a claim handed on or part of the written working part.
 - The package carried its as-of date, results, notes, unknowns, applicable gaps and named handoffs. A saved package was one new file in a declared or accepted angle-package home with the working part after the menu or story; otherwise it stayed in the session and the person was told why.
