@@ -1,0 +1,14 @@
+{
+  "name": "beat-coverage",
+  "version": "0.1.0",
+  "description": "Pull dated beat-matching coverage from reporter files into Markdown with every item marked unverified, or return counts only",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "help": "node scripts/beat-coverage.js help",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
