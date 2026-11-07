@@ -38,8 +38,9 @@ Paper is always Letter, overriding a different CSS paper size. Margins: top
 0.5in, left/right 0.55in, bottom 0.65in. Match these in @page; add no second
 body-margin or padding inset. Reserve bottom space for the page-numbered footer.
 Unused unloaded fonts, complete zero-width SVGs and unrelated favicon failures
-are accepted. Font errors, incomplete used images, page errors and failed
-requests referenced by the document stop rendering. Remote requests are blocked.
+are accepted. Font errors, incomplete used images, used non-SVG images with zero
+natural width, page errors and failed document-referenced requests stop rendering.
+An explicitly referenced favicon is checked too. Remote requests are blocked.
 All paths absolute and canonicalized. Destination ancestry is compared by device
 and inode; existing PDFs and outputs inside this skill are refused. Protected
 .env and memory paths are refused. No credentials or configuration. Only the
@@ -94,7 +95,7 @@ function documentAssets() {
   for (const value of document.styleSheets) sheet(value);
   for (const node of document.querySelectorAll('style,[style]'))
     cssUrls(node.tagName === 'STYLE' ? node.textContent : node.getAttribute('style') || '', document.baseURI);
-  for (const node of document.querySelectorAll('link[rel~="stylesheet"],iframe[src],object[data],embed[src],video[src],video[poster],audio[src],source[src],image[href],image[xlink\\:href],use[href],input[type="image"][src]'))
+  for (const node of document.querySelectorAll('link[rel~="stylesheet"],link[rel~="icon"],iframe[src],object[data],embed[src],video[src],video[poster],audio[src],source[src],image[href],image[xlink\\:href],use[href],input[type="image"][src]'))
     for (const attr of ['href','xlink:href','src','data','poster']) add(node.getAttribute(attr));
   const usedImages = [...document.images].filter(image => {
     const style = getComputedStyle(image);
@@ -102,9 +103,15 @@ function documentAssets() {
       style.display !== 'none' && !['hidden','collapse'].includes(style.visibility);
   });
   for (const image of usedImages) add(image.currentSrc || image.src);
+  const isSvg = image => {
+    const source = image.currentSrc || image.src;
+    return /^data:image\/svg\+xml[;,]/i.test(source) ||
+      /\.svg$/i.test(new URL(source, document.baseURI).pathname);
+  };
   return {
     fontError: [...document.fonts].some(font => font.status === 'error'),
-    incompleteImage: usedImages.some(image => !image.complete),
+    incompleteImage: usedImages.some(image => !image.complete ||
+      (image.naturalWidth === 0 && !isSvg(image))),
     references: [...references],
     font: getComputedStyle(document.body).fontFamily,
   };
@@ -148,7 +155,7 @@ async function printDocument(request, runtime) {
     const references = new Set(assets.references);
     if (errors.length || assets.fontError || assets.incompleteImage ||
         failed.some(url => references.has(url)))
-      throw Error('A page error, font error, incomplete used image or failed document-referenced resource prevents rendering; restore that input before retrying.');
+      throw Error('A page error, font error, incomplete or zero-width non-SVG used image, or failed document-referenced resource prevents rendering; restore that input before retrying.');
     const footer = `<div style="font-size:9px;font-family:${escape(assets.font)};width:100%;padding:0 0.55in;box-sizing:border-box;display:flex;justify-content:space-between"><span>${escape(request.footer)}</span><span class="pageNumber"></span></div>`;
     const pdf = await page.pdf({
       format:'Letter', printBackground:true, preferCSSPageSize:false,
@@ -169,17 +176,22 @@ async function selfTest() {
   const fixture = (settings = {}) => {
     const calls = [], handlers = {};
     let closed = 0, handler;
-    const image = (src, complete, visible = true) => ({src, currentSrc:src, complete,
-      naturalWidth:0, getClientRects:() => visible ? [1] : [], style:{display:visible ? 'block':'none',visibility:'visible'}});
+    const image = (src, complete, visible = true, naturalWidth = 0) => ({src, currentSrc:src, complete,
+      naturalWidth, getClientRects:() => visible ? [1] : [], style:{display:visible ? 'block':'none',visibility:'visible'}});
     const fonts = [{status:'loaded'}, {status:'unloaded'}, ...(settings.fontError ? [{status:'error'}] : [])];
     fonts.ready = Promise.resolve();
+    const links = [{rel:'stylesheet',href:'file:///design.css'},
+      ...(settings.favicon ? [{rel:'icon',href:'file:///favicon.ico'}] : []),
+      ...(settings.remote ? [{rel:'stylesheet',href:'https://example.invalid/design.css'}] : [])];
     const document = {
       URL:'file:///example.html', baseURI:'file:///example.html', fonts, body:{},
-      images:[image('file:///logo.svg', !settings.incomplete), image('file:///hidden.png',false,false)],
+      images:[image(settings.imageSource || 'file:///logo.svg', !settings.incomplete, true, settings.naturalWidth ?? 0),
+        image('file:///hidden.png',false,false)],
       styleSheets:[{href:'file:///design.css', cssRules:[{cssText:'@font-face { src: url("font.woff2"); }'}]}],
-      querySelectorAll(selector) { return selector.startsWith('link') ?
-        [{getAttribute:attr => attr === 'href' ? 'file:///design.css' : null},
-         ...(settings.remote ? [{getAttribute:attr => attr === 'href' ? 'https://example.invalid/design.css' : null}] : [])] : []; },
+      querySelectorAll(selector) {
+        return links.filter(link => selector.includes(`link[rel~="${link.rel}"]`))
+          .map(link => ({getAttribute:attr => attr === 'href' ? link.href : null}));
+      },
     };
     const page = {
       on(event, callback) { handlers[event] = callback; },
@@ -224,6 +236,25 @@ async function selfTest() {
   const good = fixture({failures:['file:///favicon.ico','file:///hidden.png'],responses:['file:///favicon.ico']});
   await printDocument(request,good.runtime);
   assert.deepEqual(good.calls,['launch','print','navigate','fonts','assets','pdf']); assert.equal(good.closed(),1);
+  for (const settings of [{imageSource:'file:///logo.png',naturalWidth:64},
+    {imageSource:'file:///logo.SVG?version=1#mark'},
+    {imageSource:'data:image/svg+xml,%3Csvg%3E%3C/svg%3E'}, {favicon:true}]) {
+    const accepted = fixture(settings);
+    await printDocument(request,accepted.runtime);
+    assert.ok(accepted.calls.includes('pdf')); assert.equal(accepted.closed(),1);
+  }
+  for (const settings of [{imageSource:'file:///logo.png',naturalWidth:0},
+    {imageSource:'data:image/png;base64,broken',naturalWidth:0}]) {
+    const brokenRaster = fixture(settings); // complete is true; no failed request or HTTP error.
+    await assert.rejects(printDocument(request,brokenRaster.runtime),/prevents rendering/);
+    assert.ok(!brokenRaster.calls.includes('pdf')); assert.equal(brokenRaster.closed(),1);
+  }
+  for (const settings of [{favicon:true,failures:['file:///favicon.ico']},
+    {favicon:true,responses:['file:///favicon.ico']}]) {
+    const referencedIcon = fixture(settings);
+    await assert.rejects(printDocument(request,referencedIcon.runtime),/prevents rendering/);
+    assert.ok(!referencedIcon.calls.includes('pdf')); assert.equal(referencedIcon.closed(),1);
+  }
   for (const settings of [{fontError:true},{incomplete:true},{pageError:true},{failures:['file:///logo.svg']},
     {responses:['file:///design.css']},{failures:['file:///font.woff2']},{redirected:true},{remote:true}]) {
     const bad = fixture(settings);
@@ -244,6 +275,9 @@ async function selfTest() {
     'Letter overrides CSS size; margins and escaped page-numbered footer',
     'print, network-idle, fonts-ready and actual DOM asset predicate',
     'unused unloaded font, complete zero-width SVG and unrelated favicon accepted',
+    'valid raster, query-suffixed SVG, embedded SVG and referenced favicon accepted',
+    'complete zero-width file and embedded non-SVG images refused without request failures',
+    'explicitly referenced favicon request failures and HTTP errors refused',
     'font error, incomplete used image, page error and referenced failures refused',
     'redirected referenced failures refused; remote requests blocked',
     'browser closed on success, asset failure and PDF failure',
