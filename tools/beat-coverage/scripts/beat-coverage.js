@@ -183,7 +183,7 @@ const LEGACY = /^(Compelling work|Most recent)\b/i;
 const ITEM_TOKEN = /^(?:\*\*|__)?Item:(?:\*\*|__)?\s*/i;
 const TRACTION = /^\s*(?:[-*+]\s+)?(?:\*\*|__)?Traction:(?:\*\*|__)?\s*/i;
 const MONTH = '(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\.?';
-const ENGLISH_DATE = new RegExp(`\\b(?:(\\d{1,2})\\s+${MONTH}\\s+|${MONTH}\\s+(?:(\\d{1,2}),?\\s+)?)((?:19|20)\\d{2})\\b`, 'i');
+const ENGLISH_DATE = new RegExp(`\\b(?:(\\d{1,2})\\s+${MONTH},?\\s+|${MONTH}\\s+(?:(\\d{1,2}),?\\s+)?)((?:19|20)\\d{2})\\b`, 'i');
 const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
 function reporterName(text) {
@@ -191,8 +191,9 @@ function reporterName(text) {
   for (const line of text.split(/\r?\n/)) {
     const code = line.match(/^\s*(`{3,}|~{3,})/);
     if (code) {
-      if (!fence) fence = code[1][0];
-      else if (code[1][0] === fence) fence = undefined;
+      // A fence closes only on the same character, at least as long as its opening.
+      if (!fence) fence = code[1];
+      else if (code[1][0] === fence[0] && code[1].length >= fence.length) fence = undefined;
       continue;
     }
     if (fence) continue;
@@ -212,8 +213,9 @@ export function coverageItems(text) {
   for (const line of text.split(/\r?\n/)) {
     const code = line.match(/^\s*(`{3,}|~{3,})/);
     if (code) {
-      if (!fence) fence = code[1][0];
-      else if (code[1][0] === fence) fence = undefined;
+      // A fence closes only on the same character, at least as long as its opening.
+      if (!fence) fence = code[1];
+      else if (code[1][0] === fence[0] && code[1].length >= fence.length) fence = undefined;
       continue;
     }
     if (fence) continue;
@@ -254,12 +256,13 @@ export function itemDate(item) {
     else text = all.split(/\b(?:Source|Register|Read|Superseded):/i)[0];
   }
   for (const pattern of [
-    /\b((?:19|20)\d{2})-(\d{2})(?:-(\d{2}))?\b/,
-    /\b((?:19|20)\d{2})\/(\d{2})(?:\/(\d{2}))?\b/,
+    // One- or two-digit month and day; a month is never cut from a longer date.
+    /\b((?:19|20)\d{2})-(\d{1,2})(?:-(\d{1,2}))?(?!\d|-\d)/,
+    /\b((?:19|20)\d{2})\/(\d{1,2})(?:\/(\d{1,2}))?(?!\d|\/\d)/,
   ]) {
     const iso = text.match(pattern);
     if (iso) {
-      const date = `${iso[1]}-${iso[2]}-${iso[3] || '01'}`;
+      const date = `${iso[1]}-${iso[2].padStart(2, '0')}-${(iso[3] || '01').padStart(2, '0')}`;
       return validDate(date) ? { date, recorded: iso[0], kind: iso[3] ? 'day' : 'month' } : { kind: 'undated' };
     }
   }

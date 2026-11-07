@@ -383,3 +383,21 @@ test('importing the entry script has no CLI output or process exit', () => {
   assert.equal(result.stderr, '');
   assert.equal(result.stdout, 'imported');
 });
+
+test('unpadded slash and hyphen dates keep their day, a day-first month takes a comma, and a fence closes only on one as long', t => {
+  const dated = line => itemDate(coverageItems(`# Fixture reporter D\n\n## Most recent\n\n- ${line}\n`)[0]);
+  assert.deepEqual(dated('Agent (Desk, 2026/11/5).'), { date: '2026-11-05', recorded: '2026/11/5', kind: 'day' });
+  assert.deepEqual(dated('Agent (Desk, 2026/1/15).'), { date: '2026-01-15', recorded: '2026/1/15', kind: 'day' });
+  assert.deepEqual(dated('Agent (Desk, 2026-11-5).'), { date: '2026-11-05', recorded: '2026-11-5', kind: 'day' });
+  assert.deepEqual(dated('Agent (Desk, 2026/11/).'), { date: '2026-11-01', recorded: '2026/11', kind: 'month' });
+  assert.deepEqual(dated('Agent (Desk, 2026/1/32).'), { kind: 'undated' });
+  assert.deepEqual(dated('Agent (Desk, 14 March, 2026).'), { date: '2026-03-14', recorded: '14 March, 2026', kind: 'day' });
+  assert.deepEqual(dated('Agent (Desk, 2026-2027).'), { kind: 'undated' });
+  const directory = scratch(t);
+  {
+    writeFileSync(join(directory, 'fence.md'), '````md\n```\n# Example name\n## Most recent\n- Agent fenced (Desk, 2026-11-05).\n````\n# Bio sketch: Real Reporter\n## Most recent\n- Agent real (Desk, 2026-11-05).\n');
+    const body = success(run(['pull', '--dir', directory, ...WEEK]));
+    assert.match(body.markdown, /Name: Real Reporter \| Section: Most recent .*Agent real/);
+    assert.doesNotMatch(body.markdown, /Example name|Agent fenced/);
+  }
+});
