@@ -6,17 +6,19 @@ This medium file adds podcast facts and choices when Pitch loads it.
 
 Read the reporter file's base Identity, Role, Record and Routes, and its journalist Outlets, Audience, Formats, Sources quoted, Style, Preferences and Reach. Gather the show's name, host and whether they are a journalist, the addressee's route to booking, listeners, format, recent episodes, past guests, contact and booking timing. Use episodes and guests the record actually states, not names in headline lists. A format line saying the desk takes episodes does not establish the show's style. Use the gathering hand-off in Pitch's medium step for show facts the file lacks. Name each fact still missing in the package.
 
+For a guest pitch to a host, use that host's sketch and the recent episodes recorded in it. Check the file's latest-episode evidence against the chosen story's coverage window with its stated endpoints. Where none is supplied, use the file's `staleness_days` (30 days if absent) as the window ending on the pitch date. Does the file confirm the show's latest episodes and date them within that window? Yes: cite the file's evidence. No: carry `Latest episodes not confirmed within the window`, with the window and last recorded episode date or its absence, into the reader brief and package. Use only episode references the file supports, naming their dates and this limit in the pitch brief; other researched show facts do not clear the file's limit. The limit alone adds no stop.
+
 ## Why do these listeners fit?
 
 Carry the evidence of why the show's listeners match the story's audience to Pitch's fit step, which owns the outcome. Downloads are not listens. Preserve a figure's metric and its date, and its period where stated. A larger show is not better by size.
 
 ## What is the episode offer?
 
-Read the requester's material for an episode idea that fits the decided story and this show's style, the guest and what they bring, and a reference to a past episode or guest the host will recognise. An idea the material does not hold is named missing. Source the guest's contribution from that material and the show connection from the record or show evidence.
+Read the requester's material for an episode idea that fits the one decided story and this show's style, the guest and what they bring to that story, and a reference to a past episode or guest the host will recognise. Tie a guest pitch to that story's name and package record in Pitch, never a general offer to appear. An idea the material does not hold is named missing. Source the guest's contribution from that material and, for a pitch to a host, the episode connection from that host's file; use the record or show evidence for other show facts.
 
 Is each part supported? Take the first match.
 
-- The episode idea, the guest's contribution or the past reference lacks support. Name each gap. Ask for the material, or a narrower offer or reference the sources hold. Stop until supplied or narrowed. Do not invent a guest, an episode or a connection.
+- The episode idea, the guest's contribution or the past reference lacks support, or the offer is only a general appearance with no one story. Name each gap. Ask for the material, or a narrower offer or reference the sources hold. Stop until supplied or narrowed. Do not invent a guest, an episode or a connection.
 - All three are supported. Carry the offer and its sources into Pitch's angle step. The episode idea describes what a conversation could explore.
 
 ## Which approach fits this host?
@@ -46,4 +48,4 @@ Applicable to a first pitch to a podcast. Put the matching choice to the request
 
 ## What is added to the package?
 
-Add the show name, host and kind, format, route to booking, contact and timing; the listener and show fit with its evidence; the recent episodes and past guests used; the episode idea, guest and their contribution; the past reference; the readiness facts gathered by Pitch and assets; each missing item and any explicit go-on for missing readiness; the launch, recording and release timing and terms; and the host-approach and lead-time answers with their evidence and recommendation. Keep each fact's source, date, hedge and evidence label.
+Add the show name, host and kind, format, route to booking, contact and timing; the listener and show fit with its evidence; the recent episodes and past guests used, their file citations and any latest-episode limit with its window; the story name and angle-package path, session-only record or stated absence of an angle package; the episode idea, guest and their contribution to that story; the past reference; the readiness facts gathered by Pitch and assets; each missing item and any explicit go-on for missing readiness; the launch, recording and release timing and terms; and the host-approach and lead-time answers with their evidence and recommendation. Keep each fact's source, date, hedge and evidence label.
