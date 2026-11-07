@@ -3,9 +3,14 @@
 
 import bisect
 import json
-from pathlib import Path
 import re
 import sys
+
+sys.dont_write_bytecode = True
+
+import os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))  # this script's own folder, also under python -I
+from paths import screen_path, self_test as path_self_test
 
 
 HELP = """Campaign Plan unpublished-source overlap check (no dependencies or writes).
@@ -21,7 +26,8 @@ Case is folded; punctuation (including underscores) and whitespace separate
 words. Every maximal run of at least five words is reported at every occurrence
 pair, including repeats. Contained windows at the same alignment are subsumed.
 Locations: one-based lines, columns and word numbers; zero-based character
-offsets, end offsets exclusive. Input line endings are retained for offsets.
+offsets; end_column and end offsets are exclusive. Input line endings are
+retained for offsets.
 Clean: one JSON object on stdout, exit 0. Matches: full JSON report on stderr,
 empty stdout, exit 1. Other failures: JSON error on stderr, exit 1.
 Paths must be absolute regular files. Protected .env and memory paths are
@@ -56,23 +62,7 @@ def options(argv):
 
 
 def source_path(value):
-    path = Path(value)
-    if not path.is_absolute():
-        raise ValueError("Input path must be absolute; see --help")
-    if any(part.casefold() == "memory" or
-           re.match(r"^\.env(?:\.|$)", part, re.I) for part in path.parts):
-        raise ValueError("Protected input path; supply work-product text")
-    try:
-        resolved = path.resolve(strict=True)
-    except (OSError, RuntimeError) as error:
-        raise ValueError("Input path cannot be canonicalized; repair missing files, links or permissions") from error
-    if any(part.casefold() == "memory" or
-           re.match(r"^\.env(?:\.|$)", part, re.I) for part in resolved.parts):
-        raise ValueError("Protected input path; supply work-product text")
-    path = resolved
-    if not path.is_file():
-        raise ValueError("Input is not a regular file; supply UTF-8 text")
-    return path
+    return screen_path(value, file=True)
 
 
 def tokens(text):
@@ -148,10 +138,17 @@ def self_test():
                                 "Straße CAFÉ has five useful words")
     assert unicode_match[0]["word_count"] == 6
     assert not shared_runs("", "")
+    # Punctuation is a word separator, not deletion: don't and dont differ.
+    assert [word[0] for word in tokens("don't")] == ["don", "t"]
+    assert not shared_runs("don't stop before the fifth word",
+                           "dont stop before a fifth word")
+    assert planted[0]["plan"]["end_column"] == 40
+    path_result = path_self_test()
     return {"status": "passed", "tests": [
         "planted near-quote found (7 words, exact locations)", "clean pair passes",
         "four words ignored; five found", "all four repeated occurrence pairs found",
         "contained windows subsumed", "Unicode casefold", "empty pair passes",
+        "apostrophes separate words; exclusive end_column", path_result,
     ]}
 
 
