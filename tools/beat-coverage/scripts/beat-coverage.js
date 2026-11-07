@@ -182,6 +182,25 @@ const ITEM = /^ {0,3}(?:\d+[.)]|[-*+])\s+(.*)$/;
 const LEGACY = /^(Compelling work|Most recent)\b/i;
 const ITEM_TOKEN = /^(?:\*\*|__)?Item:(?:\*\*|__)?\s*/i;
 const TRACTION = /^\s*(?:[-*+]\s+)?(?:\*\*|__)?Traction:(?:\*\*|__)?\s*/i;
+const MONTH = '(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\.?';
+const ENGLISH_DATE = new RegExp(`\\b(?:(\\d{1,2})\\s+${MONTH}\\s+|${MONTH}\\s+(?:(\\d{1,2}),?\\s+)?)((?:19|20)\\d{2})\\b`, 'i');
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+function reporterName(text) {
+  let fence;
+  for (const line of text.split(/\r?\n/)) {
+    const code = line.match(/^\s*(`{3,}|~{3,})/);
+    if (code) {
+      if (!fence) fence = code[1][0];
+      else if (code[1][0] === fence) fence = undefined;
+      continue;
+    }
+    if (fence) continue;
+    const title = line.match(/^ {0,3}#\s+(.+?)(?:\s+#+)?\s*$/);
+    if (title) return title[1].replace(/^Bio sketch:\s*/i, '').trim() || 'not stated';
+  }
+  return 'not stated';
+}
 
 export function coverageItems(text) {
   const bio = /^schema:\s*bio-sketch\s*$/m.test(text) || /^# Bio sketch:/im.test(text);
@@ -224,19 +243,34 @@ export function coverageItems(text) {
 }
 
 export function itemDate(item) {
-  let text = item.lines[0];
+  // A date inside a link never dates the item, including an explicit date field.
+  const lines = item.lines.map(line => line.replace(/https?:\/\/\S+/gi, ' '));
+  let text = lines[0];
   if (item.record) {
-    const all = item.lines.join(' ');
+    const all = lines.join(' ');
     // In a Bio Sketch record, As of is the publication date, never the file's capture date.
-    const stated = all.match(/\b(?:Published|Date|As of):\s*(\d{4}(?:-\d{2}(?:-\d{2})?)?)(?![\d-])/i);
+    const stated = all.match(/\b(?:Published|Date|As of):\s*(.*?)(?=\b(?:Source|Register|Read|Superseded|Kind|Published|Date|As of):|$)/i);
     if (stated) text = stated[1];
-    else text = text.split(/\b(?:Source|Register|Read|Superseded):/i)[0];
+    else text = all.split(/\b(?:Source|Register|Read|Superseded):/i)[0];
   }
-  const iso = text.match(/\b((?:19|20)\d{2})-(\d{2})(?:-(\d{2}))?\b/);
-  if (iso) {
-    const date = `${iso[1]}-${iso[2]}-${iso[3] || '01'}`;
-    return validDate(date) ? { date, recorded: iso[0], kind: iso[3] ? 'day' : 'month' } : { kind: 'undated' };
+  for (const pattern of [
+    /\b((?:19|20)\d{2})-(\d{2})(?:-(\d{2}))?\b/,
+    /\b((?:19|20)\d{2})\/(\d{2})(?:\/(\d{2}))?\b/,
+  ]) {
+    const iso = text.match(pattern);
+    if (iso) {
+      const date = `${iso[1]}-${iso[2]}-${iso[3] || '01'}`;
+      return validDate(date) ? { date, recorded: iso[0], kind: iso[3] ? 'day' : 'month' } : { kind: 'undated' };
+    }
   }
+  const english = text.match(ENGLISH_DATE);
+  if (english) {
+    const month = String(MONTHS.indexOf((english[2] || english[3]).slice(0, 3).toLowerCase()) + 1).padStart(2, '0');
+    const day = english[1] || english[4];
+    const date = `${english[5]}-${month}-${(day || '1').padStart(2, '0')}`;
+    return validDate(date) ? { date, recorded: english[0], kind: day ? 'day' : 'month' } : { kind: 'undated' };
+  }
+  if (/\b\d{1,2}\/\d{1,2}\/(?:19|20)\d{2}\b/.test(text)) return { kind: 'undated' };
   const year = text.match(/(?<![\d-])((?:19|20)\d{2})(?![\d-])/);
   return year ? { date: year[1], recorded: year[1], kind: 'year' } : { kind: 'undated' };
 }
@@ -255,8 +289,10 @@ export function collect(options) {
     catch { fail('A reporter file could not be read; check its permissions or exclude it.'); }
     counts.files++;
     counts.bytes += bytes.length;
+    const text = bytes.toString('utf8');
+    const name = reporterName(text);
     const lines = [];
-    for (const item of coverageItems(bytes.toString('utf8'))) {
+    for (const item of coverageItems(text)) {
       counts.items++;
       if (options.pattern && !options.pattern.test(item.lines.join('\n'))) {
         counts.off_beat++;
@@ -278,7 +314,7 @@ export function collect(options) {
       const flag = date.kind === 'year' ? ' [date: year only; included for the window\'s last year]'
         : date.kind === 'month' ? ' [date: month only; compared as the first day]' : '';
       const recorded = item.lines.filter(line => !TRACTION.test(line)).map(oneLine).join(' ');
-      lines.push(`- **unverified** | File: ${oneLine(file.name)} | Section: ${oneLine(item.section)} | Date: ${date.recorded}${flag} | ${recorded}`);
+      lines.push(`- **unverified** | File: ${oneLine(file.name)} | Name: ${oneLine(name)} | Section: ${oneLine(item.section)} | Date: ${date.recorded}${flag} | ${recorded}`);
     }
     if (lines.length) blocks.push(`## ${oneLine(file.name)}\n\n${lines.join('\n')}\n`);
   }

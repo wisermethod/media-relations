@@ -4,7 +4,7 @@ What this plugin does not do, declared by the primitive that names it.
 
 A gap is a capability this root does not provide that a primitive's own body names as missing (`wiser/standards/primitives.md`). This file collects every declared `gaps` entry, by hand, and is corrected whenever a primitive's gaps change. It carries capability gaps only, and names what is missing, never where it went.
 
-Counted 2026-11-07: 10 gaps across 3 primitives. Bullet count: `grep -E '^- ' system/GAPS.md | wc -l` returns 10, and the same count derived from the primitives' own `gaps:` frontmatter returns 10.
+Counted 2026-11-07: 11 gaps across 4 primitives. Bullet count: `grep -E '^- ' system/GAPS.md | wc -l` returns 11, and the same count derived from the primitives' own `gaps:` frontmatter returns 11.
 
 ## Skills
 
@@ -13,6 +13,10 @@ Counted 2026-11-07: 10 gaps across 3 primitives. Bullet count: `grep -E '^- ' sy
 - earned-media strategy beyond ranking stories: a decision to pursue one, an outreach route and a pitch schedule
 - crisis judgment on a pitch during an unfolding incident
 - a news-value read of a stunt, a mascot, a visual or a playful tie-in, which the angle checks have no contribution entry for
+
+### Campaign Plan
+
+- crisis judgment on a pitch during an unfolding incident
 
 ### Media List
 

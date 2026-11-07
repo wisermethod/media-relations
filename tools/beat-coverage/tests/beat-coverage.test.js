@@ -14,6 +14,7 @@ const TOOL = resolve(HERE, '..');
 const SCRIPT = join(TOOL, 'scripts', 'beat-coverage.js');
 const FIXTURES = join(HERE, 'fixtures', 'reporters');
 const WINDOW = ['--from', '2026-01-01', '--to', '2026-11-05'];
+const WEEK = ['--from', '2026-11-01', '--to', '2026-11-07'];
 const EXCLUSIONS = ['--exclude', 'excluded.md', '--exclude', 'excluded-again.md'];
 const FILTER = ['--beat', '\\bagent'];
 const EXPECTED = { files: 2, items: 10, kept: 6, year_only: 1, undated: 2, off_beat: 1, outside_window: 1 };
@@ -66,7 +67,9 @@ test('pull prints Markdown in JSON, groups files, and preserves recorded fields 
   assert.equal(items.length, 6);
   for (const line of items) {
     assert.match(line, /\*\*unverified\*\*/);
-    assert.match(line, /File: (bio|legacy)\.md \| Section: .+ \| Date: 2026/);
+    const [file, name] = line.includes('File: bio.md') ? ['bio.md', 'Fixture reporter B'] : ['legacy.md', 'Fixture reporter A'];
+    assert.ok(line.includes(`File: ${file} | Name: ${name} | Section: `));
+    assert.match(line, /Section: .+ \| Date: 2026/);
     assert.match(line, /Fixture Desk [ABC]/);
   }
   assert.match(body.markdown, /Section: Compelling work \(recorded examples\)/);
@@ -172,6 +175,115 @@ test('Bio Sketch publication date wins over a source URL; undated URL does not s
   const items = coverageItems(readFileSync(join(FIXTURES, 'bio.md'), 'utf8'));
   assert.equal(itemDate(items[0]).date, '2026-02-28');
   assert.deepEqual(itemDate(items[1]), { kind: 'undated' });
+});
+
+const DATE_CASES = [
+  ['March day', '2026-03-14', '14 March 2026', 'day'],
+  ['slash October day', '2026-10-01', '2026/10/01', 'day'],
+  ['November day', '2026-11-05', '5 November 2026', 'day'],
+  ['November comma day', '2026-11-05', 'Nov 5, 2026', 'day'],
+  ['URL only'],
+  ['ambiguous numeric day'],
+  ['bare year', '2026', '2026', 'year'],
+  ['slash month', '2026-11-01', '2026/11', 'month'],
+  ['full month', '2026-11-01', 'November 2026', 'month'],
+  ['dotted month', '2026-11-01', 'Nov. 2026', 'month'],
+  ['September month', '2026-09-01', 'Sept. 2026', 'month'],
+  ['November day without comma', '2026-11-05', 'November 5 2026', 'day'],
+  ['dotted November day', '2026-11-05', '5 Nov. 2026', 'day'],
+  ['invalid English day'],
+  ['invalid English comma day'],
+  ['invalid slash day'],
+  ['invalid slash month'],
+  ['invalid ISO day'],
+  ['HTTP URL only'],
+  ['leap day', '2024-02-29', '29 February 2024', 'day'],
+  ['invalid leap day'],
+  ['slash November day', '2026-11-05', '2026/11/05', 'day'],
+  ['ISO precedence', '2026-11-06', '2026-11-06', 'day'],
+  ['invalid ISO precedence'],
+  ['invalid slash precedence'],
+  ['no first-line date'],
+];
+
+for (const file of ['legacy.md', 'bio.md']) {
+  test(`${file} date fixtures preserve day and month precision, reject URLs and ambiguous dates, and keep bare years`, () => {
+    const directory = join(HERE, 'fixtures', 'dates');
+    const items = coverageItems(readFileSync(join(directory, file), 'utf8'));
+    const cases = file === 'bio.md' ? [...DATE_CASES, ['continuation date', '2026-11-05', '5 November 2026', 'day']] : DATE_CASES;
+    assert.equal(items.length, cases.length);
+    for (const [index, [label, date, recorded, kind]] of cases.entries()) {
+      assert.ok(items[index].lines[0].includes(`Agent ${label}`), label);
+      assert.deepEqual(itemDate(items[index]), date ? { date, recorded, kind } : { kind: 'undated' }, label);
+    }
+    const args = ['pull', '--dir', directory, ...WEEK, '--exclude', file === 'legacy.md' ? 'bio.md' : 'legacy.md'];
+    const body = success(run(args));
+    assert.deepEqual({ ...body.counts, bytes: 0 }, {
+      files: 1, items: cases.length, kept: file === 'bio.md' ? 11 : 10, year_only: 1, undated: 12, off_beat: 0, outside_window: 4, bytes: 0,
+    });
+    assert.match(body.markdown, /Date: 5 November 2026 \|/);
+    assert.match(body.markdown, /Date: Nov 5, 2026 \|/);
+    assert.match(body.markdown, /Date: 2026 \[date: year only/);
+    assert.doesNotMatch(body.markdown, /Agent (March day|slash October day|URL only|ambiguous numeric day)/);
+    const outside = success(run([...args, '--beat', 'Agent (March day|slash October day)']));
+    assert.equal(outside.counts.outside_window, 2);
+    assert.equal(outside.counts.kept, 0);
+    assert.equal(outside.counts.year_only, 0);
+  });
+}
+
+test('Published, Date and As of values accept all date forms and take precedence over the record and read date', () => {
+  const directory = join(HERE, 'fixtures', 'stated-dates');
+  const items = coverageItems(readFileSync(join(directory, 'bio.md'), 'utf8'));
+  const expected = [
+    { date: '2026-11-05', recorded: '2026-11-05', kind: 'day' },
+    { date: '2026-11-01', recorded: '2026-11', kind: 'month' },
+    { date: '2026-11-05', recorded: '2026/11/05', kind: 'day' },
+    { date: '2026-11-01', recorded: '2026/11', kind: 'month' },
+    { date: '2026-11-05', recorded: '5 November 2026', kind: 'day' },
+    { date: '2026-11-05', recorded: 'Nov 5, 2026', kind: 'day' },
+    { date: '2026-11-01', recorded: 'Nov. 2026', kind: 'month' },
+    { kind: 'undated' },
+    { kind: 'undated' },
+    { kind: 'undated' },
+    { date: '2026', recorded: '2026', kind: 'year' },
+  ];
+  assert.equal(items.length, 3 * expected.length);
+  for (const [group, field] of ['Published', 'Date', 'As of'].entries()) {
+    for (const [index, date] of expected.entries()) {
+      const item = items[group * expected.length + index];
+      assert.ok(item.lines[0].includes(`Agent ${field} `));
+      assert.deepEqual(itemDate(item), date, item.lines[0]);
+    }
+  }
+  const body = success(run(['pull', '--dir', directory, ...WEEK]));
+  assert.deepEqual({ ...body.counts, bytes: 0 }, {
+    files: 1, items: 33, kept: 24, year_only: 3, undated: 9, off_beat: 0, outside_window: 0, bytes: 0,
+  });
+  assert.doesNotMatch(body.markdown, /Agent (Published|Date|As of) (invalid day|ambiguous day|URL only)/);
+});
+
+test('the first level-one heading supplies the recorded name, excluding code examples and later headings', t => {
+  const directory = scratch(t);
+  writeFileSync(join(directory, 'title.md'), '```md\n# Example name\n```\n## Section name\n#   Bio sketch:  Fixture reporter C   ###\n# Later name\n## Most recent\n- Agent title fixture (Desk, 2026-11-05).\n');
+  const body = success(run(['pull', '--dir', directory, ...WEEK]));
+  assert.equal(body.counts.kept, 1);
+  assert.match(body.markdown, /File: title\.md \| Name: Fixture reporter C \| Section: Most recent/);
+  assert.doesNotMatch(body.markdown, /Example name|Section name|Later name|Name: Bio sketch:/);
+});
+
+test('a caller-built whole-word AI pattern drops email and available; a file without a title states no name', () => {
+  const directory = join(HERE, 'fixtures', 'word-beat');
+  const pattern = ['AI'].map(term => `(?<![A-Za-z0-9])${term}(?![A-Za-z0-9])`).join('|');
+  const body = success(run(['pull', '--dir', directory, ...WEEK, '--beat', pattern]));
+  assert.deepEqual({ ...body.counts, bytes: 0 }, {
+    files: 1, items: 2, kept: 1, year_only: 0, undated: 0, off_beat: 1, outside_window: 0, bytes: 0,
+  });
+  assert.match(body.markdown, /File: no-heading\.md \| Name: not stated \| Section: Most recent/);
+  assert.match(body.markdown, /AI agents/);
+  assert.doesNotMatch(body.markdown, /email|available/);
+  const literal = success(run(['count', '--dir', directory, ...WEEK, '--beat', 'AI']));
+  assert.equal(literal.kept, 2);
 });
 
 test('help is a JSON object before configuration or file checks', () => {

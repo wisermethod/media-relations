@@ -39,7 +39,7 @@ Omit `--output` to return the Markdown in the `markdown` field of the one JSON o
 | `--dir <path>` | `pull`, `count` | Required absolute directory of reporter Markdown files; no recursion |
 | `--from <YYYY-MM-DD>` | `pull`, `count` | Required first date, inclusive |
 | `--to <YYYY-MM-DD>` | `pull`, `count` | Required last date, inclusive; must be on or after `--from` |
-| `--beat <regex>` | `pull`, `count` | Case-insensitive JavaScript regular expression over each recorded item, including its continuation text; omitted means no beat filter |
+| `--beat <regex>` | `pull`, `count` | Case-insensitive JavaScript regular expression over each recorded item, including its continuation text; omitted means no beat filter. A caller matching topic terms as whole words passes each escaped term wrapped in `(?<![A-Za-z0-9])` and `(?![A-Za-z0-9])`, with terms joined by `\|`. |
 | `--exclude <name>` | `pull`, `count` | Exact file name to skip before reading; repeatable; no directory components |
 | `--output <path>` | `pull` | New absolute `.md` file outside this tool; its parent must already exist; an existing destination is refused |
 | `--help`, `-h` | Every command | Return usage without reading input |
@@ -55,13 +55,13 @@ Visible `.md` files immediately inside `--dir`, in file-name order. Excluded fil
 
 Headings end the preceding item. Empty `Not available:` records and fenced code blocks are ignored. Duplicate recorded items stay separate; no source is opened or deduplicated.
 
-For an older item, the first ISO date on its first line is its date. `YYYY-MM` is compared as that month's first day and marked month only. A standalone year is included only when it equals the window's last year, even if the window starts partway through that year; the output explicitly marks this inclusion. For a Bio Sketch record, an explicit `Published:`, `Date:`, or `As of:` date is used; per the base format, a record's `As of:` is its publication date. Otherwise its value is checked before source metadata, so a URL or read date cannot date an undated record. Invalid dates count as undated.
+For an older item, its first line is checked for a date. Before reading any date, URLs (`http://` or `https://` through the next whitespace) are removed. Dates are parsed in this order: hyphenated ISO `YYYY-MM-DD` or `YYYY-MM`; slash ISO `YYYY/MM/DD` or `YYYY/MM`; English month-name dates `D Month YYYY`, `Month D, YYYY`, `Month D YYYY`, or `Month YYYY`. Month names may be full or three-letter, or `Sept`, with or without a trailing full stop. Month-only dates are compared as that month's first day and marked month only. Invalid calendar dates and ambiguous numeric `DD/MM/YYYY` or `MM/DD/YYYY` dates count as undated, never year only. Only when none of these forms appears is a standalone year used: it is included only when it equals the window's last year, even if the window starts partway through that year; the output explicitly marks this inclusion. For a Bio Sketch record, an explicit `Published:`, `Date:`, or `As of:` value takes the same forms; per the base format, a record's `As of:` is its publication date. Otherwise its value is checked before source metadata, so a URL or read date cannot date an undated record.
 
 The beat expression is applied first, matching the recorded item and its continuation lines. Rejection counts are disjoint: an off-beat item increments only `off_beat`; a matching item then increments `undated`, `outside_window`, or `kept`. `year_only` is the subset of `kept` included on a year alone. Thus `items = kept + undated + off_beat + outside_window`.
 
 ## What it writes
 
-Markdown grouped by file, with one bullet line per kept item in recorded order. Each line names its file and original section, carries **unverified** and the recorded date, and retains the recorded item text, including its headline and outlet as supplied. No headline or outlet is inferred from a role or another item. Continuation lines are joined onto that line; `Traction:` continuation lines are dropped, including bold or bulleted forms. The beat test uses the original recorded text before that output-only removal.
+Markdown grouped by file, with one bullet line per kept item in recorded order. Each line names its file and original section, carries **unverified** and the recorded date, and retains the recorded item text, including its headline and outlet as supplied. After `File:`, each line carries `Name:` from the file's first level-one heading, with a leading `Bio sketch:` removed and the result trimmed, or `not stated` when the file has no such heading. This is the recorded title, not an inferred reporter identity. No headline, outlet, or reporter identity is inferred from a role or another item. Continuation lines are joined onto that line; `Traction:` continuation lines are dropped, including bold or bulleted forms. The beat test uses the original recorded text before that output-only removal.
 
 | Count field | Meaning |
 |-------------|---------|
@@ -90,7 +90,7 @@ Only `pull --output` writes a deliverable. It creates no parent directories and 
 
 ## Success
 
-- `pull` returns every selected recorded item once per occurrence, grouped by file, with file, section, recorded headline, outlet and date, and **unverified** on each item line.
+- `pull` returns every selected recorded item once per occurrence, grouped by file, with file, recorded name, section, recorded headline, outlet and date, and **unverified** on each item line.
 - Both reporter shapes work; year-only inclusions are marked, undated and off-beat items are omitted and counted, and output carries no `Traction:` lines.
 - Every successful command prints one JSON object. Usage errors and read or write failures print only to stderr and exit 1. Help needs no input directory or configuration.
 - `node --test` in this directory passes on synthetic fixtures without installing anything or opening a network connection.
