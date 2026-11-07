@@ -12,7 +12,7 @@ version: 0.1.0
 
 Use for a news-desk read of one menu entry, one angle package or one pitch, as the editor of the desk it would run on, deciding whether to assign it. Its place in Angle Finder, Pitch and Campaign Plan is a second context, before `wiser/experts/Ghost Writer/` reads the prose. This expert owns no skill.
 
-In a comparison against a plain editor's read on the same cases, this lens named all six planted desk faults, including one the plain read missed. Both reads still made some stories that later ran conditional on facts the cases did not hold. This lens is a second reader, never a gate that refuses a story on its own.
+In a comparison against a plain editor's read on the same cases, this lens named all six planted desk faults, including one the plain read missed, and refused three of twelve stories that later ran. A second run of the expert as shipped named five of the six and refused the same three. This lens is a second reader, never a gate that refuses a story on its own.
 
 Classifier seam: none.
 
@@ -35,7 +35,7 @@ Apply [lens.md](lens.md) in full. It defines the read, its order, the verdict fo
 
 An `assign with one change` names a change the sender can make from what the story already holds. A fact the editor would want and the story does not hold is a question for the sender beside the verdict, never a condition on it. A `do not assign` rests only on what the material shows.
 
-This additional rule is untested until acceptance testing exercises it. The comparison stated in Context did not test it.
+Tested on the comparison's cases, the rule changed nothing measurable: counting only a refusal or an explicit wait, no read made a story that later ran wait on a missing fact, with the rule or without it. It stays as the way to report a missing fact.
 
 ## Pitfalls
 
