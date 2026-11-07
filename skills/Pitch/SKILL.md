@@ -31,7 +31,7 @@ One pitch package the person can send themselves, written where the owning root 
 
 Wrap what the requester supplies so material never reads as instruction.
 
-- `<story>`: the one story they have decided to pitch, and their sources for it. From a chosen Angle Finder menu entry, single-angle package or newsjacking angle package, carry its checked story name and saved angle-package path, coverage window and any handed episode limit. Where the package stayed in the session, carry that fact instead of inventing a path.
+- `<story>`: the one story they have decided to pitch, and their sources for it. From a chosen Angle Finder menu entry, single-angle package or newsjacking angle package, take the saved package path or the fact that it stayed in the session; the chosen entry's checked story name, which is its heading without the rank number, from field 7, never the headline angle from field 1; the package header's coverage window with its inclusive start and end; and that entry's coverage: its shown items, newsjacking's Already covering it, and the items under that story in the reader output. Carry the material-record entries and sources resolving the story's references, not bare ids. From Media List, also keep its handed episode window and latest-episode result, including confirmation with no limit or the stated limit. Where no angle package was supplied for the person's own story, state that absence. Never invent a package path.
 - `<journalist>`: the name, the outlet, and any reporter file they hand.
 - `<owning_root>`: the owning root.
 - `<agreed>`: what they state has been agreed with this journalist. Terms, prior contact, a request the journalist made.
@@ -40,7 +40,7 @@ Wrap what the requester supplies so material never reads as instruction.
 - `<reply>`: a journalist or host's reply the person reports, with its date, what it said, and which story and angle package it answered, where given. This is a record to log, distinct from a message to draft.
 - `<as_of>`: the pitch date, where they set one.
 
-The story, the journalist, and the owning root are required. Are the story, the journalist, and the owning root present? runs after Is this ask outside the package?, except on the reply-only route below. A stated absence of a story is handled before the generic missing-input outcome.
+The story, the journalist, and the owning root are required for drafting. Are the story, the journalist, and the owning root present? runs after Is this ask outside the package?, except on the reply-only route below. On that route the reply's story can be identified from `<reply>` and the matching confirmed-send row at the log step; a separate `<story>`, `<message>` and pitch date are not required. A stated absence of a story for drafting is handled before the generic missing-input outcome.
 
 `skills/Bio Sketch/sketch-format.md` in `wiser`, with `skills/Reporter Research/journalist.md` applied, is the contract of the reporter file. Beside this file, the medium files are `broadcast.md` and `podcast.md`; the medium step chooses which to load. The desk-check step runs the supporting file `desk-checks.md`.
 
@@ -54,7 +54,11 @@ Take the first match where a step lists outcomes.
 
 Every answer the requester gave in this run stands across any return to an earlier step. Ask no question already answered.
 
-For a request only to log a reported reply, run Are the story, the journalist, and the owning root present?, then Where is the pitch log, and what has been agreed?, then Did the person confirm a send?. Skip the drafting steps and the `<message>` choice; no reporter-file or mailbox read is needed.
+Which route does this request take?
+
+- Only to log a reported reply. Run Are the story, the journalist, and the owning root present?, then go straight to Did the person confirm a send?. Run none of the intervening steps, including Where is the pitch log, and what has been agreed?. Read the log only to identify the reply's confirmed send; build no agreed record and apply no outside-package or crisis stop to the reply record. Read no reporter file or mailbox, choose no `<message>` and draft nothing. End the run after logging or the log step's question.
+- A reported reply and a request for a draft or anything else. Run Is this ask outside the package? on the rest. A remaining draft takes the normal drafting route and logs the reported reply only at Did the person confirm a send?, against the story it answered. Where drafting stops, take the reply-only presence check and its jump for the reply record, without treating the stopped draft as sent; keep any unanswered drafting question pending. No draft remains: take the reply-only presence check and jump above. Boundaries on the rest never block the reported-reply record.
+- No reported reply. Take the normal route below.
 
 ### Is this ask outside the package?
 
@@ -68,10 +72,12 @@ Take each applicable outcome here.
 
 ### Are the story, the journalist, and the owning root present?
 
-- They have no story, and they say so. Name `skills/Angle Finder/`, which composes `skills/Build Concepts/` in `wiser`. Stop. Do not invent a story.
+- On the reply-only route, the journalist's name, outlet or owning root is missing, or more than one journalist is named. Ask for the missing identification or which journalist. Stop until answered.
+- On the reply-only route, one journalist, one outlet and one owning root are present. Defer the reply's story identification to the log step, using `<reply>` and the matching confirmed-send row. Go to Did the person confirm a send?.
+- They have no story for drafting, and they say so. Name `skills/Angle Finder/`, which composes `skills/Build Concepts/` in `wiser`. Stop. Do not invent a story.
 - The story, the journalist's name, the outlet, or the owning root is missing. Ask for the missing one. Stop.
 - They named two journalists. Ask which one this package is for. Stop.
-- One story, one journalist, one outlet, one owning root. Continue.
+- One story, one journalist, one outlet, one owning root. For an Angle Finder source, read the saved package from the handed path or the path already in the session from Angle Finder's delivery, or the in-session package and working part. Keep the chosen entry's heading as the story name and take only its shown items, newsjacking's Already covering it and the items under that story in the reader output; use the coverage-id map only to resolve those items, never the whole map. Resolve its material references to material-record entries and sources. The package or working part is not in hand, or more than one entry could match, including only the four check fields with no package: ask for the package or which entry and stop until resolved. Otherwise continue.
 
 ### What is the pitch date, and which message is this?
 
@@ -202,9 +208,11 @@ For a podcast offer only, where neither the file nor the request shows whether t
 
 Read the medium files' show-fact lists now. Never fill an absent show fact from the show's name or reputation. Where neither the file nor the request names the show or segment, ask for its name before any show research and stop until answered. Record an answer that none exists and continue without inventing a name. The host and the addressee's route to booking count as in hand only on a sourced statement or the requester's confirmation, never on an inference or the addressee's name alone. For a story offer to a reporter, anchor or assignment desk, gather no host or booking route.
 
-Combine missing facts about the same show into one list. No missing show facts: use the sourced facts or the requester's confirmations in hand. Missing show facts and a named show or segment: run one `skills/External Research/` hand-off in `wiser` by name. Hand `<research_request>` as a natural-language question about those items, naming this pitch package as the consumer; `<scope>` with the show's professional public record and the pitch date; and `<source_material>` with the relevant reporter-file lines and supplied show pages. Use the returned brief with its sources, dates, hedges and evidence labels. No named show or segment, or research returns nothing or cannot run: for a booking-minimum item, name it and ask the requester, stopping until answered and recording an answer that it does not exist, as Is the booking minimum in hand? states; for any other show fact, such as timing, name it as missing in the package and continue.
+For a guest pitch where `podcast.md` loaded, episode references and the latest-episode test come only from the host's reporter file. Never put episodes on the missing-facts research list or use supplied or researched episode lists in their place. Keep Media List's handed episode window and result unchanged; where none was handed, `podcast.md` computes it once.
 
-A researched change to the show, host or segment updates the gathered show facts, prevails over the file's show line, and is named in the package as a conflict. Only a researched fact about the addressee goes back through What has not happened yet?, Is a flag in force? and Are the currency fields current?. Where that fact contradicts the file's role, beat or outlet on the pitch date, treat that currency field as unresolved and refresh as those steps say, handing the conflicting evidence with the refresh request.
+Combine other missing facts about the same show into one list. No missing show facts: use the sourced facts or the requester's confirmations in hand. Missing show facts and a named show or segment: run one `skills/External Research/` hand-off in `wiser` by name. Hand `<research_request>` as a natural-language question about those items, naming this pitch package as the consumer; `<scope>` with the show's professional public record and the pitch date; and `<source_material>` with the relevant reporter-file lines and supplied show pages. Use the returned brief with its sources, dates, hedges and evidence labels. No named show or segment, or research returns nothing or cannot run: for a booking-minimum item, name it and ask the requester, stopping until answered and recording an answer that it does not exist, as Is the booking minimum in hand? states; for any other show fact, such as timing, name it as missing in the package and continue.
+
+A researched change to the show, host or segment updates the gathered show facts, prevails over the file's show line, and is named in the package as a conflict. This rule never applies to episode lists or the latest-episode result and limit; research cannot supply episode references or clear the file-based limit. Only a researched fact about the addressee goes back through What has not happened yet?, Is a flag in force? and Are the currency fields current?. Where that fact contradicts the file's role, beat or outlet on the pitch date, treat that currency field as unresolved and refresh as those steps say, handing the conflicting evidence with the refresh request.
 
 Is the booking minimum in hand?
 
@@ -312,7 +320,8 @@ A signature, a sender, or the person who will send the message is not a selectio
 
 Ask before any handoff to Content Author.
 
-- A claim the pitch would make has no source in the requester's material or, for a show fact, the reporter file or the medium step's researched evidence. Ask for the source. Stop until it is supplied or the claim is dropped. Do not hand it off before that.
+- An episode reference in a guest pitch where `podcast.md` loaded is not confirmed and dated in the host's reporter file. Drop that reference or ask for a narrower one the file supports. Stop until resolved; supplied or researched show evidence cannot support it.
+- Another claim the pitch would make has no source in the requester's material or, for another show fact, the reporter file or the medium step's researched evidence. Ask for the source. Stop until it is supplied or the claim is dropped. Do not hand it off before that.
 - A claim, the one claim included, goes past what its source establishes: its only support is a person's quoted view, or a finding the source states more narrowly or excludes from what it measured. Say what the source does establish. Ask the requester to narrow the claim to that, or to supply the evidence for it. Stop until they answer. Do not hand it off before that.
 - Every claim is sourced and says no more than its source establishes, or the claim is dropped or narrowed. Continue.
 
@@ -336,7 +345,7 @@ The one claim, the one ask, and the length they chose are required. Two claims o
 
 `<user_request>` holds: the owning root; that the piece is a media pitch to one journalist, the row they chose, or that no row applies; the reader, named as the journalist the identity concept describes; the one claim; the angle; the one ask; the terms. Each detail held back, including an unannounced launch or release date whatever the ask, is named there, never its value, until the agreed record holds the agreement that detail needs: acceptance of the exclusive, or agreement to the embargo with its date, time and time zone. Then include the value. The length they chose, and the reason where it leaves the row's band; a request for subject-line alternatives, with the subject-line choice and the evidence it rests on; the fit statement as the reason this journalist is the reader, with the file-cited reader brief and its named gaps from How is the file read?. For a follow-up or a reply, it names the message's purpose and the new material it adds, or the material the requester chose to resurface, so the draft does not repeat the first pitch. The ask is restated only as the loaded row asks. Where they accepted the opening recommendation, the request holds that recommendation. Where they chose to open on a reference, the request holds that choice and the reason instead of the never-praise line. The rest of that recommendation stays. A description of the sender before the story is kept to the bare line saying who writes, or cut.
 
-Where a medium file loaded, `<user_request>` adds the supported facts the one claim and one ask rest on, the host-approach answer where asked, and, for a news segment, the angle choice the requester made. Developing an idea together is an open invitation to discuss the idea, never an offer of questions. It adds the one named asset chosen at Attachments and may include availability where it is in hand. Pronunciation, the other medium gaps, logistics and readiness notes, and the other assets stay in the package only. For an interview-show booking, the guest and what they will show or explain come right after the line that says why this journalist, as the loaded row and opening choice require. For a guest pitch to a host where `podcast.md` loaded, it also carries that file's one-story episode offer and any latest-episode limit, with the instruction to name the limit in the guest pitch.
+Where a medium file loaded, `<user_request>` adds the supported facts the one claim and one ask rest on, the host-approach answer where asked, and, for a news segment, the angle choice the requester made. Developing an idea together is an open invitation to discuss the idea, never an offer of questions. It adds the one named asset chosen at Attachments and may include availability where it is in hand. Pronunciation, the other medium gaps, logistics and readiness notes, and the other assets stay in the package only. For an interview-show booking, the guest and what they will show or explain come right after the line that says why this journalist, as the loaded row and opening choice require. For a guest pitch where `podcast.md` loaded, it also carries that file's one-story episode offer, the file-confirmed episode references with their dates, and the episode window and latest-episode result as an internal note for the person. Tell Content Author to cite only episodes the host's file confirms and dates. The email and subject lines never state the internal mark or limit; keep it in the brief and package only.
 
 Where Which voice does the message go out in? gave a selection, hand Content Author that voice selection: the root's path, and where it was made, the declaration's file or the requester. Where it gave none, hand none.
 
@@ -395,25 +404,48 @@ The written package holds what the ready package holds, headed by its pitch date
 
 ### Did the person confirm a send?
 
-Read the declarations again, as Where is the package written? does. A confirmed send with no other status word is sent. A reply the person reports is a later status, `reply`. Open no mailbox and send nothing. No confirmed send or later status: append nothing and end this step.
+Open no mailbox and send nothing. A reported reply alone is not confirmation of a send. No send, reported reply or later status is confirmed: append nothing and end this step. Otherwise resolve every row below before appending any.
 
-Which story did the send or reply concern? For a send, resolve its story name and angle-package path from `<story>` or the earlier package. For a reply, resolve the story it answered from `<reply>` and the matching confirmed-send row or earlier package, not a different story currently being drafted. Keep the checked name where the story came from Angle Finder; otherwise use the person's story name or description. More than one possible story or package, or a missing name or saved package path: ask for the missing identification and append nothing until answered. A story with no saved angle package is recorded as such, including a session-only package; never invent a path. Put the story name in the log's story or angle column and its package path in a matching column, otherwise in notes.
+Read declarations only, as Where is the pitch log, and what has been agreed? defines; do not run that step or build an agreed record on the reply-only route. Select the log before reading rows.
 
-For a reported reply, resolve its date to `YYYY-MM-DD` and keep what it said as a one-line summary in notes, labelled as reported by the person. A missing or unresolved reply date or missing account of what it said: ask and append nothing until answered. Use the reply date for that row and the confirmed-send row's sender where recorded. The same send prerequisite below applies; a reported reply alone is not confirmation of a send.
+- More than one log is declared and none was chosen. Ask which. Read neither and append nothing until answered.
+- One log is declared or was already chosen. Use it; if absent, there are no rows yet. Create it only after the row requirements below are met.
+- No log is declared or chosen. Ask where the rows go. Write nothing until answered. An existing file keeps its columns; a new path receives the columns below only after the row requirements are met.
 
-Match each value to the log's own columns. Where no column fits a value, ask. Do not add a column to an existing log. The email goes in no column. The row names who sent it. Append a row for a later status only where the log already holds this message's confirmed send, or the person confirms the send now.
+Read the selected log for the confirmed-send rows that identify this journalist, outlet and story. On the reply-only route, read it only to find that send, never to collect prior requests or terms; neither the agreed-record step nor Is this ask outside the package? applies to what the reported reply said.
 
-- They have not confirmed that this message was sent, and they have not confirmed a later status. Append nothing.
-- They confirmed a later status, the log does not already hold this message's confirmed send, and they do not confirm the send now. Ask. Append nothing.
-- They confirmed a send, or a later status, and the sender is not named. Where the message went out as a pitch-as person and they say nothing about who sent it, that person is the sender. Where what they say leaves the sender uncertain or points to someone else, ask who sent it, and append nothing until they answer.
-- More than one log is declared, and they have not named which. Ask which. Append nothing.
-- They confirmed a send or a later status, the root declares a log, and the file does not exist yet. Create it with a heading and the columns date, journalist, outlet, angle, sent by, status, notes. Append one row.
-- They confirmed a send or a later status, and the log exists. Append one row, in that log's own columns. A change of status is a new row. Never edit a row.
-- They confirmed a send or a later status, and the root declares no log. Ask where the row goes. Write nothing until they answer. They name an existing file: append one row in its columns. They name a new path: create it with the heading and the columns above, then append the row.
+Which story did each event concern? Resolve a send from `<story>` or its earlier package. Resolve a reported reply independently from `<reply>` and the matching confirmed-send row or earlier package, never from a different story being drafted. For Angle Finder, use the chosen entry's heading without its rank number, the checked name from field 7, never its headline angle; otherwise use the person's story name or description. A reply naming story A while the only candidate send row names story B is not a match: ask which send it answered and append nothing until resolved. An explicit confirmation of sending A now can settle that question; B never establishes A's send.
+
+For each event, take the first match for its identification and package record.
+
+- The story name is missing, or more than one story or package could match. Ask for the missing identification or which one. Append nothing until answered.
+- The angle package is known to be saved but its path is unknown. Ask for that saved path. Append nothing until answered.
+- The angle package has a known saved path. Record `angle package: <path>`.
+- The angle package is known to have stayed in the session. Record `angle package: session only`. Ask no path question.
+- No angle package was supplied or it is known to be absent. Record `angle package: none`. Ask no path question and invent no path.
+
+Which rows are due? Take the first match. Apply the confirmed-send prerequisite separately to each story when a send and a reply concern different stories.
+
+- Send only, with no reported reply or later status. One `sent` row.
+- Send and reported reply together. Two rows, `sent` then `reply`, each with its own story, package record and event date. If the reply concerns a different story, that story must already have a matching confirmed send or the person must confirm it now; otherwise ask and append nothing. If an additional send is confirmed now for that reply's story, it too gets its own `sent` row before its `reply` row.
+- Reported reply only, and the log already holds that story's matching confirmed send. One `reply` row. Do not duplicate the earlier `sent` row.
+- Reported reply only, no matching confirmed send in the log, and the person confirms that send now. One `sent` row, then one `reply` row.
+- Reported reply only, no matching confirmed send in the log, and no send confirmed now. Ask whether and by whom that story was sent. Append nothing until answered; a reply is never proof of the send.
+- Another later status, without a reported reply. Append its new status row only where the log holds that message's confirmed send or the person confirms it now. A send confirmed now also gets its own `sent` row first. Otherwise ask and append nothing.
+
+For a reported reply, resolve its date to `YYYY-MM-DD` and keep what it said as a one-line summary labelled `reported reply (reported by the person):`. A missing or unresolved reply date or missing account of what it said: ask and append nothing until answered. The reply row uses that date and the matching send's sender where recorded. For a send confirmed now, use its stated send date resolved to `YYYY-MM-DD`, or today's date if the person confirms sending now without another date; an unresolved supplied send date asks and appends nothing. The sender is the person named, or the pitch-as person where the message went out as that person and nothing points elsewhere. A missing or uncertain sender asks who sent it and appends nothing until answered.
+
+Match each value to the log's own columns. Put the story name in its story or angle column. Use a matching angle-package column where present; otherwise keep the labelled `angle package:` record in notes, separate from the labelled reported-reply summary. Keep the summary in notes. Where no column fits a required value, ask and append nothing; add no column to an existing log. No email goes in any column. Each row names who sent the message.
+
+- The selected file exists. Append the due rows in its columns. Never edit a row; a change of status is a new row.
+- The selected file does not exist. Create it with a heading and the columns date, journalist, outlet, angle, sent by, status, notes. Append the due rows, with the package record and reported summary separately labelled in notes.
+
+End this step; on the reply-only route, end the run. No drafted package is required to log an event that meets these rules.
 
 ## Pitfalls
 
-- **The request is ambiguous.** The story, the journalist, the outlet, the owning root, or which message this is. Ask before proceeding. Two journalists: ask which one. Do not guess.
+- **The request is ambiguous.** The story, the journalist, the outlet, the owning root, or which message to draft is unclear. Ask before proceeding. On the reply-only route, identify the story at the log step from the reply and matching send; ask for no drafting message. Two journalists: ask which one. Do not guess.
+- **A reported reply answers another story, or also asks for a draft.** Identify and log the reply against the story it answered, never the draft in progress. A log-only request takes the presence-check jump straight to the log step. A combined ask runs Is this ask outside the package? on the rest and takes the normal route for any draft, then logs the reply at Did the person confirm a send?. A boundary or drafting stop on the rest does not block the reply record.
 
 ## Success
 
@@ -423,9 +455,10 @@ Match each value to the log's own columns. Where no column fits a value, ask. Do
 - No medium file or request produced prose, a script, talking points, speaking notes or host questions outside Content Author.
 - `desk-checks.md` ran in a second context on every draft and every follow-up that was presented, handed the four inputs, and a stop was worked before the package was presented as ready. At most two revision requests followed the first draft of that message. What remained after the budget went to the requester with the findings as written.
 - The fit statement cites the dated pieces it uses, or the skill stopped because the file and any show evidence could support no fit. The reader brief cites the file for published work, what they care about, how they write or present and what to avoid; each missing part was named and left out of drafting.
-- The package records which medium files loaded, and their additions reached it.
-- The agreed record says what was agreed, or it says that nothing has been agreed. Silence was not left to stand as that sentence.
+- The package records which medium files loaded, and their additions reached it. A podcast guest pitch cites only episodes confirmed and dated in the host's file. No episode entered the missing-facts research list or was replaced by researched show facts. Media List's handed episode window and result stayed unchanged; only an unhanded result was computed once, on the package header's inclusive coverage endpoints, otherwise the file's `staleness_days`, otherwise the journalist extension's 30 days ending on the pitch date. The window and any limit stayed in the person's package and brief, outside the email and subject lines.
+- On the drafting route, the agreed record says what was agreed, or it says that nothing has been agreed. Silence was not left to stand as that sentence. The reply-only route jumped from the presence check to the log step, read the log only to find the send, built no agreed record and applied no outside-package or crisis stop to the reply record; no reporter file or mailbox was read.
 - Each contested choice is the requester's word or the stated recommendation. A departure from the loaded row's band or cadence is named as their choice, including one Content Author reported.
 - A flag in force produced no draft. A currency field still not current after one refresh, or after a declined refresh, produced no draft. The field and the reason were named.
 - A crisis stop produced no draft and named the gap. Each declared gap was named where it applied.
-- A confirmed send appended one new row and named who sent it. No row was written without a confirmed send. The email was not logged. A reported reply was a new row against the story name and angle-package path it answered, with its date and a one-line summary; no mailbox was opened. A later status was a new row only where the log already held this message's confirmed send, or the person confirmed the send then.
+- Every Angle Finder story used the chosen entry's heading from field 7 as its name, with the saved package path, session-only record or stated absence; the headline angle never became the story key. Only that entry's shown items, Already covering it and reader-output items supplied coverage, and the material-record entries and sources resolved its references. Four check fields with no package caused an ask and stop on the drafting route.
+- Send only appended one `sent` row; reply only with a matching confirmed send appended one `reply` row; a send confirmed now and its reported reply appended separate `sent` and `reply` rows. Each row named its story, package record and sender; the reply had its own date and a separately labelled one-line reported summary. A known session-only or absent package caused no path question. An ambiguous story, unknown saved path or unmatched reply asked and appended nothing. No reply or later status was logged without that story's matching confirmed send already in the log or confirmed now. No email was logged and no mailbox was opened.
