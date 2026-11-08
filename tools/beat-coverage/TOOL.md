@@ -4,6 +4,7 @@ type: tool
 category: media-relations
 description: Pull dated beat-matching coverage from reporter files into Markdown with every item marked unverified, or return counts only
 version: 0.1.0
+runs: local
 ---
 
 # beat-coverage

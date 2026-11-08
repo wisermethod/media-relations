@@ -26,7 +26,14 @@ Campaign Plan sets out what monthly reporting should show, and Angle Finder's re
 
 ## Install
 
-Point your harness at this repository as a plugin root, or add the repository as a marketplace and install `media-relations@wiser-method-media-relations` from its catalog.
+Install Wiser first, by its [Install steps](https://github.com/wisermethod/wiser#install): this plugin loads beside it. Then add this plugin in the same app:
+
+- **Claude Cowork.** Open Customize, then Plugins, then Add marketplace. Give it `https://github.com/wisermethod/media-relations`, and install `media-relations`. Then turn on Sync automatically for this marketplace, as Wiser's steps do for theirs.
+- **Claude Code.** Run `claude plugin marketplace add wisermethod/media-relations`, then `claude plugin install media-relations@wiser-method-media-relations`, and start Claude Code in your working folder.
+- **Codex.** Add `wisermethod/media-relations` as a marketplace and install `media-relations`.
+- **ChatGPT for desktop.** Add `wisermethod/media-relations` as a marketplace and install `media-relations`.
+- **Grok.** Run `grok plugin marketplace add wisermethod/media-relations`, then `grok plugin install media-relations --trust`.
+- **Cursor.** Add your clone of this repository as a workspace root beside your clone of Wiser and your working folder.
 
 Work lands in the working folder you attach, never in this repository.
 
